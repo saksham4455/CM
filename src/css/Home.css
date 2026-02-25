@@ -4,8 +4,23 @@
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
+    z-index: 0;
+    isolation: isolate;
     /* Deep page-edge vignette for focus */
     box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.9);
+}
+
+/* Mask to hide content behind navbar */
+.home-page::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: #06060c;
+    z-index: 998;
+    pointer-events: none;
 }
 
 .home-particle-background {

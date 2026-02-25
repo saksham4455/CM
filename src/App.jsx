@@ -10,6 +10,7 @@ import Loading from './components/loading';
 import OptimizedBackground from './components/OptimizedBackground';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ErrorBoundary from './components/ErrorBoundary';
 
 // Lazy-loaded components
 const CustomCursor = lazy(() => import('./components/CustomCursor'));
@@ -32,18 +33,22 @@ const PageLoader = () => (
     justifyContent: 'center', 
     alignItems: 'center', 
     minHeight: '100vh',
-    background: '#06060c'
+    background: '#0a0a0f',
+    color: '#00f3ff'
   }}>
     <div style={{ 
-      color: '#00f3ff', 
       fontSize: '1.5rem',
-      fontFamily: 'monospace'
-    }}>Loading...</div>
+      fontFamily: 'monospace',
+      textAlign: 'center'
+    }}>
+      <div style={{ marginBottom: '10px' }}>⚡ Loading...</div>
+      <div style={{ fontSize: '0.8rem', opacity: 0.6 }}>Initializing components</div>
+    </div>
   </div>
 );
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false); // Temporarily disabled for debugging
   const [theme, setTheme] = useState('blue');
   const lenisRef = useRef(null);
   const location = useLocation();
@@ -52,7 +57,7 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 5000); // Adjust this based on your video duration
+    }, 2000); // Reduced loading time for better UX
 
     return () => clearTimeout(timer);
   }, []);
@@ -106,15 +111,17 @@ function App() {
 
       {!isLoading && (
         <div className="relative bg-cyber-dark text-white min-h-screen">
-          <Suspense fallback={null}>
+          <Suspense fallback={<PageLoader />}>
             {/* Scroll to Top Button */}
             <ScrollToTop />
 
-            {/* Optimized Background */}
-            <OptimizedBackground theme={theme} intensity="low" />
+            {/* Optimized Background with Error Boundary */}
+            <ErrorBoundary silent={true}>
+              <OptimizedBackground theme={theme} intensity="low" />
+            </ErrorBoundary>
 
             {/* Navigation */}
-            <Navbar theme={theme} onThemeChange={handleThemeChange} />
+            <Navbar />
 
             {/* Routes with Smooth Transitions */}
             <AnimatePresence mode="wait">

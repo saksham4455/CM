@@ -1,17 +1,16 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import LazyImage from './LazyImage';
 import '../css/Sponsers.css';
 
 const Sponsors = ({ theme = 'blue' }) => {
   const sponsors = useMemo(() => [
     {
       name: 'TSN Securitys',
-      logo: 'public/Logo/Sponser_1.jpeg',
+      logo: '/Logo/Sponser_1.jpeg',
     },
     {
       name: 'Carrer Partner ',
-      logo: 'public/Logo/Sponser_2.png',
+      logo: '/Logo/Sponser_2.png',
     }
   ], []);
 
@@ -75,10 +74,11 @@ const Sponsors = ({ theme = 'blue' }) => {
                   >
                     <div className="sponsor-display">
                       <div className="sponsor-logo-container">
-                        <LazyImage
+                        <img
                           src={sponsors[currentIndex].logo} 
                           alt={sponsors[currentIndex].name}
                           className="sponsor-logo-flip"
+                          loading="lazy"
                         />
                       </div>
                       <div className="sponsor-name-flip">

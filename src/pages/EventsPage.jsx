@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import EventRevealPage from '../components/EventRevealPage';
 import BoxText from '../components/BoxText';
+import '../css/events.css';
 
 const EventsPage = ({ theme = 'blue' }) => {
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -206,7 +207,8 @@ const EventsPage = ({ theme = 'blue' }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 relative pt-20 overflow-hidden">
+    <div className="events-page-wrapper">
+      <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 relative pt-20 overflow-hidden">
       {/* 3D Layered Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Deep space layer 1 */}
@@ -537,6 +539,7 @@ const EventsPage = ({ theme = 'blue' }) => {
           />
         )}
       </AnimatePresence>
+      </div>
     </div>
   );
 };

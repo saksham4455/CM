@@ -11,13 +11,13 @@ const ImageRevealSponsors = () => {
   const sponsors = [
     {
       name: 'TSN Securitys',
-      logo: 'public/Logo/Sponser_1.jpeg',
+      logo: '/Logo/Sponser_1.jpeg',
       title: 'Security Partner',
       description: 'Leading cybersecurity solutions provider'
     },
     {
       name: 'Fresca',
-      logo: 'public/Logo/Sponser_2.png',
+      logo: '/Logo/Sponser_2.png',
       title: 'Technology Partner',
       description: 'Innovation in tech solutions'
     }

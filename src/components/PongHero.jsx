@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import LazyImage from './LazyImage';
 import '../css/PongHero.css';
 
 const CHAR_MAPS = {
@@ -328,10 +327,11 @@ const PongHero = () => {
         <div className="pong-hero-container">
             {/* ── BACKGROUND BIOMETRIC IMAGE ── */}
             <div className="pong-bg-bio">
-                <LazyImage
-                    src="public/Background_Image/pic.jpg"
+                <img
+                    src="/Background_Image/pic.jpg"
                     alt="Background"
                     className="pong-bg-img"
+                    loading="lazy"
                 />
             </div>
 

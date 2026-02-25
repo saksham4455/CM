@@ -58,9 +58,24 @@ html {
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  z-index: 0;
+  isolation: isolate;
 }
 
+/* Mask to hide content behind navbar */
 .cp-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: var(--bg-dark);
+  z-index: 998;
+  pointer-events: none;
+}
+
+.cp-page::after {
   content: '';
   position: fixed;
   inset: 0;

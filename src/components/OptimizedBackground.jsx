@@ -15,23 +15,45 @@ const OptimizedBackground = ({ theme = 'blue', intensity = 'low' }) => {
   }), []);
 
   useEffect(() => {
-    if (!canvasRef.current) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 30;
+    // Check if WebGL is available
+    const gl = canvas.getContext('webgl2') || canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    if (!gl) {
+      console.warn('WebGL not available, skipping OptimizedBackground');
+      return;
+    }
 
-    const renderer = new THREE.WebGLRenderer({
-      canvas: canvasRef.current,
-      alpha: true,
-      antialias: false,
-      powerPreference: 'high-performance',
-      stencil: false,
-      depth: false
-    });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
-    rendererRef.current = renderer;
+    // Restore context if lost
+    if (gl.isContextLost()) {
+      console.warn('WebGL context lost, waiting for restore');
+      return;
+    }
+
+    let scene, camera, renderer, particles, particleMaterial, lineMaterial, lineGroup, particleSystem;
+
+    try {
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.z = 30;
+
+      renderer = new THREE.WebGLRenderer({
+        canvas: canvas,
+        alpha: true,
+        antialias: false,
+        powerPreference: 'high-performance',
+        stencil: false,
+        depth: false,
+        failIfMajorPerformanceCaveat: false
+      });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+      rendererRef.current = renderer;
+    } catch (error) {
+      console.error('Failed to initialize Three.js renderer:', error);
+      return;
+    }
 
     // Create fewer particles based on screen size and intensity
     const isMobile = window.innerWidth < 768;
@@ -39,7 +61,7 @@ const OptimizedBackground = ({ theme = 'blue', intensity = 'low' }) => {
       ? (intensity === 'low' ? 15 : 25)
       : (intensity === 'low' ? 30 : intensity === 'medium' ? 50 : 80);
       
-    const particles = new THREE.BufferGeometry();
+    particles = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const velocities = [];
 
@@ -57,7 +79,7 @@ const OptimizedBackground = ({ theme = 'blue', intensity = 'low' }) => {
 
     particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-    const particleMaterial = new THREE.PointsMaterial({
+    particleMaterial = new THREE.PointsMaterial({
       color: themeColors[theme],
       size: isMobile ? 0.6 : 0.8,
       transparent: true,
@@ -65,17 +87,17 @@ const OptimizedBackground = ({ theme = 'blue', intensity = 'low' }) => {
       blending: THREE.AdditiveBlending
     });
 
-    const particleSystem = new THREE.Points(particles, particleMaterial);
+    particleSystem = new THREE.Points(particles, particleMaterial);
     scene.add(particleSystem);
 
-    const lineMaterial = new THREE.LineBasicMaterial({
+    lineMaterial = new THREE.LineBasicMaterial({
       color: themeColors[theme],
       transparent: true,
       opacity: 0.1,
       blending: THREE.AdditiveBlending
     });
 
-    const lineGroup = new THREE.Group();
+    lineGroup = new THREE.Group();
     scene.add(lineGroup);
 
     let frameCount = 0;
@@ -85,6 +107,9 @@ const OptimizedBackground = ({ theme = 'blue', intensity = 'low' }) => {
 
     const animate = (currentTime) => {
       animationIdRef.current = requestAnimationFrame(animate);
+      
+      // Check if renderer is still valid
+      if (!renderer || !rendererRef.current) return;
       
       // Throttle to 30 FPS for background
       const deltaTime = currentTime - lastTime;
@@ -139,35 +164,79 @@ const OptimizedBackground = ({ theme = 'blue', intensity = 'low' }) => {
       particleSystem.rotation.y += 0.0003;
       particleSystem.rotation.x += 0.0001;
 
-      renderer.render(scene, camera);
+      try {
+        renderer.render(scene, camera);
+      } catch (error) {
+        console.error('Render error:', error);
+        if (animationIdRef.current) {
+          cancelAnimationFrame(animationIdRef.current);
+          animationIdRef.current = null;
+        }
+      }
     };
 
     animate(0);
 
+    // Handle WebGL context lost/restored
+    const handleContextLost = (event) => {
+      event.preventDefault();
+      if (animationIdRef.current) {
+        cancelAnimationFrame(animationIdRef.current);
+        animationIdRef.current = null;
+      }
+      console.warn('WebGL context lost');
+    };
+
+    const handleContextRestored = () => {
+      console.log('WebGL context restored');
+      // Context will be recreated on next mount
+    };
+
+    canvas.addEventListener('webglcontextlost', handleContextLost, false);
+    canvas.addEventListener('webglcontextrestored', handleContextRestored, false);
+
     // Throttled resize handler with better performance
     const handleResize = throttle(() => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      if (camera && renderer) {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      }
     }, 150);
 
     window.addEventListener('resize', handleResize);
 
     return () => {
-      cancelAnimationFrame(animationIdRef.current);
+      if (animationIdRef.current) {
+        cancelAnimationFrame(animationIdRef.current);
+        animationIdRef.current = null;
+      }
       window.removeEventListener('resize', handleResize);
+      canvas.removeEventListener('webglcontextlost', handleContextLost);
+      canvas.removeEventListener('webglcontextrestored', handleContextRestored);
       
-      // Proper cleanup
-      particles.dispose();
-      particleMaterial.dispose();
-      lineMaterial.dispose();
-      lineGroup.clear();
-      scene.clear();
-      
-      if (rendererRef.current) {
-        rendererRef.current.dispose();
-        rendererRef.current.forceContextLoss();
-        rendererRef.current = null;
+      // Proper cleanup with null checks
+      try {
+        if (particles) particles.dispose();
+        if (particleMaterial) particleMaterial.dispose();
+        if (lineMaterial) lineMaterial.dispose();
+        if (lineGroup) lineGroup.clear();
+        if (scene) scene.clear();
+        
+        if (rendererRef.current) {
+          rendererRef.current.dispose();
+          // Only force context loss if we have a valid context
+          const renderCanvas = rendererRef.current.domElement;
+          if (renderCanvas) {
+            const ctx = renderCanvas.getContext('webgl2') || renderCanvas.getContext('webgl');
+            if (ctx && !ctx.isContextLost()) {
+              rendererRef.current.forceContextLoss();
+            }
+          }
+          rendererRef.current = null;
+        }
+      } catch (error) {
+        console.error('Error during Three.js cleanup:', error);
       }
     };
   }, [theme, intensity, themeColors]);

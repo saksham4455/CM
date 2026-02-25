@@ -13,7 +13,21 @@ const LandingPage = ({ theme = 'blue' }) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black">
+    <div style={{ position: 'relative', zIndex: 0, isolation: 'isolate' }}>
+      {/* Navbar protection mask */}
+      <div style={{
+        content: '',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        height: '80px',
+        background: '#000000',
+        zIndex: 998,
+        pointerEvents: 'none'
+      }} />
+      
+      <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black">
       {/* Animated Grid Background */}
       <div className="absolute inset-0 grid-cyber opacity-10" />
       
@@ -161,6 +175,7 @@ const LandingPage = ({ theme = 'blue' }) => {
       <div className="absolute top-0 right-0 w-32 h-32 border-r-2 border-t-2 opacity-30" style={{ borderColor: themeColors[theme] }} />
       <div className="absolute bottom-0 left-0 w-32 h-32 border-l-2 border-b-2 opacity-30" style={{ borderColor: themeColors[theme] }} />
       <div className="absolute bottom-0 right-0 w-32 h-32 border-r-2 border-b-2 opacity-30" style={{ borderColor: themeColors[theme] }} />
+      </div>
     </div>
   );
 };
