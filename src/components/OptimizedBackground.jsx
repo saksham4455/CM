@@ -1,15 +1,18 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useMemo } from 'react';
 import * as THREE from 'three';
+import { throttle } from '../lib/performanceUtils';
 
 const OptimizedBackground = ({ theme = 'blue', intensity = 'low' }) => {
   const canvasRef = useRef(null);
+  const animationIdRef = useRef(null);
+  const rendererRef = useRef(null);
 
-  const themeColors = {
+  const themeColors = useMemo(() => ({
     blue: new THREE.Color(0x00f3ff),
     purple: new THREE.Color(0xb829ff),
     green: new THREE.Color(0x00ff41),
     red: new THREE.Color(0xff0055)
-  };
+  }), []);
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -21,14 +24,21 @@ const OptimizedBackground = ({ theme = 'blue', intensity = 'low' }) => {
     const renderer = new THREE.WebGLRenderer({
       canvas: canvasRef.current,
       alpha: true,
-      antialias: false, // Disable for performance
-      powerPreference: 'high-performance'
+      antialias: false,
+      powerPreference: 'high-performance',
+      stencil: false,
+      depth: false
     });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5)); // Limit pixel ratio
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    rendererRef.current = renderer;
 
-    // Create fewer particles based on intensity
-    const particleCount = intensity === 'low' ? 30 : intensity === 'medium' ? 50 : 80;
+    // Create fewer particles based on screen size and intensity
+    const isMobile = window.innerWidth < 768;
+    const particleCount = isMobile 
+      ? (intensity === 'low' ? 15 : 25)
+      : (intensity === 'low' ? 30 : intensity === 'medium' ? 50 : 80);
+      
     const particles = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const velocities = [];
@@ -49,7 +59,7 @@ const OptimizedBackground = ({ theme = 'blue', intensity = 'low' }) => {
 
     const particleMaterial = new THREE.PointsMaterial({
       color: themeColors[theme],
-      size: 0.8,
+      size: isMobile ? 0.6 : 0.8,
       transparent: true,
       opacity: 0.6,
       blending: THREE.AdditiveBlending
@@ -58,7 +68,6 @@ const OptimizedBackground = ({ theme = 'blue', intensity = 'low' }) => {
     const particleSystem = new THREE.Points(particles, particleMaterial);
     scene.add(particleSystem);
 
-    // Simplified connections - only draw some
     const lineMaterial = new THREE.LineBasicMaterial({
       color: themeColors[theme],
       transparent: true,
@@ -70,10 +79,18 @@ const OptimizedBackground = ({ theme = 'blue', intensity = 'low' }) => {
     scene.add(lineGroup);
 
     let frameCount = 0;
-    let animationId;
+    let lastTime = 0;
+    const targetFPS = 30;
+    const frameInterval = 1000 / targetFPS;
 
-    const animate = () => {
-      animationId = requestAnimationFrame(animate);
+    const animate = (currentTime) => {
+      animationIdRef.current = requestAnimationFrame(animate);
+      
+      // Throttle to 30 FPS for background
+      const deltaTime = currentTime - lastTime;
+      if (deltaTime < frameInterval) return;
+      lastTime = currentTime - (deltaTime % frameInterval);
+
       frameCount++;
 
       const posArray = particles.attributes.position.array;
@@ -91,10 +108,10 @@ const OptimizedBackground = ({ theme = 'blue', intensity = 'low' }) => {
 
       particles.attributes.position.needsUpdate = true;
 
-      // Update connections only every 3 frames for performance
-      if (frameCount % 3 === 0) {
+      // Update connections less frequently
+      if (frameCount % 5 === 0) {
         lineGroup.clear();
-        const maxConnections = intensity === 'low' ? 15 : 25;
+        const maxConnections = isMobile ? 10 : (intensity === 'low' ? 15 : 25);
         let connectionCount = 0;
 
         for (let i = 0; i < particleCount && connectionCount < maxConnections; i++) {
@@ -125,25 +142,35 @@ const OptimizedBackground = ({ theme = 'blue', intensity = 'low' }) => {
       renderer.render(scene, camera);
     };
 
-    animate();
+    animate(0);
 
-    const handleResize = () => {
+    // Throttled resize handler with better performance
+    const handleResize = throttle(() => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
-    };
+    }, 150);
 
     window.addEventListener('resize', handleResize);
 
     return () => {
-      cancelAnimationFrame(animationId);
+      cancelAnimationFrame(animationIdRef.current);
       window.removeEventListener('resize', handleResize);
-      renderer.dispose();
+      
+      // Proper cleanup
       particles.dispose();
       particleMaterial.dispose();
       lineMaterial.dispose();
+      lineGroup.clear();
+      scene.clear();
+      
+      if (rendererRef.current) {
+        rendererRef.current.dispose();
+        rendererRef.current.forceContextLoss();
+        rendererRef.current = null;
+      }
     };
-  }, [theme, intensity]);
+  }, [theme, intensity, themeColors]);
 
   return (
     <canvas

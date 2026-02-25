@@ -1,27 +1,46 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// Components
+// Components (Critical - loaded immediately)
 import Loading from './components/loading';
 import OptimizedBackground from './components/OptimizedBackground';
 import Navbar from './components/Navbar';
-import CustomCursor from './components/CustomCursor';
 import Footer from './components/Footer';
-import ScrollToTop from './components/ScrollToTop';
 
-// Pages
-import Home from './pages/Home';
-import LandingPage from './pages/LandingPage';
-import EventsPage from './pages/EventsPage';
-import PastEventsPage from './pages/PastEventsPage';
-import TeamPage from './pages/TeamPage';
-import Contact from './pages/Contact';
+// Lazy-loaded components
+const CustomCursor = lazy(() => import('./components/CustomCursor'));
+const ScrollToTop = lazy(() => import('./components/ScrollToTop'));
+
+// Lazy-loaded pages
+const Home = lazy(() => import('./pages/Home'));
+const LandingPage = lazy(() => import('./pages/LandingPage'));
+const EventsPage = lazy(() => import('./pages/EventsPage'));
+const PastEventsPage = lazy(() => import('./pages/PastEventsPage'));
+const TeamPage = lazy(() => import('./pages/TeamPage'));
+const Contact = lazy(() => import('./pages/Contact'));
 
 gsap.registerPlugin(ScrollTrigger);
+
+// Loading fallback component
+const PageLoader = () => (
+  <div style={{ 
+    display: 'flex', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    minHeight: '100vh',
+    background: '#06060c'
+  }}>
+    <div style={{ 
+      color: '#00f3ff', 
+      fontSize: '1.5rem',
+      fontFamily: 'monospace'
+    }}>Loading...</div>
+  </div>
+);
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -87,96 +106,112 @@ function App() {
 
       {!isLoading && (
         <div className="relative bg-cyber-dark text-white min-h-screen">
-          {/* Scroll to Top Button */}
-          <ScrollToTop />
+          <Suspense fallback={null}>
+            {/* Scroll to Top Button */}
+            <ScrollToTop />
 
-          {/* Optimized Background */}
-          <OptimizedBackground theme={theme} intensity="low" />
+            {/* Optimized Background */}
+            <OptimizedBackground theme={theme} intensity="low" />
 
-          {/* Navigation */}
-          <Navbar theme={theme} onThemeChange={handleThemeChange} />
+            {/* Navigation */}
+            <Navbar theme={theme} onThemeChange={handleThemeChange} />
 
-          {/* Routes with Smooth Transitions */}
-          <AnimatePresence mode="wait">
-            <Routes location={location} key={location.pathname}>
-              <Route path="/" element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4, ease: 'easeInOut' }}
-                >
-                  <Home theme={theme} />
-                </motion.div>
-              } />
-              <Route path="/home" element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4, ease: 'easeInOut' }}
-                >
-                  <Home theme={theme} />
-                </motion.div>
-              } />
-              <Route path="/landing" element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4, ease: 'easeInOut' }}
-                >
-                  <LandingPage theme={theme} />
-                </motion.div>
-              } />
-              <Route path="/events" element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4, ease: 'easeInOut' }}
-                >
-                  <EventsPage theme={theme} />
-                </motion.div>
-              } />
-              <Route path="/past-events" element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4, ease: 'easeInOut' }}
-                >
-                  <PastEventsPage theme={theme} />
-                </motion.div>
-              } />
-              <Route path="/team" element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4, ease: 'easeInOut' }}
-                >
-                  <TeamPage theme={theme} />
-                </motion.div>
-              } />
-              <Route path="/contact" element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4, ease: 'easeInOut' }}
-                >
-                  <Contact theme={theme} />
-                </motion.div>
-              } />
-            </Routes>
-          </AnimatePresence>
+            {/* Routes with Smooth Transitions */}
+            <AnimatePresence mode="wait">
+              <Routes location={location} key={location.pathname}>
+                <Route path="/" element={
+                  <Suspense fallback={<PageLoader />}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.4, ease: 'easeInOut' }}
+                    >
+                      <Home theme={theme} />
+                    </motion.div>
+                  </Suspense>
+                } />
+                <Route path="/home" element={
+                  <Suspense fallback={<PageLoader />}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.4, ease: 'easeInOut' }}
+                    >
+                      <Home theme={theme} />
+                    </motion.div>
+                  </Suspense>
+                } />
+                <Route path="/landing" element={
+                  <Suspense fallback={<PageLoader />}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.4, ease: 'easeInOut' }}
+                    >
+                      <LandingPage theme={theme} />
+                    </motion.div>
+                  </Suspense>
+                } />
+                <Route path="/events" element={
+                  <Suspense fallback={<PageLoader />}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.4, ease: 'easeInOut' }}
+                    >
+                      <EventsPage theme={theme} />
+                    </motion.div>
+                  </Suspense>
+                } />
+                <Route path="/past-events" element={
+                  <Suspense fallback={<PageLoader />}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.4, ease: 'easeInOut' }}
+                    >
+                      <PastEventsPage theme={theme} />
+                    </motion.div>
+                  </Suspense>
+                } />
+                <Route path="/team" element={
+                  <Suspense fallback={<PageLoader />}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.4, ease: 'easeInOut' }}
+                    >
+                      <TeamPage theme={theme} />
+                    </motion.div>
+                  </Suspense>
+                } />
+                <Route path="/contact" element={
+                  <Suspense fallback={<PageLoader />}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.4, ease: 'easeInOut' }}
+                    >
+                      <Contact theme={theme} />
+                    </motion.div>
+                  </Suspense>
+                } />
+              </Routes>
+            </AnimatePresence>
 
-          {/* Footer */}
-          <Footer />
+            {/* Footer */}
+            <Footer />
 
-          {/* Custom Cursor */}
-          <CustomCursor theme={theme} />
+            {/* Custom Cursor */}
+            <CustomCursor theme={theme} />
+          </Suspense>
         </div>
       )}
     </>

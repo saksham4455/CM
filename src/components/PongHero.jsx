@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import LazyImage from './LazyImage';
 import '../css/PongHero.css';
 
 const CHAR_MAPS = {
@@ -81,20 +82,27 @@ const TEXT = "CYNET 2026";
 const PongHero = () => {
     const canvasRef = useRef(null);
     const [gameState, setGameState] = useState('active');
+    const animationIdRef = useRef(null);
+    const resizeTimeoutRef = useRef(null);
 
     useEffect(() => {
         const canvas = canvasRef.current;
-        const ctx = canvas.getContext('2d');
-        let animationId;
+        if (!canvas) return;
+        
+        const ctx = canvas.getContext('2d', { 
+            alpha: false,
+            desynchronized: true 
+        });
 
-        // Constants
-        const PIXEL_SIZE = 12;
-        const PIXEL_GAP = 2;
-        const CHAR_GAP = 15;
-        const BALL_RADIUS = 8;
-        const PADDLE_WIDTH = 100;
-        const PADDLE_THICKNESS = 10;
-        const PADDLE_SPEED = 0.15; // Tracking speed multiplier
+        // Constants - responsive based on device
+        const isMobile = window.innerWidth < 768;
+        const PIXEL_SIZE = isMobile ? 8 : 12;
+        const PIXEL_GAP = isMobile ? 1 : 2;
+        const CHAR_GAP = isMobile ? 10 : 15;
+        const BALL_RADIUS = isMobile ? 6 : 8;
+        const PADDLE_WIDTH = isMobile ? 70 : 100;
+        const PADDLE_THICKNESS = isMobile ? 8 : 10;
+        const PADDLE_SPEED = 0.15;
 
         const COLORS = {
             bg: '#06060c',
@@ -107,7 +115,7 @@ const PongHero = () => {
 
         let width, height;
         let pixels = [];
-        let ball = { x: 0, y: 0, dx: 4, dy: 4 };
+        let ball = { x: 0, y: 0, dx: isMobile ? 3 : 4, dy: isMobile ? 3 : 4 };
         let paddles = {
             top: { x: 0, y: 0 },
             bottom: { x: 0, y: 0 },
@@ -225,25 +233,29 @@ const PongHero = () => {
         };
 
         const draw = () => {
-            ctx.clearRect(0, 0, width, height);
+            // Fill background once
+            ctx.fillStyle = COLORS.bg;
+            ctx.fillRect(0, 0, width, height);
 
-            // Draw matrix background lines (optional refined look)
-            ctx.beginPath();
-            ctx.strokeStyle = 'rgba(0, 243, 255, 0.05)';
-            ctx.lineWidth = 1;
-            for (let i = 0; i < width; i += 40) {
-                ctx.moveTo(i, 0); ctx.lineTo(i, height);
+            // Draw matrix background lines (only on larger screens for performance)
+            if (!isMobile) {
+                ctx.beginPath();
+                ctx.strokeStyle = 'rgba(0, 243, 255, 0.05)';
+                ctx.lineWidth = 1;
+                for (let i = 0; i < width; i += 40) {
+                    ctx.moveTo(i, 0); ctx.lineTo(i, height);
+                }
+                for (let i = 0; i < height; i += 40) {
+                    ctx.moveTo(0, i); ctx.lineTo(width, i);
+                }
+                ctx.stroke();
             }
-            for (let i = 0; i < height; i += 40) {
-                ctx.moveTo(0, i); ctx.lineTo(width, i);
-            }
-            ctx.stroke();
 
-            // Draw Pixels
+            // Draw Pixels (batch operations)
             pixels.forEach(p => {
                 ctx.fillStyle = p.hit ? COLORS.hit : COLORS.text;
                 if (!p.hit) {
-                    ctx.shadowBlur = 15;
+                    ctx.shadowBlur = isMobile ? 10 : 15;
                     ctx.shadowColor = 'rgba(255,255,255,0.4)';
                 } else {
                     ctx.shadowBlur = 0;
@@ -263,11 +275,11 @@ const PongHero = () => {
             ctx.beginPath();
             ctx.arc(ball.x, ball.y, BALL_RADIUS, 0, Math.PI * 2);
             ctx.fillStyle = COLORS.ball;
-            ctx.shadowBlur = 40;
+            ctx.shadowBlur = isMobile ? 20 : 40;
             ctx.shadowColor = COLORS.ball;
             ctx.fill();
 
-            // Core white light for extra punch
+            // Core white light
             ctx.beginPath();
             ctx.arc(ball.x, ball.y, BALL_RADIUS * 0.4, 0, Math.PI * 2);
             ctx.fillStyle = '#fff';
@@ -278,15 +290,11 @@ const PongHero = () => {
 
             // Draw Paddles
             ctx.fillStyle = COLORS.paddle;
-            ctx.shadowBlur = 35;
+            ctx.shadowBlur = isMobile ? 20 : 35;
             ctx.shadowColor = COLORS.paddle;
-            // Top
             ctx.fillRect(paddles.top.x, paddles.top.y, PADDLE_WIDTH, PADDLE_THICKNESS);
-            // Bottom
             ctx.fillRect(paddles.bottom.x, paddles.bottom.y, PADDLE_WIDTH, PADDLE_THICKNESS);
-            // Left
             ctx.fillRect(paddles.left.x, paddles.left.y, PADDLE_THICKNESS, PADDLE_WIDTH);
-            // Right
             ctx.fillRect(paddles.right.x, paddles.right.y, PADDLE_THICKNESS, PADDLE_WIDTH);
             ctx.shadowBlur = 0;
         };
@@ -294,20 +302,25 @@ const PongHero = () => {
         const loop = () => {
             update();
             draw();
-            animationId = requestAnimationFrame(loop);
+            animationIdRef.current = requestAnimationFrame(loop);
         };
 
         init();
         loop();
 
         const handleResize = () => {
-            init();
+            clearTimeout(resizeTimeoutRef.current);
+            resizeTimeoutRef.current = setTimeout(() => {
+                init();
+            }, 150);
         };
+        
         window.addEventListener('resize', handleResize);
 
         return () => {
-            cancelAnimationFrame(animationId);
+            cancelAnimationFrame(animationIdRef.current);
             window.removeEventListener('resize', handleResize);
+            clearTimeout(resizeTimeoutRef.current);
         };
     }, []);
 
@@ -315,8 +328,9 @@ const PongHero = () => {
         <div className="pong-hero-container">
             {/* ── BACKGROUND BIOMETRIC IMAGE ── */}
             <div className="pong-bg-bio">
-                <img
+                <LazyImage
                     src="public/Background_Image/pic.jpg"
+                    alt="Background"
                     className="pong-bg-img"
                 />
             </div>

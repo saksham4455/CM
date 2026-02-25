@@ -8,11 +8,24 @@
     box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.9);
 }
 
+.home-particle-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.4;
+}
+
 .home-shell {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 4rem;
     /* Increased side padding for desktop fidelity */
+    position: relative;
+    z-index: 1;
 }
 
 /* ── MISSION BRIEF (ENHANCED MINIMALISM) ── */
@@ -22,6 +35,7 @@
     text-align: center;
     position: relative;
     background: linear-gradient(to bottom, rgba(6, 6, 12, 0) 0%, rgba(0, 243, 255, 0.02) 50%, rgba(6, 6, 12, 0) 100%);
+    z-index: 1;
 }
 
 .mission-title {
@@ -56,6 +70,8 @@
 /* ── STATS & ACTION ── */
 .home-stats-section {
     padding-bottom: clamp(6rem, 12vw, 10rem);
+    position: relative;
+    z-index: 1;
 }
 
 .stats-container {
@@ -195,6 +211,8 @@
     border-top: 1px solid rgba(255, 255, 255, 0.03);
     border-bottom: 1px solid rgba(255, 255, 255, 0.03);
     overflow: hidden;
+    position: relative;
+    z-index: 1;
 }
 
 .event-section-header {

@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PongHero from '../components/PongHero';
 import Sponsors from '../components/Sponsers';
 import StickyCard002 from '../components/StickyCard002';
+import CyberMatrixBackground from '../components/CyberMatrixBackground';
 import '../css/Home.css';
 
-const Home = () => {
+const Home = memo(() => {
   const [isScanned, setIsScanned] = useState(false);
-  const events = [
+  
+  const events = useMemo(() => [
     { 
       name: 'TREASURE HUNT', 
       img: 'https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?auto=format&fit=crop&q=80&w=800',
@@ -50,10 +52,15 @@ const Home = () => {
       code: '# 07',
       icon: '💻'
     },
-  ];
+  ], []);
 
   return (
     <div className="home-page">
+      {/* ── PARTICLE BACKGROUND ── */}
+      <div className="home-particle-background">
+        <CyberMatrixBackground theme="blue" />
+      </div>
+
       {/* ── INTERACTIVE HERO ── */}
       <motion.div
         onViewportEnter={() => setIsScanned(true)}
@@ -158,6 +165,6 @@ const Home = () => {
       <Sponsors />
     </div>
   );
-};
+});
 
 export default Home;

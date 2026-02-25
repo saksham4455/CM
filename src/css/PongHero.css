@@ -5,6 +5,7 @@
     background: #06060c;
     overflow: hidden;
     user-select: none;
+    z-index: 1;
 }
 
 .pong-hero-canvas {
