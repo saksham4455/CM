@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "title": "Zero-Day exploits: Navigating the dark web of cyber threats",
+        "excerpt": "Analyzing the lifecycle of zero-day vulnerabilities and how the CYNET team identifies potential security breaches before they propagate.",
+        "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=500&fit=crop",
+        "date": "2026-02-21",
+        "category": "Cyber Security",
+        "author": "Arjun Sharma"
+    },
+    {
+        "id": 2,
+        "title": "Neural Networks in Modern Infrastructure",
+        "excerpt": "Exploring how deep learning is being integrated into metropolitan IT grid management to predict and prevent system failures.",
+        "image": "https://images.unsplash.com/photo-1509228627152-72ae9ae6848d?w=800&h=500&fit=crop",
+        "date": "2026-02-18",
+        "category": "AI/Systems",
+        "author": "Riya Mehta"
+    },
+    {
+        "id": 3,
+        "title": "Quantum Cryptography: The end of encryption as we know it?",
+        "excerpt": "A deep dive into post-quantum algorithms and the race to secure global communications against next-gen processing power.",
+        "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?w=800&h=500&fit=crop",
+        "date": "2026-02-14",
+        "category": "Encryption",
+        "author": "Priya Nair"
+    },
+    {
+        "id": 4,
+        "title": "Distributed Ledgers in Governmental Logistics",
+        "excerpt": "How blockchain technology is being leveraged to create transparent and unalterable trails for public sector supply chains.",
+        "image": "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&h=500&fit=crop",
+        "date": "2026-02-10",
+        "category": "Blockchain",
+        "author": "Karan Patel"
+    }
+]

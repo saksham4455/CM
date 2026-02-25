@@ -1,0 +1,384 @@
+.pong-hero-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: #06060c;
+    overflow: hidden;
+    user-select: none;
+}
+
+.pong-hero-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    filter: contrast(1.1) brightness(1.1);
+    position: relative;
+    z-index: 2;
+}
+
+.pong-bg-bio {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+    opacity: 0.82;
+    /* Subtle background presence */
+}
+
+.pong-bg-img {
+    width: clamp(800px, 95vw, 1400px);
+    height: auto;
+    filter: brightness(0.8) contrast(1.2) grayscale(0.8) blur(2px);
+    /* Blurred and dimmed */
+    animation: breathing-pulse 12s ease-in-out infinite;
+}
+
+@keyframes breathing-pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+}
+
+.pong-hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    background: transparent;
+    /* Removed darkening overlay */
+}
+
+.pong-hero-content {
+    text-align: center;
+    pointer-events: auto;
+    max-width: 1200px;
+}
+
+.pong-label {
+    display: inline-block;
+    font-family: var(--font-mono, 'Courier New', monospace);
+    color: var(--neon-cyan, #00f3ff);
+    font-size: 0.9rem;
+    letter-spacing: 6px;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    font-weight: 900;
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+}
+
+.pong-title {
+    font-family: var(--font-mono, 'Courier New', monospace);
+    font-size: clamp(3rem, 10vw, 8rem);
+    font-weight: 1000;
+    color: #fff;
+    letter-spacing: clamp(15px, 4vw, 40px);
+    margin-bottom: 2rem;
+    line-height: 0.9;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    padding-left: clamp(15px, 4vw, 40px);
+}
+
+.pong-subtitle {
+    font-family: var(--font-mono, 'Courier New', monospace);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: clamp(1rem, 1.8vw, 1.3rem);
+    letter-spacing: 8px;
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.pong-actions {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+}
+
+.pong-btn {
+    padding: 1.2rem 3.5rem;
+    font-family: var(--font-mono, 'Courier New', monospace);
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    border-radius: 4px;
+}
+
+.btn-primary {
+    color: var(--neon-cyan, #00f3ff);
+    border: 1px solid var(--neon-cyan, #00f3ff);
+    box-shadow: inset 0 0 10px rgba(0, 243, 255, 0.1);
+}
+
+.btn-primary:hover {
+    background: var(--neon-cyan, #00f3ff);
+    color: #000;
+    box-shadow: 0 0 40px var(--neon-cyan);
+    transform: translateY(-5px);
+}
+
+.btn-secondary {
+    color: var(--neon-purple, #b829ff);
+    border: 1px solid var(--neon-purple, #b829ff);
+    box-shadow: inset 0 0 10px rgba(184, 41, 255, 0.1);
+}
+
+.btn-secondary:hover {
+    background: var(--neon-purple, #b829ff);
+    color: #fff;
+    box-shadow: 0 0 40px var(--neon-purple);
+    transform: translateY(-5px);
+}
+
+/* ── TECHNICAL DECORATORS ── */
+.pong-corner {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border: 2px solid rgba(0, 243, 255, 0.15);
+    z-index: 15;
+    transition: all 0.5s ease;
+}
+
+.tl {
+    top: 40px;
+    left: 40px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.tr {
+    top: 40px;
+    right: 40px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.bl {
+    bottom: 40px;
+    left: 40px;
+    border-right: none;
+    border-top: none;
+}
+
+.br {
+    bottom: 40px;
+    right: 40px;
+    border-left: none;
+    border-top: none;
+}
+
+.pong-hero-container:hover .pong-corner {
+    border-color: var(--neon-cyan);
+    width: 80px;
+    height: 80px;
+    opacity: 0.6;
+}
+
+.pong-scanline {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+    background-size: 100% 4px, 100% 100%;
+    z-index: 20;
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+.pong-scanline::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, rgba(0, 243, 255, 0.05), transparent);
+    animation: scan-move 8s linear infinite;
+}
+
+@keyframes scan-move {
+    0% {
+        transform: translateY(-100vh);
+    }
+
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+.text-glow {
+    text-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+}
+
+/* ── RESPONSIVE DESIGN ── */
+@media (max-width: 1024px) {
+    .pong-hero-content {
+        max-width: 900px;
+        padding: 0 2rem;
+    }
+
+    .pong-actions {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .pong-hero-content {
+        padding: 0 1.5rem;
+    }
+
+    .pong-label {
+        font-size: 0.75rem;
+        letter-spacing: 4px;
+        margin-bottom: 1.5rem;
+    }
+
+    .pong-subtitle {
+        font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+        letter-spacing: 4px;
+        margin-bottom: 3rem;
+    }
+
+    .pong-actions {
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .pong-btn {
+        padding: 1rem 2.5rem;
+        font-size: 0.9rem;
+        letter-spacing: 3px;
+        width: 100%;
+    }
+
+    .pong-corner {
+        width: 40px;
+        height: 40px;
+    }
+
+    .tl, .tr {
+        top: 20px;
+    }
+
+    .bl, .br {
+        bottom: 20px;
+    }
+
+    .tl, .bl {
+        left: 20px;
+    }
+
+    .tr, .br {
+        right: 20px;
+    }
+}
+
+@media (max-width: 640px) {
+    .pong-hero-container {
+        height: calc(100vh - 60px);
+        min-height: 500px;
+    }
+
+    .pong-hero-content {
+        padding: 0 1rem;
+    }
+
+    .pong-label {
+        font-size: 0.7rem;
+        letter-spacing: 3px;
+    }
+
+    .pong-bg-img {
+        width: clamp(600px, 90vw, 1000px);
+        opacity: 0.1;
+    }
+
+    .pong-actions {
+        max-width: 280px;
+    }
+
+    .pong-btn {
+        padding: 0.9rem 2rem;
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pong-hero-container {
+        min-height: 450px;
+    }
+
+    .pong-label {
+        font-size: 0.6rem;
+        letter-spacing: 1.5px;
+        margin-bottom: 1rem;
+    }
+
+    .pong-subtitle {
+        font-size: clamp(0.7rem, 1vw, 0.85rem);
+        letter-spacing: 1.5px;
+        margin-bottom: 2.5rem;
+    }
+
+    .pong-actions {
+        gap: 1.25rem;
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+
+    .pong-btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+    }
+
+    .pong-corner {
+        width: 30px;
+        height: 30px;
+    }
+
+    .pong-hero-container:hover .pong-corner {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 375px) {
+    .pong-actions {
+        padding: 0 0.5rem;
+    }
+
+    .pong-btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.75rem;
+    }
+
+    .pong-corner {
+        display: none;
+    }
+}

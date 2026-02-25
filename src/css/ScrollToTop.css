@@ -1,0 +1,130 @@
+.scroll-to-top {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 999;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-arrow-box {
+    width: 100%;
+    height: 100%;
+    background: rgba(6, 6, 12, 0.8);
+    border: 2px solid var(--neon-cyan, #00f3ff);
+    border-radius: 4px;
+    /* Technical square-ish look */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--neon-cyan, #00f3ff);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.scroll-arrow-box svg {
+    width: 24px;
+    height: 24px;
+    filter: drop-shadow(0 0 5px var(--neon-cyan));
+}
+
+.scroll-to-top:hover .scroll-arrow-box {
+    background: var(--neon-cyan, #00f3ff);
+    color: #06060c;
+    box-shadow: 0 0 20px var(--neon-cyan);
+}
+
+.scroll-glow {
+    position: absolute;
+    inset: -5px;
+    background: var(--neon-cyan, #00f3ff);
+    filter: blur(15px);
+    opacity: 0.2;
+    border-radius: 50%;
+    z-index: 1;
+    animation: breathing-glow 2s infinite ease-in-out;
+}
+
+@keyframes breathing-glow {
+
+    0%,
+    100% {
+        opacity: 0.1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.3;
+        transform: scale(1.2);
+    }
+}
+
+@media (max-width: 768px) {
+    .scroll-to-top {
+        bottom: 25px;
+        right: 25px;
+        width: 42px;
+        height: 42px;
+    }
+
+    .scroll-arrow-box svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 640px) {
+    .scroll-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .scroll-arrow-box svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .scroll-to-top {
+        bottom: 18px;
+        right: 18px;
+        width: 38px;
+        height: 38px;
+    }
+
+    .scroll-arrow-box {
+        border-width: 1.5px;
+    }
+
+    .scroll-arrow-box svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .scroll-glow {
+        inset: -4px;
+        filter: blur(12px);
+    }
+}
+
+@media (max-width: 375px) {
+    .scroll-to-top {
+        bottom: 15px;
+        right: 15px;
+        width: 35px;
+        height: 35px;
+    }
+
+    .scroll-arrow-box svg {
+        width: 14px;
+        height: 14px;
+    }
+}
