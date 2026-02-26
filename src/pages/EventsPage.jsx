@@ -208,65 +208,12 @@ const EventsPage = ({ theme = 'blue' }) => {
 
   return (
     <div className="events-page-wrapper">
-      <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 relative pt-20 overflow-hidden">
-      {/* 3D Layered Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Deep space layer 1 */}
-        <motion.div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `radial-gradient(circle at 20% 30%, ${currentTheme.primary}15 0%, transparent 50%),
-                             radial-gradient(circle at 80% 70%, ${currentTheme.secondary}15 0%, transparent 50%)`,
-          }}
-          animate={{ 
-            backgroundPosition: ['0% 0%', '100% 100%'],
-          }}
-          transition={{ 
-            duration: 20, 
-            repeat: Infinity, 
-            repeatType: "reverse",
-            ease: "linear"
-          }}
-        />
-
-        {/* Depth layer 2 - Floating geometric shapes */}
-        <div className="absolute inset-0">
-          {[...Array(5)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute rounded-lg opacity-5"
-              style={{
-                width: `${100 + i * 50}px`,
-                height: `${100 + i * 50}px`,
-                left: `${20 + i * 15}%`,
-                top: `${10 + i * 20}%`,
-                background: `linear-gradient(135deg, ${currentTheme.primary}40, ${currentTheme.secondary}40)`,
-                border: `1px solid ${currentTheme.primary}30`,
-                willChange: 'transform'
-              }}
-              animate={{
-                y: [0, -30, 0],
-                rotateZ: [0, 5, 0],
-              }}
-              transition={{
-                duration: 8 + i * 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: i * 0.5
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Depth layer 3 - Subtle grid */}
-        <div className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: `linear-gradient(${currentTheme.primary}40 1px, transparent 1px), 
-                             linear-gradient(90deg, ${currentTheme.primary}40 1px, transparent 1px)`,
-            backgroundSize: '100px 100px',
-          }}
-        />
-      </div>
+      <div className="min-h-screen relative pt-20 overflow-hidden" style={{ background: '#06060c' }}>
+      {/* Radial gradient overlay matching Contact page */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: 'radial-gradient(circle at center, rgba(8, 8, 14, 0.4) 0%, rgba(6, 6, 12, 0.9) 100%)',
+        zIndex: 2
+      }} />
 
       {/* Main Content */}
       <div className="relative z-10 px-4 sm:px-6 lg:px-8 py-12 max-w-7xl mx-auto">
