@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import EventRevealPage from '../components/EventRevealPage';
 import BoxText from '../components/BoxText';
+import CyberMatrixBackground from '../components/CyberMatrixBackground';
 import '../css/events.css';
 
 const EventsPage = ({ theme = 'blue' }) => {
@@ -55,6 +56,8 @@ const EventsPage = ({ theme = 'blue' }) => {
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-digital-world-map-with-connection-lines-4413-large.mp4',
       character: '🗺️',
       coordinator: { name: 'Rahul Kumar', phone: '+91 98765 43210' },
+      studentCoordinators: ['Aditya Verma', 'Preeti Nair', 'Rohan Mehta'],
+      rulesFile: '/Rules/treasure-hunt.pdf',
       details: [
         { label: 'Duration', value: '4 Hours' },
         { label: 'Team Size', value: '2-4 Members' },
@@ -74,6 +77,8 @@ const EventsPage = ({ theme = 'blue' }) => {
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-brain-hologram-in-futuristic-interface-44623-large.mp4',
       character: '💡',
       coordinator: { name: 'Priya Sharma', phone: '+91 98765 43211' },
+      studentCoordinators: ['Kavya Iyer', 'Nikhil Das', 'Sanya Kapoor'],
+      rulesFile: '/Rules/innovision.pdf',
       details: [
         { label: 'Duration', value: 'Full Day' },
         { label: 'Categories', value: '8 Domains' },
@@ -93,9 +98,20 @@ const EventsPage = ({ theme = 'blue' }) => {
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-gaming-gamer-playing-video-game-4226-large.mp4',
       character: '🎮',
       coordinator: { name: 'Arjun Patel', phone: '+91 98765 43212' },
+      studentCoordinators: ['Dev Anand', 'Riya Shah', 'Manav Gupta'],
+      rulesFile: '/Rules/gaming-arena.pdf',
+      gameCards: [
+        { title: 'BGMI', icon: '🔫', prize: '₹3000', players: '4v4' },
+        { title: 'Free Fire', icon: '🔥', prize: '₹2000', players: '4v4' },
+        { title: 'Valorant', icon: '🎯', prize: '₹5000', players: '5v5' },
+        { title: 'Chess', icon: '♟️', prize: '₹1000', players: '1v1' },
+        { title: 'FIFA', icon: '⚽', prize: '₹2500', players: '1v1' },
+        { title: 'COD Mobile', icon: '💣', prize: '₹3500', players: '5v5' },
+        { title: 'Clash Royale', icon: '👑', prize: '₹1500', players: '1v1' },
+      ],
       details: [
         { label: 'Duration', value: '2 Days' },
-        { label: 'Games', value: '6 Titles' },
+        { label: 'Games', value: '7 Titles' },
         { label: 'Prize Pool', value: '$8000' },
         { label: 'Participants', value: '200+' }
       ]
@@ -112,6 +128,8 @@ const EventsPage = ({ theme = 'blue' }) => {
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-computer-hacking-in-a-dark-room-28347-large.mp4',
       character: '🔓',
       coordinator: { name: 'Vikram Singh', phone: '+91 98765 43213' },
+      studentCoordinators: ['Harshit Malhotra', 'Divya Pillai', 'Aditya Roy'],
+      rulesFile: '/Rules/hacking-event.pdf',
       details: [
         { label: 'Duration', value: '6 Hours' },
         { label: 'Challenges', value: '25+ Flags' },
@@ -131,6 +149,8 @@ const EventsPage = ({ theme = 'blue' }) => {
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-abstract-brain-neural-network-44625-large.mp4',
       character: '🧠',
       coordinator: { name: 'Sneha Reddy', phone: '+91 98765 43214' },
+      studentCoordinators: ['Tanvi Bose', 'Aryan Khanna', 'Pooja Joshi'],
+      rulesFile: '/Rules/mind-map.pdf',
       details: [
         { label: 'Duration', value: '3 Hours' },
         { label: 'Rounds', value: '5 Stages' },
@@ -150,6 +170,8 @@ const EventsPage = ({ theme = 'blue' }) => {
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-quiz-questions-on-a-screen-44628-large.mp4',
       character: '❓',
       coordinator: { name: 'Amit Gupta', phone: '+91 98765 43215' },
+      studentCoordinators: ['Shreya Mishra', 'Rahul Soni', 'Meera Choudhary'],
+      rulesFile: '/Rules/it-quiz.pdf',
       details: [
         { label: 'Duration', value: '2 Hours' },
         { label: 'Questions', value: '100+' },
@@ -169,6 +191,8 @@ const EventsPage = ({ theme = 'blue' }) => {
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-programmer-typing-code-60-large.mp4',
       character: '💻',
       coordinator: { name: 'Karan Joshi', phone: '+91 98765 43216' },
+      studentCoordinators: ['Vikas Rao', 'Ananya Singh', 'Kunal Tiwari'],
+      rulesFile: '/Rules/coding-sprint.pdf',
       details: [
         { label: 'Duration', value: '5 Hours' },
         { label: 'Problems', value: '10-15' },
@@ -208,21 +232,19 @@ const EventsPage = ({ theme = 'blue' }) => {
 
   return (
     <div className="events-page-wrapper">
-      <div className="min-h-screen relative pt-20 overflow-hidden" style={{ background: '#06060c' }}>
-      {/* Radial gradient overlay matching Contact page */}
-      <div className="absolute inset-0 pointer-events-none" style={{
-        background: 'radial-gradient(circle at center, rgba(8, 8, 14, 0.4) 0%, rgba(6, 6, 12, 0.9) 100%)',
-        zIndex: 2
-      }} />
+      {/* Particle Background */}
+      <div className="events-particle-background">
+        <CyberMatrixBackground theme={theme} />
+      </div>
 
       {/* Main Content */}
-      <div className="relative z-10 px-4 sm:px-6 lg:px-8 py-12 max-w-7xl mx-auto">
+      <div className="relative z-10 px-4 sm:px-6 lg:px-8 pb-20 max-w-7xl mx-auto" style={{ paddingTop: 'var(--navbar-height)' }}>
         {/* Interactive Animated Header */}
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-center mb-16 relative"
+          className="text-center mb-10 relative"
         >
           {/* Floating accent elements around title */}
           <motion.div
@@ -238,8 +260,8 @@ const EventsPage = ({ theme = 'blue' }) => {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <BoxText 
-              text="CYNET EVENTS" 
+            <BoxText
+              text="CYNET EVENTS"
               color={currentTheme.primary}
               size={8}
               gap={1.5}
@@ -247,7 +269,7 @@ const EventsPage = ({ theme = 'blue' }) => {
           </motion.div>
 
           {/* Subtitle with animated typing effect */}
-          <motion.p 
+          <motion.p
             className="text-lg sm:text-xl text-gray-400 mt-6 max-w-2xl mx-auto font-light"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -270,17 +292,17 @@ const EventsPage = ({ theme = 'blue' }) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {events.map((event, index) => (
             <motion.div
               key={event.id}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ 
-                duration: 0.6, 
+              transition={{
+                duration: 0.6,
                 delay: 0.6 + index * 0.1,
-                ease: "easeOut" 
+                ease: "easeOut"
               }}
               onClick={() => handleEventSelect(event)}
               className="group relative cursor-pointer"
@@ -314,12 +336,11 @@ const EventsPage = ({ theme = 'blue' }) => {
 
                 {/* Main card backdrop */}
                 <div
-                  className="relative backdrop-blur-xl rounded-2xl border-2 p-6 overflow-hidden"
+                  className="relative backdrop-blur-xl rounded-2xl border-2 p-5 overflow-hidden"
                   style={{
                     background: `linear-gradient(135deg, ${event.accentColor}15, rgba(11, 15, 26, 0.9))`,
                     borderColor: `${event.accentColor}60`,
                     boxShadow: `0 20px 60px rgba(0,0,0,0.5), 0 0 30px ${event.accentColor}20`,
-                    minHeight: '400px',
                     transform: 'translateZ(0)',
                   }}
                 >
@@ -356,7 +377,7 @@ const EventsPage = ({ theme = 'blue' }) => {
                   {/* Card content */}
                   <div className="relative z-10 flex flex-col h-full">
                     {/* Event Icon with 3D lift */}
-                    <motion.div 
+                    <motion.div
                       className="text-6xl mb-4 flex-shrink-0"
                       style={{
                         filter: `drop-shadow(0 0 20px ${event.accentColor}80)`,
@@ -371,9 +392,9 @@ const EventsPage = ({ theme = 'blue' }) => {
                     </motion.div>
 
                     {/* Category badge */}
-                    <div 
-                      className="text-xs font-mono mb-3 inline-block px-3 py-1 rounded-full self-start" 
-                      style={{ 
+                    <div
+                      className="text-xs font-mono mb-3 inline-block px-3 py-1 rounded-full self-start"
+                      style={{
                         color: event.accentColor,
                         background: `${event.accentColor}20`,
                         border: `1px solid ${event.accentColor}40`,
@@ -381,9 +402,9 @@ const EventsPage = ({ theme = 'blue' }) => {
                     >
                       {event.category}
                     </div>
-                    
+
                     {/* Event Title */}
-                    <h3 
+                    <h3
                       className="text-3xl font-bold text-white mb-3 group-hover:translate-x-1 transition-transform duration-300"
                       style={{
                         textShadow: `0 2px 10px ${event.accentColor}40`,
@@ -391,69 +412,147 @@ const EventsPage = ({ theme = 'blue' }) => {
                     >
                       {event.title}
                     </h3>
-                    
+
                     {/* Description */}
-                    <p className="text-sm text-gray-300 mb-6 leading-relaxed flex-grow">
+                    <p className="text-sm text-gray-300 mb-4 leading-relaxed flex-grow">
                       {event.description}
                     </p>
 
                     {/* Event Details Grid */}
-                    <div className="grid grid-cols-2 gap-3 mb-6 pb-4 border-b"
+                    <div className="grid grid-cols-2 gap-2 mb-4 pb-3 border-b"
                       style={{ borderColor: `${event.accentColor}30` }}
                     >
                       {event.details.slice(0, 4).map((detail, idx) => (
                         <div key={idx} className="text-xs">
-                          <div className="text-gray-500 mb-1">{detail.label}</div>
+                          <div className="text-gray-500 mb-0.5">{detail.label}</div>
                           <div className="text-white font-semibold">{detail.value}</div>
                         </div>
                       ))}
                     </div>
 
-                    {/* Call to action button */}
-                    <motion.button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleEventSelect(event);
-                      }}
-                      className="w-full px-6 py-3 rounded-xl text-sm font-bold relative overflow-hidden group/btn"
-                      style={{
-                        background: `linear-gradient(135deg, ${event.accentColor}, ${event.accentColor}dd)`,
-                        color: '#000',
-                        boxShadow: `0 10px 30px ${event.accentColor}40`,
-                      }}
-                      whileHover={{
-                        boxShadow: `0 15px 40px ${event.accentColor}60`,
-                        y: -2,
-                      }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <span className="relative z-10 flex items-center justify-center gap-2">
-                        <span>EXPLORE EVENT</span>
-                        <motion.span
-                          animate={{ x: [0, 4, 0] }}
-                          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                        >
-                          →
-                        </motion.span>
-                      </span>
-                      
-                      {/* Shine effect on hover */}
-                      <motion.div
-                        className="absolute inset-0 opacity-0 group-hover/btn:opacity-100"
+                    {/* Bottom Info Row: Coordinator (compact) + Student Coordinators */}
+                    <div className="flex gap-2 mb-4">
+                      {/* Coordinator Box – made bigger */}
+                      <div
+                        className="flex-1 rounded-xl px-3 py-2.5 flex items-center gap-2.5"
                         style={{
-                          background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
+                          background: `${event.accentColor}15`,
+                          border: `1px solid ${event.accentColor}45`,
                         }}
-                        animate={{
-                          x: ['-100%', '200%'],
+                      >
+                        <span className="text-xl flex-shrink-0">📞</span>
+                        <div className="min-w-0">
+                          <div className="text-[10px] font-mono text-gray-500 leading-tight mb-0.5">COORDINATOR</div>
+                          <div className="text-xs text-white font-semibold truncate leading-tight">{event.coordinator.name}</div>
+                          <div className="text-[10px] font-mono leading-tight mt-0.5" style={{ color: event.accentColor }}>{event.coordinator.phone}</div>
+                        </div>
+                      </div>
+
+                      {/* Student Coordinators Names Box */}
+                      {event.studentCoordinators && (
+                        <div
+                          className="flex-1 rounded-xl px-3 py-2.5"
+                          style={{
+                            background: `${event.accentColor}08`,
+                            border: `1px solid ${event.accentColor}30`,
+                          }}
+                        >
+                          <div className="text-[10px] font-mono text-gray-500 mb-1.5 leading-tight tracking-wider">STUDENT COORDS</div>
+                          {event.studentCoordinators.map((name, si) => (
+                            <div key={si} className="flex items-center gap-1.5 mb-1">
+                              <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: event.accentColor }} />
+                              <span className="text-[10px] text-gray-300 truncate leading-tight">{name}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Bottom Buttons – Explore + Register + Rules */}
+                    <div className="flex gap-2">
+                      {/* Explore Button */}
+                      <motion.button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleEventSelect(event);
                         }}
-                        transition={{
-                          duration: 1.5,
-                          repeat: Infinity,
-                          ease: "linear",
-                          repeatDelay: 0.5
+                        className="flex-1 px-3 py-2.5 rounded-xl text-xs font-bold relative overflow-hidden group/btn"
+                        style={{
+                          background: `linear-gradient(135deg, ${event.accentColor}, ${event.accentColor}cc)`,
+                          color: '#000',
+                          boxShadow: `0 8px 24px ${event.accentColor}40`,
                         }}
-                      />
-                    </motion.button>
+                        whileHover={{ boxShadow: `0 12px 32px ${event.accentColor}60`, y: -2 }}
+                        whileTap={{ scale: 0.97 }}
+                      >
+                        <span className="relative z-10 flex items-center justify-center gap-1">
+                          <span>EXPLORE</span>
+                          <motion.span
+                            animate={{ x: [0, 3, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                          >→</motion.span>
+                        </span>
+                        <motion.div
+                          className="absolute inset-0 opacity-0 group-hover/btn:opacity-100"
+                          style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent)' }}
+                          animate={{ x: ['-100%', '200%'] }}
+                          transition={{ duration: 1.5, repeat: Infinity, ease: "linear", repeatDelay: 0.5 }}
+                        />
+                      </motion.button>
+
+                      {/* Register Button */}
+                      <motion.button
+                        onClick={(e) => e.stopPropagation()}
+                        className="flex-1 px-3 py-2.5 rounded-xl text-xs font-bold"
+                        style={{
+                          background: 'transparent',
+                          color: event.accentColor,
+                          border: `1.5px solid ${event.accentColor}`,
+                          boxShadow: `0 0 14px ${event.accentColor}20`,
+                        }}
+                        whileHover={{
+                          background: `${event.accentColor}18`,
+                          boxShadow: `0 0 22px ${event.accentColor}50`,
+                          y: -2,
+                        }}
+                        whileTap={{ scale: 0.97 }}
+                      >
+                        <span className="flex items-center justify-center gap-1">
+                          <span>✦</span>
+                          <span>REGISTER</span>
+                        </span>
+                      </motion.button>
+
+                      {/* Rules Button – opens PDF */}
+                      <motion.button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (event.rulesFile) {
+                            window.open(event.rulesFile, '_blank');
+                          }
+                        }}
+                        className="px-3 py-2.5 rounded-xl text-xs font-bold"
+                        style={{
+                          background: 'rgba(255,255,255,0.06)',
+                          color: '#fff',
+                          border: `1.5px solid rgba(255,255,255,0.18)`,
+                          boxShadow: `0 0 10px rgba(255,255,255,0.05)`,
+                        }}
+                        whileHover={{
+                          background: 'rgba(255,255,255,0.12)',
+                          border: `1.5px solid ${event.accentColor}80`,
+                          color: event.accentColor,
+                          y: -2,
+                        }}
+                        whileTap={{ scale: 0.97 }}
+                        title="View Event Rules PDF"
+                      >
+                        <span className="flex items-center justify-center gap-1">
+                          <span>📋</span>
+                          <span>RULES</span>
+                        </span>
+                      </motion.button>
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -486,7 +585,6 @@ const EventsPage = ({ theme = 'blue' }) => {
           />
         )}
       </AnimatePresence>
-      </div>
     </div>
   );
 };

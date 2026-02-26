@@ -6,18 +6,6 @@
     z-index: 1;
 }
 
-/* ── TECHNICAL GRID HINT ── */
-.sponsors-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
-    mask-image: radial-gradient(circle at center, black, transparent 80%);
-    pointer-events: none;
-}
-
 .sponsors-shell {
     max-width: 1300px;
     margin: 0 auto;
@@ -30,17 +18,6 @@
 .sponsors-header {
     text-align: center;
     margin-bottom: clamp(4rem, 10vw, 7rem);
-}
-
-.sponsors-tag {
-    font-family: var(--font-mono, 'Courier New', monospace);
-    font-size: 0.85rem;
-    color: var(--neon-cyan);
-    letter-spacing: 5px;
-    display: block;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-    opacity: 0.8;
 }
 
 .sponsors-title {
@@ -72,571 +49,102 @@
     font-family: var(--font-mono, 'Courier New', monospace);
 }
 
-/* ══════════════════════════════════════════════
-   SPLIT FLAP DISPLAY DESIGN (Airport Style)
-   ══════════════════════════════════════════════ */
-
-.split-flap-container {
-    max-width: 700px;
-    margin: 0 auto;
-    perspective: 1500px;
-}
-
-.split-flap-board {
-    position: relative;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    border-radius: 16px;
-    padding: 2rem;
-    box-shadow: 
-        0 20px 60px rgba(0, 0, 0, 0.7),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-}
-
-/* ── MECHANICAL FRAME ── */
-.board-frame {
-    position: relative;
-    background: #0f0f1a;
-    border: 3px solid rgba(0, 243, 255, 0.6);
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 
-        inset 0 0 30px rgba(0, 0, 0, 0.8),
-        0 0 20px rgba(0, 243, 255, 0.4),
-        0 0 40px rgba(0, 243, 255, 0.2),
-        inset 0 0 0 1px rgba(0, 243, 255, 0.3);
-}
-
-/* Frame Corners (Mechanical Bolts) */
-.frame-corner {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    background: radial-gradient(circle, #3a3a4e 40%, #1a1a2e 100%);
-    border: 2px solid #2a2a3e;
-    border-radius: 50%;
-    box-shadow: 
-        inset 0 -2px 4px rgba(0, 0, 0, 0.5),
-        0 0 10px rgba(0, 243, 255, 0.3);
-}
-
-.frame-corner.tl { top: 15px; left: 15px; }
-.frame-corner.tr { top: 15px; right: 15px; }
-.frame-corner.bl { bottom: 15px; left: 15px; }
-.frame-corner.br { bottom: 15px; right: 15px; }
-
-/* ── FLIP DISPLAY AREA ── */
-.flap-display {
-    position: relative;
-    background: linear-gradient(to bottom, #0a0a12 0%, #14141f 100%);
-    min-height: 280px;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 
-        inset 0 5px 15px rgba(0, 0, 0, 0.8),
-        inset 0 0 1px rgba(0, 243, 255, 0.3);
-}
-
-/* Mechanical Split Line (horizontal) */
-.split-line {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(
-        to right,
-        transparent,
-        rgba(0, 243, 255, 0.4) 20%,
-        rgba(0, 243, 255, 0.6) 50%,
-        rgba(0, 243, 255, 0.4) 80%,
-        transparent
-    );
-    transform: translateY(-50%);
-    z-index: 10;
-    box-shadow: 
-        0 0 10px rgba(0, 243, 255, 0.5),
-        0 1px 0 rgba(0, 0, 0, 0.8);
-    pointer-events: none;
-}
-
-.split-line::before,
-.split-line::after {
-    content: '';
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: #00f3ff;
-    border-radius: 50%;
-    box-shadow: 0 0 8px rgba(0, 243, 255, 0.8);
-}
-
-.split-line::before { left: 20px; top: -1px; }
-.split-line::after { right: 20px; top: -1px; }
-
-/* ── FLAP CONTENT ── */
-.flap-content {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    min-height: 280px;
+/* Sponsors Grid */
+.sponsors-grid {
     display: flex;
-    align-items: center;
     justify-content: center;
-    transform-style: preserve-3d;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-.flap-display.flipping .flap-content {
-    animation: mechanicalFlip 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
-}
-
-@keyframes mechanicalFlip {
-    0% { transform: rotateX(0deg); filter: brightness(1); }
-    50% { transform: rotateX(-90deg); filter: brightness(0.3); }
-    100% { transform: rotateX(0deg); filter: brightness(1); }
-}
-
-/* ── SPONSOR DISPLAY ── */
-.sponsor-display {
+.sponsor-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    border-radius: 12px;
+    padding: 3rem 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
-    padding: 1.5rem;
+    transition: all 0.3s ease;
+    width: 350px;
+    max-width: 100%;
+    margin-left: 2rem;
 }
 
-.sponsor-logo-container {
-    position: relative;
-    padding: 1.5rem;
-    background: radial-gradient(circle, rgba(0, 243, 255, 0.15), rgba(0, 243, 255, 0.05) 50%, transparent 80%);
-    border-radius: 12px;
-    box-shadow: 
-        0 0 40px rgba(0, 243, 255, 0.3),
-        inset 0 0 30px rgba(0, 243, 255, 0.1);
+.sponsor-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(0, 243, 255, 0.4);
+    box-shadow: 0 10px 40px rgba(0, 243, 255, 0.2);
 }
 
-.sponsor-logo-flip {
-    max-width: 260px;
-    max-height: 160px;
+.sponsor-logo-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.sponsor-logo {
+    max-width: 100%;
+    max-height: 150px;
     width: auto;
     height: auto;
     object-fit: contain;
-    filter: 
-        brightness(1.3)
-        contrast(1.1)
-        drop-shadow(0 10px 30px rgba(0, 0, 0, 0.8))
-        drop-shadow(0 0 30px rgba(0, 243, 255, 0.5))
-        drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
-    animation: logoGlow 3s ease-in-out infinite;
+    filter: brightness(1.1);
 }
 
-@keyframes logoGlow {
-    0%, 100% { 
-        filter: 
-            brightness(1.3)
-            contrast(1.1)
-            drop-shadow(0 10px 30px rgba(0, 0, 0, 0.8)) 
-            drop-shadow(0 0 30px rgba(0, 243, 255, 0.5))
-            drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
-    }
-    50% { 
-        filter: 
-            brightness(1.4)
-            contrast(1.15)
-            drop-shadow(0 15px 40px rgba(0, 0, 0, 0.9)) 
-            drop-shadow(0 0 50px rgba(0, 243, 255, 0.7))
-            drop-shadow(0 0 25px rgba(255, 255, 255, 0.4));
-    }
-}
-
-/* ── SPLIT FLAP NAME DISPLAY ── */
-.sponsor-name-flip {
-    display: flex;
-    gap: 4px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.char-flip {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 28px;
-    height: 50px;
-    background: linear-gradient(to bottom, #1a1a2e 0%, #0f0f1a 50%, #0a0a12 100%);
-    border: 1px solid rgba(0, 243, 255, 0.3);
-    border-radius: 4px;
-    font-family: 'Courier New', monospace;
-    font-size: 1.5rem;
+.sponsor-name {
+    font-family: var(--font-mono, 'Courier New', monospace);
+    font-size: 1.2rem;
     font-weight: 700;
     color: #00f3ff;
-    text-shadow: 
-        0 0 10px rgba(0, 243, 255, 0.8),
-        0 0 20px rgba(0, 243, 255, 0.4);
-    box-shadow: 
-        inset 0 1px 0 rgba(255, 255, 255, 0.1),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.5),
-        0 2px 8px rgba(0, 0, 0, 0.6);
-    animation: charFlipIn 0.4s ease-out backwards;
-    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
 }
 
-.char-flip::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: rgba(0, 0, 0, 0.4);
-    transform: translateY(-50%);
-}
-
-@keyframes charFlipIn {
-    0% {
-        transform: rotateX(-90deg);
-        opacity: 0;
-    }
-    100% {
-        transform: rotateX(0deg);
-        opacity: 1;
-    }
-}
-
-/* ── NAVIGATION DOTS ── */
-.flap-navigation {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 2.5rem;
-}
-
-.nav-dot {
-    position: relative;
-    width: 50px;
-    height: 50px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    transition: all 0.3s ease;
-}
-
-.dot-inner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 12px;
-    height: 12px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
-}
-
-.dot-ring {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 30px;
-    height: 30px;
-    border: 2px solid rgba(0, 243, 255, 0.3);
-    border-radius: 50%;
-    transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
-}
-
-.nav-dot:hover .dot-inner {
-    background: rgba(0, 243, 255, 0.6);
-    transform: translate(-50%, -50%) scale(1.2);
-}
-
-.nav-dot:hover .dot-ring {
-    border-color: rgba(0, 243, 255, 0.6);
-    transform: translate(-50%, -50%) scale(1.1);
-}
-
-.nav-dot.active .dot-inner {
-    background: #00f3ff;
-    width: 14px;
-    height: 14px;
-    box-shadow: 
-        0 0 15px rgba(0, 243, 255, 0.8),
-        0 0 30px rgba(0, 243, 255, 0.4);
-}
-
-.nav-dot.active .dot-ring {
-    border-color: #00f3ff;
-    border-width: 3px;
-    box-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
-}
-
-/* ── PROGRESS BAR ── */
-.flap-progress {
-    width: 100%;
-    height: 4px;
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 2px;
-    margin-top: 1.5rem;
-    overflow: hidden;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-.progress-fill {
-    height: 100%;
-    width: 0;
-    background: linear-gradient(
-        to right,
-        #00f3ff,
-        #00ff88,
-        #00f3ff
-    );
-    background-size: 200% 100%;
-    border-radius: 2px;
-    box-shadow: 
-        0 0 10px rgba(0, 243, 255, 0.6),
-        0 0 20px rgba(0, 243, 255, 0.3);
-    animation: progressBar 5s linear forwards;
-}
-
-@keyframes progressBar {
-    0% { 
-        width: 0; 
-        background-position: 0% 50%;
-    }
-    100% { 
-        width: 100%; 
-        background-position: 100% 50%;
-    }
-}
-
-/* ── RESPONSIVE DESIGN ── */
+/* Responsive Design */
 @media (max-width: 768px) {
-    .split-flap-board {
-        padding: 2rem 1.5rem;
-    }
-    
-    .board-frame {
-        padding: 1.5rem;
-    }
-    
-    .flap-display {
-        min-height: 300px;
-    }
-    
-    .flap-content {
-        min-height: 300px;
-    }
-    
-    .sponsor-logo-flip {
-        max-width: 250px;
-        max-height: 150px;
-    }
-    
-    .char-flip {
-        min-width: 22px;
-        height: 40px;
-        font-size: 1.2rem;
-    }
-    
-    .nav-dot {
-        width: 40px;
-        height: 40px;
-    }
-}
-
-@media (max-width: 480px) {
-    .split-flap-board {
-        padding: 1.5rem 1rem;
-    }
-    
-    .board-frame {
-        padding: 1rem;
-    }
-    
-    .flap-display {
-        min-height: 250px;
-    }
-    
-    .flap-content {
-        min-height: 250px;
-    }
-    
-    .sponsor-display {
-        gap: 1rem;
-        padding: 1rem;
-    }
-    
-    .sponsor-logo-flip {
-        max-width: 200px;
-        max-height: 120px;
-    }
-    
-    .char-flip {
-        min-width: 18px;
-        height: 35px;
-        font-size: 1rem;
-        gap: 2px;
-    }
-    
-    .flap-navigation {
-        gap: 1rem;
-        margin-top: 1.5rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .sponsors-minimal-grid {
-        flex-direction: column;
-        align-items: center;
-        gap: 2.5rem;
-    }
-
     .sponsors-shell {
         padding: 0 2rem;
     }
 
-    .sponsors-title {
-        font-size: clamp(2rem, 6vw, 3.5rem);
-        letter-spacing: clamp(6px, 1.5vw, 12px);
+    .sponsors-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
     }
 
-    .sponsors-tag {
-        font-size: 0.75rem;
-        letter-spacing: 3px;
-    }
-
-    .sponsors-subtitle {
-        font-size: clamp(0.95rem, 1.5vw, 1.2rem);
-        margin-top: 1.5rem;
-    }
-
-    .sponsor-circle-box {
-        width: 200px;
-        height: 130px;
-    }
-
-    .cta-button {
-        padding: 1rem 3rem;
-        font-size: 0.95rem;
-        letter-spacing: 2px;
-    }
-}
-
-@media (max-width: 640px) {
-    .sponsors-shell {
-        padding: 0 1.5rem;
-    }
-
-    .sponsors-title {
-        font-size: clamp(1.75rem, 5.5vw, 3rem);
-        letter-spacing: clamp(5px, 1.2vw, 10px);
-    }
-
-    .sponsors-tag {
-        font-size: 0.7rem;
-        letter-spacing: 2.5px;
-    }
-
-    .sponsors-subtitle {
-        font-size: clamp(0.85rem, 1.3vw, 1rem);
-    }
-
-    .sponsor-circle-box {
-        width: 130px;
-        height: 130px;
-        padding: 1.75rem;
-    }
-
-    .cta-button {
-        padding: 0.9rem 2.5rem;
-        font-size: 0.9rem;
+    .sponsor-card {
+        padding: 2.5rem 2rem;
+        width: 100%;
+        max-width: 400px;
     }
 }
 
 @media (max-width: 480px) {
     .sponsors-shell {
-        padding: 0 1rem;
+        padding: 0 1.5rem;
     }
 
     .sponsors-section {
         padding: clamp(5rem, 15vw, 8rem) 0;
     }
 
-    .sponsors-title {
-        font-size: clamp(1.5rem, 5vw, 2.5rem);
-        letter-spacing: clamp(4px, 1vw, 8px);
+    .sponsor-card {
+        padding: 2rem 1.5rem;
     }
 
-    .sponsors-tag {
-        font-size: 0.65rem;
-        letter-spacing: 2px;
-        margin-bottom: 1rem;
+    .sponsor-logo {
+        max-height: 120px;
     }
 
-    .sponsors-subtitle {
-        font-size: clamp(0.75rem, 1.2vw, 0.9rem);
-        letter-spacing: 1.5px;
-        margin-top: 1rem;
+    .sponsor-name {
+        font-size: 1rem;
     }
-
-    .sponsor-circle-box {
-        width: 110px;
-        height: 110px;
-        padding: 1.5rem;
-    }
-
-    .sponsors-minimal-grid {
-        gap: 2rem;
-    }
-
-    .cta-button {
-        padding: 0.8rem 2rem;
-        font-size: 0.8rem;
-        letter-spacing: 1.5px;
-    }
-}
-
-@media (max-width: 375px) {
-    .sponsors-title {
-        font-size: clamp(1.3rem, 4.5vw, 2rem);
-        letter-spacing: clamp(3px, 0.8vw, 6px);
-    }
-
-    .sponsor-circle-box {
-        width: 100px;
-        height: 100px;
-        padding: 1.25rem;
-    }
-
-    .cta-button {
-        padding: 0.75rem 1.75rem;
-        font-size: 0.75rem;
-    }
-}
-
-.sponsors-cta {
-    text-align: center;
-    margin-top: 6rem;
-}
-
-.cta-button {
-    background: transparent;
-    border: 1px solid var(--neon-cyan);
-    padding: 1.2rem 4rem;
-    font-family: var(--font-mono);
-    font-size: 1.1rem;
-    font-weight: 800;
-    letter-spacing: 3px;
-    color: var(--neon-cyan);
-    cursor: pointer;
-    transition: all 0.4s ease;
-    text-transform: uppercase;
-    position: relative;
-    overflow: hidden;
-}
-
-.cta-button:hover {
-    background: var(--neon-cyan);
-    color: #000;
-    box-shadow: 0 0 40px var(--neon-cyan);
 }
