@@ -27,41 +27,41 @@ const vk1Departments = [
     name: "CORE",
     members: [
       { id: "VK-1_CORE_1", name: "Harshit Verma ", position: "President", department: "CORE", img: "/Enigma_Team/Core/president.jpg" },
-      { id: "VK-1_CORE_2", name: "Gurnoor Kaur Pawan", position: "Vice President", department: "CORE", img: "/Enigma_Team/Core/vp1.jpg" },
+      { id: "VK-1_CORE_2", name: "Gurnoor Kaur Pawan", position: "Vice President", department: "CORE", img: "public/Enigma_Team/Core/Gurnoor_.jpg" },
       { id: "VK-1_CORE_3", name: "Ayush Dahiya", position: "Vice President", department: "CORE", img: "/Enigma_Team/Core/Ayush Dahiya 00914202024.jpeg" },
-      { id: "VK-1_CORE_4", name: "Sana Jain", position: "Secretary", department: "CORE", img: "/Enigma_Team/Core/secretary.jpg" }
+      { id: "VK-1_CORE_4", name: "Sana Jain", position: "Secretary", department: "CORE", img: "public/Enigma_Team/Core/Sana Jain .jpg" }
     ],
     color: "#00ffcc"
   },
   {
     name: "DEVELOPER",
     members: [
-      { id: "VK-1_DEVELOPER_1", name: "Kanika Bhandari", position: "Directorr", department: "DEVELOPER", img: "/Enigma_Team/Developer/lead.jpg" },
-      { id: "VK-1_DEVELOPER_2", name: "Aditya Kumar", position: "Assistant Director", department: "DEVELOPER", img: "/Enigma_Team/Developer/frontend.jpg" },
-      { id: "VK-1_DEVELOPER_3", name: "Saksham Bansal", position: "Assistant Director", department: "DEVELOPER", img: "/Enigma_Team/Developer/backend.jpg" },
-      { id: "VK-1_DEVELOPER_4", name: "Ananya Vig", position: "Manager", department: "DEVELOPER", img: "/Enigma_Team/Developer/uiux.jpg" },
-      { id: "VK-1_DEVELOPER_5", name: "Daksh Baweja", position: "Manager", department: "DEVELOPER", img: "/Enigma_Team/Developer/fullstack.jpg" },
-      { id: "VK-1_DEVELOPER_1", name: "Avnish Aryan", position: "Member", department: "DEVELOPER", img: "/Enigma_Team/Developer/lead.jpg" },
-      { id: "VK-1_DEVELOPER_2", name: "Shubbu Husain", position: "Member", department: "DEVELOPER", img: "/Enigma_Team/Developer/frontend.jpg" },
-      { id: "VK-1_DEVELOPER_3", name: "Jia Sharma", position: "Member", department: "DEVELOPER", img: "/Enigma_Team/Developer/backend.jpg" },
-      { id: "VK-1_DEVELOPER_4", name: "Harshit Sharma", position: "Member", department: "DEVELOPER", img: "/Enigma_Team/Developer/uiux.jpg" }
+      { id: "VK-1_DEVELOPER_1", name: "Kanika Bhandari", position: "Directorr", department: "DEVELOPER", img: "public/Enigma_Team/Developer/Kanika.webp" },
+      { id: "VK-1_DEVELOPER_2", name: "Aditya Kumar", position: "Assistant Director", department: "DEVELOPER", img: "/Enigma_Team/Developer/aditya.jpg" },
+      { id: "VK-1_DEVELOPER_3", name: "Saksham Bansal", position: "Assistant Director", department: "DEVELOPER", img: "public/Enigma_Team/Developer/Saksham.JPG" },
+      { id: "VK-1_DEVELOPER_4", name: "Ananya Vig", position: "Manager", department: "DEVELOPER", img: "public/Enigma_Team/Developer/Ananya.JPG" },
+      { id: "VK-1_DEVELOPER_5", name: "Daksh Baweja", position: "Manager", department: "DEVELOPER", img: "public/Enigma_Team/Developer/Daksh .jpg" },
+      { id: "VK-1_DEVELOPER_6", name: "Avnish Aryan", position: "Member", department: "DEVELOPER", img: "public/Enigma_Team/Developer/Avnish.jpeg" },
+      { id: "VK-1_DEVELOPER_7", name: "Shubbu Husain", position: "Member", department: "DEVELOPER", img: "public/Enigma_Team/Developer/Shubbu Husain.jpg" },
+      { id: "VK-1_DEVELOPER_8", name: "Jia Sharma", position: "Member", department: "DEVELOPER", img: "public/Enigma_Team/Developer/Jia.png" },
+      { id: "VK-1_DEVELOPER_9", name: "Harshit Sharma", position: "Member", department: "DEVELOPER", img: "public/Enigma_Team/Developer/harshit.jpg" }
     ],
       color: "#00f3ff"
   },
   {
     name: "EVENT MANAGEMENT",
     members: [
-      { id: "VK-1_EVENT_1", name: "Event Head", position: "Director", department: "EVENT MANAGEMENT", img: "/Enigma_Team/Event/head.jpg" },
-      { id: "VK-1_EVENT_2", name: "Kartik Arora", position: "Assistant Director", department: "EVENT MANAGEMENT", img: "/Enigma_Team/Event/coordinator.jpg" },
-      { id: "VK-1_EVENT_3", name: "Sidhant Mehta", position: "Assistant Director", department: "EVENT MANAGEMENT", img: "/Enigma_Team/Event/manager.jpg" },
-      { id: "VK-1_EVENT_4", name: "Puru Gupta", position: "Manager", department: "EVENT MANAGEMENT", img: "/Enigma_Team/Event/volunteer.jpg" },
-      { id: "VK-1_EVENT_5", name: "Nysa Katyal", position: "Manager", department: "EVENT MANAGEMENT", img: "/Enigma_Team/Event/volunteer.jpg" },
-      { id: "VK-1_EVENT_6", name: "Kavya Datta", position: "Member", department: "EVENT MANAGEMENT", img: "/Enigma_Team/Event/volunteer.jpg" },
-      { id: "VK-1_EVENT_7", name: "Jiyaa Arora", position: "Member", department: "EVENT MANAGEMENT", img: "/Enigma_Team/Event/volunteer.jpg" },
-      { id: "VK-1_EVENT_8", name: "Shrishti Saklani", position: "Member", department: "EVENT MANAGEMENT", img: "/Enigma_Team/Event/volunteer.jpg" },
-      { id: "VK-1_EVENT_9", name: "Harassis Singh", position: "Member", department: "EVENT MANAGEMENT", img: "/Enigma_Team/Event/volunteer.jpg" },
-      { id: "VK-1_EVENT_10", name: "Ishaan", position: "Member", department: "EVENT MANAGEMENT", img: "/Enigma_Team/Event/volunteer.jpg" },
-      { id: "VK-1_EVENT_11", name: "Harsh Dull", position: "Member", department: "EVENT MANAGEMENT", img: "/Enigma_Team/Event/volunteer.jpg" }
+      { id: "VK-1_EVENT_2", name: "Kartik Arora", position: "Assistant Director", department: "EVENT MANAGEMENT", img: "/Enigma_Team/Event/Kartik Arora Assistant Director.jpg" },
+      { id: "VK-1_EVENT_3", name: "Sidhant Mehta", position: "Assistant Director", department: "EVENT MANAGEMENT", img: "public/Enigma_Team/Event/Sidhant Mehta  (Assistant Director).jpg" },
+      { id: "VK-1_EVENT_4", name: "Puru Gupta", position: "Manager", department: "EVENT MANAGEMENT", img: "public/Enigma_Team/Event/Puru Gupta Manager .jpg" },
+      { id: "VK-1_EVENT_5", name: "Nysa Katyal", position: "Manager", department: "EVENT MANAGEMENT", img: "public/Enigma_Team/Event/Nysa Katyal (manager).jpg" },
+      { id: "VK-1_EVENT_6", name: "Kavya Datta", position: "Member", department: "EVENT MANAGEMENT", img: "public/Enigma_Team/Event/kavya.jpeg" },
+      { id: "VK-1_EVENT_7", name: "Jiyaa Arora", position: "Member", department: "EVENT MANAGEMENT", img: ""},
+      { id: "VK-1_EVENT_8", name: "Shrishti Saklani", position: "Member", department: "EVENT MANAGEMENT", img: "public/Enigma_Team/Event/Shrishti ( member ).jpg" },
+      { id: "VK-1_EVENT_9", name: "Harassis Singh", position: "Member", department: "EVENT MANAGEMENT", img: "public/Enigma_Team/Event/Harassis Singh.jpg" },
+      { id: "VK-1_EVENT_10", name: "Ishaan", position: "Member", department: "EVENT MANAGEMENT", img: "public/Enigma_Team/Event/Ishaan.webp" },
+      { id: "VK-1_EVENT_11", name: "Harsh Dull", position: "Member", department: "EVENT MANAGEMENT", img: "public/Enigma_Team/Event/Harsh Dhull.jpg" },
+      { id: "VK-1_EVENT_12", name: "Sejal", position: "Member", department: "EVENT MANAGEMENT", img: "public/Enigma_Team/Event/Sejal .jpeg" },
     ],
     color: "#b100ff"
   },
@@ -71,14 +71,14 @@ const vk1Departments = [
       { id: "VK-1_MARKETING_1", name: "Marketing Head", position: "Director", department: "MARKETING", img: "/Enigma_Team/Marketing/head.jpg" },
       { id: "VK-1_MARKETING_2", name: "Aditya Kapoor", position: "Assistant Director", department: "MARKETING", img: "/Enigma_Team/Marketing/social.jpg" },
       { id: "VK-1_MARKETING_3", name: "Pushkar Sharma", position: "Assistant Director", department: "MARKETING", img: "/Enigma_Team/Marketing/content.jpg" },
-      { id: "VK-1_MARKETING_4", name: "Shyna Chaurasia", position: "Manager", department: "MARKETING", img: "/Enigma_Team/Marketing/designer.jpg" },
-      { id: "VK-1_MARKETING_3", name: "Prachi Bjaj", position: "Manager", department: "MARKETING", img: "/Enigma_Team/Marketing/content.jpg" },
-      { id: "VK-1_MARKETING_3", name: "Mayank Raii", position: "Member", department: "MARKETING", img: "/Enigma_Team/Marketing/content.jpg" },
-      { id: "VK-1_MARKETING_3", name: "Vanita Dua", position: "Member", department: "MARKETING", img: "/Enigma_Team/Marketing/content.jpg" },
-      { id: "VK-1_MARKETING_3", name: "Jay Bhardwaj", position: "Member", department: "MARKETING", img: "/Enigma_Team/Marketing/content.jpg" },
-      { id: "VK-1_MARKETING_3", name: "Bhavik Khanna", position: "Member", department: "MARKETING", img: "/Enigma_Team/Marketing/content.jpg" },
-      { id: "VK-1_MARKETING_3", name: "Jay Bhardwaj", position: "Member", department: "MARKETING", img: "/Enigma_Team/Marketing/content.jpg" },
-      { id: "VK-1_MARKETING_3", name: "Jeevansh Wadhwa", position: "Member", department: "MARKETING", img: "/Enigma_Team/Marketing/content.jpg" }
+      { id: "VK-1_MARKETING_4", name: "Shyna Chaurasia", position: "Manager", department: "MARKETING", img: "public/Enigma_Team/Marketing/Shyna chaurasia_.jpg" },
+      { id: "VK-1_MARKETING_5", name: "Prachi Bjaj", position: "Manager", department: "MARKETING", img: "/Enigma_Team/Marketing/content.jpg" },
+      { id: "VK-1_MARKETING_6", name: "Mayank Rai", position: "Member", department: "MARKETING", img: "public/Enigma_Team/Marketing/Mayank Rai.jpg" },
+      { id: "VK-1_MARKETING_7", name: "Vanita Dua", position: "Member", department: "MARKETING", img: "public/Enigma_Team/Marketing/vanita dua.jpg" },
+      { id: "VK-1_MARKETING_8", name: "Jay Bhardwaj", position: "Member", department: "MARKETING", img: "/Enigma_Team/Marketing/content.jpg" },
+      { id: "VK-1_MARKETING_9", name: "Bhavik Khanna", position: "Member", department: "MARKETING", img: "public/Enigma_Team/Marketing/Bhavik.webp" },
+      { id: "VK-1_MARKETING_10", name: "Jay Bhardwaj", position: "Member", department: "MARKETING", img: "/Enigma_Team/Marketing/content.jpg" },
+      { id: "VK-1_MARKETING_11", name: "Jeevansh Wadhwa", position: "Member", department: "MARKETING", img: "public/Enigma_Team/Marketing/Jeevansh Wadhwa.jpg" }
     ],
     
     color: "#ff006e"
