@@ -208,7 +208,7 @@ function TeamPage() {
         >
           <img src={GROUP_PHOTO} alt="Cynet Team 2025" />
           <div className="hero-overlay" />
-          <h1 className="hero-title">CYNET 2025 TEAM</h1>
+          <h1 className="hero-title">CYNET 2026 TEAM</h1>
           <p className="hero-subtitle">THE MINDS BEHIND THE MATRIX</p>
         </motion.div>
 
