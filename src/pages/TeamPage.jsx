@@ -117,75 +117,115 @@ const vk1Departments = [
 // VK-2 (BUGSLAYERS)
 const vk2Departments = [
   {
-    name: "ANCHORING",
+    name: "CORE",
     members: [
-      { id: "VK-2_ANCHORING_1", name: "Anchor Head", position: "Head", department: "ANCHORING", img: "/BUGSLAYERS/Anchoring/head.jpg" },
-      { id: "VK-2_ANCHORING_2", name: "Anchor", position: "Anchor", department: "ANCHORING", img: "/BUGSLAYERS/Anchoring/anchor1.jpg" },
-      { id: "VK-2_ANCHORING_3", name: "Anchor", position: "Anchor", department: "ANCHORING", img: "/BUGSLAYERS/Anchoring/anchor2.jpg" },
-      { id: "VK-2_ANCHORING_4", name: "Secretary", position: "Secretary", department: "ANCHORING", img: "/BUGSLAYERS/Anchoring/secretary.jpg" }
+      { id: "VK-2_CORE_1", name: "Akshat", position: "President", department: "CORE", img: "public/BUGSLAYERS/Core/Akshat.jpg" },
+      { id: "VK-2_CORE_2", name: "Shubham", position: "Vice President", department: "CORE", img: "public/BUGSLAYERS/Core/Shubham.jpg" },
+      { id: "VK-2_CORE_3", name: "Simran", position: "Vice President", department: "CORE", img: "public/BUGSLAYERS/Core/Simran.jpg" }
     ],
-    color: "#00ffcc"
+    color: "#ffffff"
   },
+
   {
     name: "CREATIVE",
     members: [
-      { id: "VK-2_CREATIVE_1", name: "Creative Head", position: "Head", department: "CREATIVE", img: "/BUGSLAYERS/Creative/head.jpg" },
-      { id: "VK-2_CREATIVE_2", name: "Designer", position: "Designer", department: "CREATIVE", img: "/BUGSLAYERS/Creative/designer1.jpg" },
-      { id: "VK-2_CREATIVE_3", name: "Designer", position: "Designer", department: "CREATIVE", img: "/BUGSLAYERS/Creative/designer2.jpg" },
-      { id: "VK-2_CREATIVE_4", name: "Artist", position: "Artist", department: "CREATIVE", img: "/BUGSLAYERS/Creative/artist.jpg" }
+      { id: "VK-2_CREATIVE_1", name: "Garima", position: "Convener", department: "CREATIVE", img: "public/BUGSLAYERS/Creative/Garima.jpg" },
+      { id: "VK-2_CREATIVE_2", name: "K M Neha Rawat", position: "Member", department: "CREATIVE", img: "public/BUGSLAYERS/Creative/Neha.jpg" },
+      { id: "VK-2_CREATIVE_3", name: "Preeti", position: "Member", department: "CREATIVE", img: "public/BUGSLAYERS/Creative/Preeti.jpg" },
+      { id: "VK-2_CREATIVE_4", name: "Kanchan", position: "Member", department: "CREATIVE", img: "public/BUGSLAYERS/Creative/Kanchan.jpg" },
+      { id: "VK-2_CREATIVE_5", name: "Khushboo", position: "Member", department: "CREATIVE", img: "public/BUGSLAYERS/Creative/Khushboo.jpg" },
+      { id: "VK-2_CREATIVE_6", name: "Shree Sai", position: "Member", department: "CREATIVE", img: "public/BUGSLAYERS/Creative/ShreeSai.jpg" },
+      { id: "VK-2_CREATIVE_7", name: "Aarohi", position: "Member", department: "CREATIVE", img: "public/BUGSLAYERS/Creative/Aarohi.jpg" },
+      { id: "VK-2_CREATIVE_8", name: "Anirban", position: "Member", department: "CREATIVE", img: "public/BUGSLAYERS/Creative/Anirban.jpg" },
+      { id: "VK-2_CREATIVE_9", name: "Karishma", position: "Member", department: "CREATIVE", img: "public/BUGSLAYERS/Creative/Karishma.jpg" }
     ],
     color: "#00f3ff"
   },
+
   {
-    name: "IT EVENT",
+    name: "ANCHORING",
     members: [
-      { id: "VK-2_ITEVENT_1", name: "IT Head", position: "Head", department: "IT EVENT", img: "/BUGSLAYERS/ITEvent/head.jpg" },
-      { id: "VK-2_ITEVENT_2", name: "Developer", position: "Developer", department: "IT EVENT", img: "/BUGSLAYERS/ITEvent/dev1.jpg" },
-      { id: "VK-2_ITEVENT_3", name: "Developer", position: "Developer", department: "IT EVENT", img: "/BUGSLAYERS/ITEvent/dev2.jpg" },
-      { id: "VK-2_ITEVENT_4", name: "Volunteer", position: "Volunteer", department: "IT EVENT", img: "/BUGSLAYERS/ITEvent/volunteer.jpg" }
+      { id: "VK-2_ANCHORING_1", name: "Avni", position: "Member", department: "ANCHORING", img: "public/BUGSLAYERS/Anchoring/Avni.jpg" },
+      { id: "VK-2_ANCHORING_2", name: "Aditya Nath", position: "Member", department: "ANCHORING", img: "public/BUGSLAYERS/Anchoring/AdityaNath.jpg" },
+      { id: "VK-2_ANCHORING_3", name: "Tanvi", position: "Member", department: "ANCHORING", img: "public/BUGSLAYERS/Anchoring/Tanvi.jpg" },
+      { id: "VK-2_ANCHORING_4", name: "Arunima", position: "Member", department: "ANCHORING", img: "public/BUGSLAYERS/Anchoring/Arunima.jpg" },
+      { id: "VK-2_ANCHORING_5", name: "Aditya Katoch", position: "Member", department: "ANCHORING", img: "public/BUGSLAYERS/Anchoring/AdityaKatoch.jpg" },
+      { id: "VK-2_ANCHORING_6", name: "Karishma", position: "Member", department: "ANCHORING", img: "public/BUGSLAYERS/Anchoring/Karishma.jpg" },
+      { id: "VK-2_ANCHORING_7", name: "Rishika", position: "Member", department: "ANCHORING", img: "public/BUGSLAYERS/Anchoring/Rishika.jpg" },
+      { id: "VK-2_ANCHORING_8", name: "Bhavya", position: "Member", department: "ANCHORING", img: "public/BUGSLAYERS/Anchoring/Bhavya.jpg" }
     ],
-    color: "#b100ff"
+    color: "#00ffcc"
   },
-  {
-    name: "INNOVATION & SPONSOR",
-    members: [
-      { id: "VK-2_INNOVATIONSPONSOR_1", name: "Innovation Head", position: "Head", department: "INNOVATION & SPONSOR", img: "/BUGSLAYERS/Inivation and sponser/head.jpg" },
-      { id: "VK-2_INNOVATIONSPONSOR_2", name: "Sponsor Lead", position: "Sponsor Lead", department: "INNOVATION & SPONSOR", img: "/BUGSLAYERS/Inivation and sponser/sponsor1.jpg" },
-      { id: "VK-2_INNOVATIONSPONSOR_3", name: "Sponsor", position: "Sponsor", department: "INNOVATION & SPONSOR", img: "/BUGSLAYERS/Inivation and sponser/sponsor2.jpg" },
-      { id: "VK-2_INNOVATIONSPONSOR_4", name: "Secretary", position: "Secretary", department: "INNOVATION & SPONSOR", img: "/BUGSLAYERS/Inivation and sponser/secretary.jpg" }
-    ],
-    color: "#ff006e"
-  },
+
   {
     name: "PHOTOGRAPHY",
     members: [
-      { id: "VK-2_PHOTOGRAPHY_1", name: "Photo Head", position: "Head", department: "PHOTOGRAPHY", img: "/BUGSLAYERS/Photography/head.jpg" },
-      { id: "VK-2_PHOTOGRAPHY_2", name: "Photographer", position: "Photographer", department: "PHOTOGRAPHY", img: "/BUGSLAYERS/Photography/photo1.jpg" },
-      { id: "VK-2_PHOTOGRAPHY_3", name: "Photographer", position: "Photographer", department: "PHOTOGRAPHY", img: "/BUGSLAYERS/Photography/photo2.jpg" },
-      { id: "VK-2_PHOTOGRAPHY_4", name: "Editor", position: "Editor", department: "PHOTOGRAPHY", img: "/BUGSLAYERS/Photography/editor.jpg" }
+      { id: "VK-2_PHOTOGRAPHY_1", name: "Dharmveer", position: "Member", department: "PHOTOGRAPHY", img: "public/BUGSLAYERS/Photography/Dharmveer.jpg" },
+      { id: "VK-2_PHOTOGRAPHY_2", name: "Lakshay", position: "Member", department: "PHOTOGRAPHY", img: "public/BUGSLAYERS/Photography/Lakshay.jpg" },
+      { id: "VK-2_PHOTOGRAPHY_3", name: "Manas Gupta", position: "Member", department: "PHOTOGRAPHY", img: "public/BUGSLAYERS/Photography/Manas.jpg" },
+      { id: "VK-2_PHOTOGRAPHY_4", name: "Yash Biduri", position: "Member", department: "PHOTOGRAPHY", img: "public/BUGSLAYERS/Photography/Yash.jpg" }
     ],
     color: "#00ff66"
   },
-  {
-    name: "POSTER",
-    members: [
-      { id: "VK-2_POSTER_1", name: "Poster Head", position: "Head", department: "POSTER", img: "/BUGSLAYERS/Poster/head.jpg" },
-      { id: "VK-2_POSTER_2", name: "Designer", position: "Designer", department: "POSTER", img: "/BUGSLAYERS/Poster/designer1.jpg" },
-      { id: "VK-2_POSTER_3", name: "Designer", position: "Designer", department: "POSTER", img: "/BUGSLAYERS/Poster/designer2.jpg" },
-      { id: "VK-2_POSTER_4", name: "Editor", position: "Editor", department: "POSTER", img: "/BUGSLAYERS/Poster/editor.jpg" }
-    ],
-    color: "#ff0044"
-  },
+
   {
     name: "SOCIAL MEDIA",
     members: [
-      { id: "VK-2_SOCIALMEDIA_1", name: "SM Head", position: "Head", department: "SOCIAL MEDIA", img: "/BUGSLAYERS/Social Media/head.jpg" },
-      { id: "VK-2_SOCIALMEDIA_2", name: "Content Creator", position: "Content Creator", department: "SOCIAL MEDIA", img: "/BUGSLAYERS/Social Media/content.jpg" },
-      { id: "VK-2_SOCIALMEDIA_3", name: "Designer", position: "Designer", department: "SOCIAL MEDIA", img: "/BUGSLAYERS/Social Media/designer.jpg" },
-      { id: "VK-2_SOCIALMEDIA_4", name: "Analyst", position: "Analyst", department: "SOCIAL MEDIA", img: "/BUGSLAYERS/Social Media/analyst.jpg" }
+      { id: "VK-2_SOCIAL_1", name: "Dharamveer", position: "Convener", department: "SOCIAL MEDIA", img: "public/BUGSLAYERS/SocialMedia/Dharamveer.jpg" },
+      { id: "VK-2_SOCIAL_2", name: "Lakshay", position: "Member", department: "SOCIAL MEDIA", img: "public/BUGSLAYERS/SocialMedia/Lakshay.jpg" },
+      { id: "VK-2_SOCIAL_3", name: "Aditya Katoch", position: "Member", department: "SOCIAL MEDIA", img: "public/BUGSLAYERS/SocialMedia/AdityaKatoch.jpg" },
+      { id: "VK-2_SOCIAL_4", name: "Yash Biduri", position: "Member", department: "SOCIAL MEDIA", img: "public/BUGSLAYERS/SocialMedia/Yash.jpg" },
+      { id: "VK-2_SOCIAL_5", name: "Anchal", position: "Member", department: "SOCIAL MEDIA", img: "public/BUGSLAYERS/SocialMedia/Anchal.jpg" },
+      { id: "VK-2_SOCIAL_6", name: "Prisha", position: "Member", department: "SOCIAL MEDIA", img: "public/BUGSLAYERS/SocialMedia/Prisha.jpg" },
+      { id: "VK-2_SOCIAL_7", name: "Arohi", position: "Member", department: "SOCIAL MEDIA", img: "public/BUGSLAYERS/SocialMedia/Arohi.jpg" },
+      { id: "VK-2_SOCIAL_8", name: "Sai", position: "Member", department: "SOCIAL MEDIA", img: "public/BUGSLAYERS/SocialMedia/Sai.jpg" },
+      { id: "VK-2_SOCIAL_9", name: "Siddhartha", position: "Member", department: "SOCIAL MEDIA", img: "public/BUGSLAYERS/SocialMedia/Siddhartha.jpg" },
+      { id: "VK-2_SOCIAL_10", name: "Sambhav", position: "Member", department: "SOCIAL MEDIA", img: "public/BUGSLAYERS/SocialMedia/Sambhav.jpg" },
+      { id: "VK-2_SOCIAL_11", name: "Garvit", position: "Member", department: "SOCIAL MEDIA", img: "public/BUGSLAYERS/SocialMedia/Garvit.jpg" }
     ],
     color: "#ffaa00"
+  },
+
+  {
+    name: "INVITATION & SPONSORSHIP",
+    members: [
+      { id: "VK-2_SPONSOR_1", name: "Shivam", position: "Member", department: "INVITATION & SPONSORSHIP", img: "public/BUGSLAYERS/Sponsorship/Shivam.jpg" },
+      { id: "VK-2_SPONSOR_2", name: "Yashraj", position: "Member", department: "INVITATION & SPONSORSHIP", img: "public/BUGSLAYERS/Sponsorship/Yashraj.jpg" },
+      { id: "VK-2_SPONSOR_3", name: "Kunal", position: "Member", department: "INVITATION & SPONSORSHIP", img: "public/BUGSLAYERS/Sponsorship/Kunal.jpg" },
+      { id: "VK-2_SPONSOR_4", name: "Yash Biduri", position: "Member", department: "INVITATION & SPONSORSHIP", img: "public/BUGSLAYERS/Sponsorship/Yash.jpg" },
+      { id: "VK-2_SPONSOR_5", name: "Manas", position: "Member", department: "INVITATION & SPONSORSHIP", img: "public/BUGSLAYERS/Sponsorship/Manas.jpg" },
+      { id: "VK-2_SPONSOR_6", name: "Abbu Sufiyan", position: "Member", department: "INVITATION & SPONSORSHIP", img: "public/BUGSLAYERS/Sponsorship/Abbu.jpg" },
+      { id: "VK-2_SPONSOR_7", name: "Pravar", position: "Member", department: "INVITATION & SPONSORSHIP", img: "public/BUGSLAYERS/Sponsorship/Pravar.jpg" },
+      { id: "VK-2_SPONSOR_8", name: "Amolak", position: "Member", department: "INVITATION & SPONSORSHIP", img: "public/BUGSLAYERS/Sponsorship/Amolak.jpg" },
+      { id: "VK-2_SPONSOR_9", name: "Ayush", position: "Member", department: "INVITATION & SPONSORSHIP", img: "public/BUGSLAYERS/Sponsorship/Ayush.jpg" }
+    ],
+    color: "#ff006e"
+  },
+
+  {
+    name: "POSTER MAKING",
+    members: [
+      { id: "VK-2_POSTER_1", name: "Yashik", position: "Member", department: "POSTER MAKING", img: "public/BUGSLAYERS/Poster/Yashik.jpg" },
+      { id: "VK-2_POSTER_2", name: "Jashandeep", position: "Member", department: "POSTER MAKING", img: "public/BUGSLAYERS/Poster/Jashandeep.jpg" },
+      { id: "VK-2_POSTER_3", name: "Ishqpreet", position: "Member", department: "POSTER MAKING", img: "public/BUGSLAYERS/Poster/Ishqpreet.jpg" },
+      { id: "VK-2_POSTER_4", name: "Aarohi", position: "Member", department: "POSTER MAKING", img: "public/BUGSLAYERS/Poster/Aarohi.jpg" },
+      { id: "VK-2_POSTER_5", name: "Sai", position: "Member", department: "POSTER MAKING", img: "public/BUGSLAYERS/Poster/Sai.jpg" }
+    ],
+    color: "#ff0044"
+  },
+
+  {
+    name: "IT EVENT",
+    members: [
+      { id: "VK-2_IT_1", name: "Vinay", position: "Member", department: "IT EVENT", img: "public/BUGSLAYERS/ITEvent/Vinay.jpg" },
+      { id: "VK-2_IT_2", name: "Yagnesh Bala", position: "Member", department: "IT EVENT", img: "public/BUGSLAYERS/ITEvent/Yagnesh.jpg" },
+      { id: "VK-2_IT_3", name: "Krishank", position: "Member", department: "IT EVENT", img: "public/BUGSLAYERS/ITEvent/Krishank.jpg" },
+      { id: "VK-2_IT_4", name: "Preeti", position: "Member", department: "IT EVENT", img: "public/BUGSLAYERS/ITEvent/Preeti.jpg" },
+      { id: "VK-2_IT_5", name: "Rishika", position: "Member", department: "IT EVENT", img: "public/BUGSLAYERS/ITEvent/Rishika.jpg" }
+    ],
+    color: "#b100ff"
   }
+
 ];
 
 const TerminalSelector = ({ activeBatch, setActiveBatch }) => {

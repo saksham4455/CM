@@ -3,7 +3,7 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from
 import "../css/pastevents.css";
 import BoxText from "../components/BoxText";
 
-// Reference images from public folder as URL strings
+// Reference images from public folder (Vite serves public/ at root)
 const C24_1 = "/Cynet_Images/Cynet-2024-folder/C24-1.jpg";
 const C24_2 = "/Cynet_Images/Cynet-2024-folder/C24-2.jpg";
 const C24_3 = "/Cynet_Images/Cynet-2024-folder/C24-3.jpg";
@@ -28,15 +28,15 @@ const C25_11 = "/Cynet_Images/Cynet-2025/C25-11.jpg";
 const C25_12 = "/Cynet_Images/Cynet-2025/C25-12.jpg";
 
 // ─── Globe config ──────────────────────────────────────────────────────────────
-const ROWS = 8;
-const COLS = 20;
+const ROWS = 12;
+const COLS = 32;
 const THETA_TOTAL = 110;
 const THETA_START_D = 55;
 const THETA_PER_D = THETA_TOTAL / ROWS;
 const DEG = (d) => (d * Math.PI) / 180;
 
-const GAP_FACTOR_W = 0.99;
-const GAP_FACTOR_H = 0.99;
+const GAP_FACTOR_W = 0.85;
+const GAP_FACTOR_H = 0.85;
 
 const getGlobeParams = (width) => {
   const height = window.innerHeight;
@@ -45,14 +45,14 @@ const getGlobeParams = (width) => {
   // Calculate maximum radius that fills the vertical space
   const safeHeight = height - 150; // Account for header space
   const maxSafeRadius = safeHeight / (2 * Math.sin(DEG(THETA_TOTAL / 2)));
-  
-  // Maximize width to fill entire screen
-  let targetRadius = width * 1.0; // Full screen width
-  let r_css = Math.min(targetRadius, maxSafeRadius); // Fit within vertical space
+
+  // Maximize width to fill entire screen - scaled radius by another 40% (1.5 * 1.4 = 2.1)
+  let targetRadius = width * 1.8;
+  let r_css = Math.min(targetRadius, maxSafeRadius) * 2.1;
   let persp = r_css * 2.8;
 
   if (isSmall) {
-    r_css = width * 0.9; // Near full width on mobile
+    r_css = width * 2.5; // (1.8 * 1.4)
     persp = r_css * 2.5;
   }
 
@@ -142,7 +142,7 @@ const CSSGlobe = ({ mouseX, mouseY }) => {
   }, [driftX, driftY, isGlobeHovered]);
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.2, ease: "easeOut" }}
@@ -188,7 +188,7 @@ const CSSGlobe = ({ mouseX, mouseY }) => {
           );
         })}
       </div>
-      
+
       {/* Hover Popup */}
       <AnimatePresence>
         {hoveredImage && (
@@ -207,7 +207,7 @@ const CSSGlobe = ({ mouseX, mouseY }) => {
                 pointerEvents: "none",
               }}
             />
-            
+
             {/* Centered Popup */}
             <motion.div
               initial={{ opacity: 0, scale: 0.5, x: "-50%", y: "-50%" }}
@@ -237,8 +237,8 @@ const CSSGlobe = ({ mouseX, mouseY }) => {
                   alt="Preview"
                   style={{
                     display: "block",
-                    maxWidth: "80vw",
-                    maxHeight: "80vh",
+                    maxWidth: "40vw",
+                    maxHeight: "40vh",
                     width: "auto",
                     height: "auto",
                     objectFit: "contain",
