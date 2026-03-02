@@ -15,7 +15,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 import ContactForm from './components/ContactForm';
 
 // Lazy-loaded components
-const CustomCursor = lazy(() => import('./components/CustomCursor'));
+const SmoothCursor = lazy(() => import('./registry/magicui/smooth-cursor').then(m => ({ default: m.SmoothCursor })));
 const ScrollToTop = lazy(() => import('./components/ScrollToTop'));
 
 // Lazy-loaded pages
@@ -276,7 +276,7 @@ function App() {
             {location.pathname !== '/admin' && location.pathname !== '/admin-login' && location.pathname !== '/register' && <Footer />}
 
             {/* Custom Cursor */}
-            <CustomCursor theme={theme} />
+            <SmoothCursor />
           </Suspense>
         </div>
       )}
