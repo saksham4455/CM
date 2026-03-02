@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import "../css/TeamPage.css";
 import { useGlitchText } from "../hooks/useGlitchText";
 
-const GROUP_PHOTO_VK1 = "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=600&fit=crop";
+const GROUP_PHOTO_VK1 = "/Enigma_Team/Enigma.jpeg";
 const GROUP_PHOTO_VK2 = "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=1200&h=600&fit=crop";
 
 // Helper to generate member objects with custom image paths
@@ -56,7 +56,7 @@ const vk1Departments = [
       { id: "VK-1_EVENT_4", name: "Puru Gupta", position: "Manager", department: "EVENT MANAGEMENT", img: "public/Enigma_Team/Event/Puru Gupta Manager .jpg" },
       { id: "VK-1_EVENT_5", name: "Nysa Katyal", position: "Manager", department: "EVENT MANAGEMENT", img: "public/Enigma_Team/Event/Nysa Katyal (manager).jpg" },
       { id: "VK-1_EVENT_6", name: "Kavya Datta", position: "Member", department: "EVENT MANAGEMENT", img: "public/Enigma_Team/Event/kavya.jpeg" },
-      { id: "VK-1_EVENT_7", name: "Jiyaa Arora", position: "Member", department: "EVENT MANAGEMENT", img: "public/Enigma_Team/Event/jiya arora.jpeg"},
+      { id: "VK-1_EVENT_7", name: "Jiyaa Arora", position: "Member", department: "EVENT MANAGEMENT", img: "/Enigma_Team/Event/jiya.jpeg"},
       { id: "VK-1_EVENT_8", name: "Shrishti Saklani", position: "Member", department: "EVENT MANAGEMENT", img: "public/Enigma_Team/Event/Shrishti ( member ).jpg" },
       { id: "VK-1_EVENT_9", name: "Harassis Singh", position: "Member", department: "EVENT MANAGEMENT", img: "public/Enigma_Team/Event/Harassis Singh.jpg" },
       { id: "VK-1_EVENT_10", name: "Ishaan", position: "Member", department: "EVENT MANAGEMENT", img: "public/Enigma_Team/Event/Ishaan.webp" },
@@ -68,7 +68,7 @@ const vk1Departments = [
   {
     name: "MARKETING AND PR",
     members: [
-      { id: "VK-1_MARKETING_2", name: "Aditya Kapoor", position: "Assistant Director", department: "MARKETING", img: "frontend/public/Enigma_Team/Marketing/Aditya.JPG" },
+      { id: "VK-1_MARKETING_2", name: "Aditya Kapoor", position: "Assistant Director", department: "MARKETING", img: "/Enigma_Team/Marketing/Aditya.JPG" },
       { id: "VK-1_MARKETING_3", name: "Pushkar Sharma", position: "Assistant Director", department: "MARKETING", img: "/Enigma_Team/Marketing/content.jpg" },
       { id: "VK-1_MARKETING_4", name: "Shyna Chaurasia", position: "Manager", department: "MARKETING", img: "public/Enigma_Team/Marketing/Shyna chaurasia_.jpg" },
       { id: "VK-1_MARKETING_5", name: "Prachi Bjaj", position: "Manager", department: "MARKETING", img: "public/Enigma_Team/Marketing/Prachi.jpg" },
@@ -96,14 +96,14 @@ const vk1Departments = [
   {
     name: "STILLS & MOTION",
     members: [
-      { id: "VK-1_STILLSMOTION_1", name: "Avijot Singh Anand", position: "Director", department: "STILLS & MOTION", img: "/Enigma_Team/StillsMotion/head.jpg" },
-      { id: "VK-1_STILLSMOTION_2", name: "Ishneet Kaur", position: "Assistant Director", department: "STILLS & MOTION", img: "/Enigma_Team/StillsMotion/video.jpg" },
-      { id: "VK-1_STILLSMOTION_3", name: "Roshan Kumar", position: "Manager", department: "STILLS & MOTION", img: "public/Enigma_Team/Stills and motion/Roshan - Stills Manager_.jpg" },
-      { id: "VK-1_STILLSMOTION_4", name: "Sanchit Nair", position: "Manager", department: "STILLS & MOTION", img: "/Enigma_Team/StillsMotion/assistant.jpg" },
-      { id: "VK-1_STILLSMOTION_5", name: "Bhuvesh", position: "Member", department: "STILLS & MOTION", img: "public/Enigma_Team/Stills and motion/Bhuvesh.JPG" },
-      { id: "VK-1_STILLSMOTION_6", name: "Srijan Jha", position: "Member", department: "STILLS & MOTION", img: "/Enigma_Team/StillsMotion/editor.jpg" },
-      { id: "VK-1_STILLSMOTION_7", name: "Mehar Mukker", position: "Member", department: "STILLS & MOTION", img: "/Enigma_Team/StillsMotion/assistant.jpg" },
-      { id: "VK-1_STILLSMOTION_8", name: "Suryansh Walia", position: "Member", department: "STILLS & MOTION", img: "/Enigma_Team/StillsMotion/video.jpg" }
+      { id: "VK-1_STILLSMOTION_1", name: "Avijot Singh Anand", position: "Director", department: "STILLS & MOTION", img: "/Enigma_Team/Stills and motion/.JPG" },
+      { id: "VK-1_STILLSMOTION_2", name: "Ishneet Kaur", position: "Assistant Director", department: "STILLS & MOTION", img: "/Enigma_Team/Stills and motion/Ishneet.PNG" },
+      { id: "VK-1_STILLSMOTION_3", name: "Roshan Kumar", position: "Manager", department: "STILLS & MOTION", img: "/Enigma_Team/Stills and motion/Roshan - Stills Manager_.jpg" },
+      { id: "VK-1_STILLSMOTION_4", name: "Sanchit Nair", position: "Manager", department: "STILLS & MOTION", img: "/Enigma_Team/Stills and motion/Sanchit.jpg" },
+      { id: "VK-1_STILLSMOTION_5", name: "Bhuvesh", position: "Member", department: "STILLS & MOTION", img: "/Enigma_Team/Stills and motion/Bhuvesh.JPG" },
+      { id: "VK-1_STILLSMOTION_6", name: "Srijan Jha", position: "Member", department: "STILLS & MOTION", img: "/Enigma_Team/Stills and motion/.jpg" },
+      { id: "VK-1_STILLSMOTION_7", name: "Mehar Mukker", position: "Member", department: "STILLS & MOTION", img: "/Enigma_Team/Stills and motion/.PNG" },
+      { id: "VK-1_STILLSMOTION_8", name: "Suryansh Walia", position: "Member", department: "STILLS & MOTION", img: "/Enigma_Team/Stills and motion/SuryaanshWalia_StillsAndMotion.JPG" }
     ],
     color: "#ff0044"
   }
@@ -163,15 +163,15 @@ const vk2Departments = [
   {
     name: "INNOVATION & SPONSORSHIP",
     members: [
-      { id: "VK-2_INNOVATIONSPONSOR_1", name: "Shivam", position: "Head", department: "INNOVATION & SPONSOR", img: "/BUGSLAYERS/Inivation and sponser/head.jpg" },
-      { id: "VK-2_INNOVATIONSPONSOR_2", name: "Yashraj", position: "Sponsor Lead", department: "INNOVATION & SPONSOR", img: "/BUGSLAYERS/Inivation and sponser/sponsor1.jpg" },
-      { id: "VK-2_INNOVATIONSPONSOR_3", name: "Kunal", position: "Sponsor", department: "INNOVATION & SPONSOR", img: "/BUGSLAYERS/Inivation and sponser/sponsor2.jpg" },
-      { id: "VK-2_INNOVATIONSPONSOR_4", name: "Yash Biduri", position: "Secretary", department: "INNOVATION & SPONSOR", img: "/BUGSLAYERS/Inivation and sponser/secretary.jpg" },
-      { id: "VK-2_INNOVATIONSPONSOR_5", name: "Manas", position: "Volunteer", department: "INNOVATION & SPONSOR", img: "/BUGSLAYERS/Inivation and sponser/volunteer.jpg" },
-      { id: "VK-2_INNOVATIONSPONSOR_6", name: "Abbu Sufiyan", position: "Volunteer", department: "INNOVATION & SPONSOR", img: "/BUGSLAYERS/Inivation and sponser/volunteer2.jpg" },
-      { id: "VK-2_INNOVATIONSPONSOR_7", name: "Parvar", position: "Volunteer", department: "INNOVATION & SPONSOR", img: "/BUGSLAYERS/Inivation and sponser/volunteer3.jpg" },,
-      { id: "VK-2_INNOVATIONSPONSOR_8", name: "Amolak", position: "Volunteer", department: "INNOVATION & SPONSOR", img: "/BUGSLAYERS/Inivation and sponser/volunteer4.jpg" },,
-      { id: "VK-2_INNOVATIONSPONSOR_9", name: "Ayush", position: "Volunteer", department: "INNOVATION & SPONSOR", img: "/BUGSLAYERS/Inivation and sponser/volunteer5.jpg" }
+      { id: "VK-2_INNOVATIONSPONSOR_1", name: "Shivam", position: "Head", department: "INNOVATION & SPONSOR", img: "/BUGSLAYERS/Innovation and sponser/head.jpg" },
+      { id: "VK-2_INNOVATIONSPONSOR_2", name: "Yashraj", position: "Sponsor Lead", department: "INNOVATION & SPONSOR", img: "/BUGSLAYERS/Innovation and sponser/sponsor1.jpg" },
+      { id: "VK-2_INNOVATIONSPONSOR_3", name: "Kunal", position: "Sponsor", department: "INNOVATION & SPONSOR", img: "/BUGSLAYERS/Innovation and sponser/sponsor2.jpg" },
+      { id: "VK-2_INNOVATIONSPONSOR_4", name: "Yash Biduri", position: "Secretary", department: "INNOVATION & SPONSOR", img: "/BUGSLAYERS/Innovation and sponser/secretary.jpg" },
+      { id: "VK-2_INNOVATIONSPONSOR_5", name: "Manas", position: "Volunteer", department: "INNOVATION & SPONSOR", img: "/BUGSLAYERS/Innovation and sponser/volunteer.jpg" },
+      { id: "VK-2_INNOVATIONSPONSOR_6", name: "Abbu Sufiyan", position: "Volunteer", department: "INNOVATION & SPONSOR", img: "/BUGSLAYERS/Innovation and sponser/volunteer2.jpg" },
+      { id: "VK-2_INNOVATIONSPONSOR_7", name: "Parvar", position: "Volunteer", department: "INNOVATION & SPONSOR", img: "/BUGSLAYERS/Innovation and sponser/volunteer3.jpg" },
+      { id: "VK-2_INNOVATIONSPONSOR_8", name: "Amolak", position: "Volunteer", department: "INNOVATION & SPONSOR", img: "/BUGSLAYERS/Innovation and sponser/volunteer4.jpg" },
+      { id: "VK-2_INNOVATIONSPONSOR_9", name: "Ayush", position: "Volunteer", department: "INNOVATION & SPONSOR", img: "/BUGSLAYERS/Innovation and sponser/volunteer5.jpg" }
     ],
     color: "#ff006e"
   },

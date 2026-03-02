@@ -497,3 +497,14 @@
         padding: 4px 8px;
     }
 }
+
+/* ─── Override Lenis scroll-lock when event overlay is open ───────────── */
+[data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+/* Ensure overlay scroll container works even when Lenis is stopped */
+html.lenis.lenis-stopped [data-lenis-prevent] {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+}

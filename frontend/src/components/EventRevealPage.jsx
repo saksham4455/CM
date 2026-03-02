@@ -13,6 +13,10 @@ const EventRevealPage = ({ event, onClose, onNext, onPrevious, hasNext, hasPrevi
     document.body.style.overflow = 'hidden';
     document.documentElement.style.overflow = 'hidden';
 
+    // Stop Lenis smooth scroll so wheel events work natively in the overlay
+    const lenis = window.__lenis;
+    if (lenis) lenis.stop();
+
     // Hide footer, navbar, and scroll-to-top so they don't bleed through
     const footer = document.querySelector('.footer');
     const scrollBtn = document.querySelector('.scroll-to-top-btn');
@@ -38,6 +42,7 @@ const EventRevealPage = ({ event, onClose, onNext, onPrevious, hasNext, hasPrevi
     return () => {
       document.body.style.overflow = '';
       document.documentElement.style.overflow = '';
+      if (lenis) lenis.start();
       if (footer) footer.style.display = '';
       if (scrollBtn) scrollBtn.style.display = '';
       window.removeEventListener('keydown', handleKeyPress);
@@ -59,8 +64,9 @@ const EventRevealPage = ({ event, onClose, onNext, onPrevious, hasNext, hasPrevi
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-          className="fixed inset-0 overflow-hidden"
+          className="fixed inset-0"
           style={{ zIndex: 9999, isolation: 'isolate' }}
+          data-lenis-prevent
         >
           {/* Background */}
           <div className="absolute inset-0">
@@ -97,7 +103,7 @@ const EventRevealPage = ({ event, onClose, onNext, onPrevious, hasNext, hasPrevi
           </button>
 
           {/* Main Content Container */}
-          <div className="relative h-full overflow-y-auto overflow-x-hidden px-4 sm:px-6 md:px-8 lg:px-12 pt-16 pb-20 sm:pb-24">
+          <div className="relative h-full overflow-y-auto overflow-x-hidden px-4 sm:px-6 md:px-8 lg:px-12 pt-20 sm:pt-24 pb-20 sm:pb-24" data-lenis-prevent>
             <div className="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6 lg:gap-10 lg:items-start lg:pt-4">
 
               {/* ── LEFT SECTION ── */}

@@ -90,6 +90,7 @@ function App() {
       });
 
       lenisRef.current = lenis;
+      window.__lenis = lenis;
 
       // Sync Lenis scroll position with GSAP ScrollTrigger
       lenis.on('scroll', ScrollTrigger.update);

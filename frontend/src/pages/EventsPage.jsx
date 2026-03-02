@@ -420,54 +420,59 @@ const EventsPage = ({ theme = 'blue' }) => {
                     </p>
 
                     {/* Event Details Grid */}
-                    <div className="grid grid-cols-2 gap-1.5 mb-3 pb-2 border-b"
+                    <div className="grid grid-cols-2 gap-x-3 gap-y-2 mb-3 pb-2.5 border-b"
                       style={{ borderColor: `${event.accentColor}30` }}
                     >
                       {event.details.slice(0, 4).map((detail, idx) => (
                         <div key={idx} className="text-[10px]">
-                          <div className="text-gray-500 mb-0.5">{detail.label}</div>
-                          <div className="text-white font-semibold">{detail.value}</div>
+                          <div className="text-gray-500 font-mono tracking-wide mb-0.5">{detail.label}</div>
+                          <div className="text-white font-semibold leading-tight">{detail.value}</div>
                         </div>
                       ))}
                     </div>
 
                     {/* Bottom Info Row: Coordinator + Student Coordinators */}
-                    <div className="flex gap-1.5 mb-3">
+                    <div className="flex flex-col gap-1.5 mb-3">
                       {/* Coordinator Box */}
                       <div
-                        className="flex-1 rounded-lg px-2 py-2 flex items-center gap-2 min-w-0"
+                        className="rounded-lg px-2.5 py-2 flex items-center gap-2"
                         style={{
                           background: `${event.accentColor}15`,
                           border: `1px solid ${event.accentColor}45`,
                         }}
                       >
                         <span className="text-base flex-shrink-0">📞</span>
-                        <div className="min-w-0">
+                        <div className="min-w-0 flex-1">
                           <div className="text-[8px] font-mono text-gray-500 leading-tight">COORDINATOR</div>
                           <div className="text-[10px] text-white font-semibold truncate leading-tight">{event.coordinator.name}</div>
-                          <div className="text-[9px] font-mono leading-tight" style={{ color: event.accentColor }}>{event.coordinator.phone}</div>
                         </div>
+                        <div className="text-[9px] font-mono flex-shrink-0" style={{ color: event.accentColor }}>{event.coordinator.phone}</div>
                       </div>
 
-                      {/* Student Coordinators Names Box */}
+                      {/* Student Coordinators */}
                       {event.studentCoordinators && (
                         <div
-                          className="flex-1 rounded-lg px-2 py-2 min-w-0 overflow-hidden"
+                          className="rounded-lg px-2.5 py-2"
                           style={{
                             background: `${event.accentColor}08`,
                             border: `1px solid ${event.accentColor}30`,
                           }}
                         >
-                          <div className="text-[8px] font-mono text-gray-500 mb-1 leading-tight tracking-wider">STUDENT COORDS</div>
-                          {event.studentCoordinators.slice(0, 3).map((name, si) => (
-                            <div key={si} className="flex items-center gap-1 mb-0.5">
-                              <div className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: event.accentColor }} />
-                              <span className="text-[9px] text-gray-300 truncate leading-tight">{name}</span>
-                            </div>
-                          ))}
-                          {event.studentCoordinators.length > 3 && (
-                            <span className="text-[8px] text-gray-500">+{event.studentCoordinators.length - 3} more</span>
-                          )}
+                          <div className="text-[8px] font-mono text-gray-500 mb-1 leading-tight tracking-wider">STUDENT COORDINATORS</div>
+                          <div className="flex flex-wrap gap-1">
+                            {event.studentCoordinators.map((name, si) => (
+                              <span
+                                key={si}
+                                className="text-[9px] text-gray-300 px-1.5 py-0.5 rounded-full"
+                                style={{
+                                  background: `${event.accentColor}12`,
+                                  border: `1px solid ${event.accentColor}25`,
+                                }}
+                              >
+                                {name}
+                              </span>
+                            ))}
+                          </div>
                         </div>
                       )}
                     </div>
