@@ -31,7 +31,7 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
-    filter: brightness(0.55) contrast(1.15) grayscale(0.6) blur(1px);
+    filter: brightness(0.85) contrast(1.1) grayscale(0.15) blur(0.5px);
     animation: breathing-pulse 12s ease-in-out infinite;
     display: block;
 }
@@ -41,7 +41,7 @@
     0%,
     100% {
         transform: scale(1);
-        opacity: 0.8;
+        opacity: 1.0;
     }
 
     50% {
@@ -191,7 +191,7 @@
     border-color: var(--neon-cyan);
     width: 80px;
     height: 80px;
-    opacity: 0.6;
+    opacity: 1.0;
 }
 
 .pong-scanline {
