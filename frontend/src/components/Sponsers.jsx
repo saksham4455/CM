@@ -7,10 +7,6 @@ const Sponsors = ({ theme = 'blue' }) => {
     {
       name: 'TSN Securitys',
       logo: '/Logo/Sponser_1.jpeg',
-    },
-    {
-      name: 'Carrer Partner',
-      logo: '/Logo/Sponser_2.png',
     }
   ];
 

@@ -1,4 +1,5 @@
 import React, { useState, useMemo, memo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import PongHero from '../components/PongHero';
 import Sponsors from '../components/Sponsers';
@@ -7,6 +8,7 @@ import CyberMatrixBackground from '../components/CyberMatrixBackground';
 import '../css/Home.css';
 
 const Home = memo(() => {
+  const navigate = useNavigate();
   const [isScanned, setIsScanned] = useState(false);
   
   const events = useMemo(() => [
@@ -129,7 +131,7 @@ const Home = memo(() => {
               whileHover={{ scale: 1.02 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              onClick={() => window.location.href = '/contact'}
+              onClick={() => navigate('/events')}
             >
               <span className="stat-tag" style={{ color: '#00f3ff', opacity: 1 }}>ENTER THE GRID</span>
             </motion.div>

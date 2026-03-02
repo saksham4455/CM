@@ -1,5 +1,5 @@
 .sponsors-section {
-    padding: clamp(8rem, 20vw, 12rem) 0;
+    padding: clamp(4rem, 10vw, 6rem) 0;
     position: relative;
     overflow: hidden;
     background: transparent;
@@ -17,7 +17,7 @@
 
 .sponsors-header {
     text-align: center;
-    margin-bottom: clamp(4rem, 10vw, 7rem);
+    margin-bottom: clamp(2rem, 5vw, 3rem);
 }
 
 .sponsors-title {
@@ -53,26 +53,20 @@
 .sponsors-grid {
     display: flex;
     justify-content: center;
-    align-items: stretch;
-    flex-wrap: wrap;
-    gap: 3rem;
-    max-width: 900px;
-    margin: 0 auto;
+    align-items: center;
+    width: 100%;
 }
 
 .sponsor-card {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(0, 243, 255, 0.2);
     border-radius: 12px;
-    padding: 3rem 2rem;
+    padding: 3rem 5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
     transition: all 0.3s ease;
-    width: 350px;
-    max-width: 100%;
-    margin-left: 2rem;
 }
 
 .sponsor-card:hover {
@@ -133,7 +127,7 @@
     }
 
     .sponsors-section {
-        padding: clamp(5rem, 15vw, 8rem) 0;
+        padding: clamp(3rem, 10vw, 5rem) 0;
     }
 
     .sponsor-card {
