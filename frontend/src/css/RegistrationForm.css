@@ -1,0 +1,437 @@
+/* ═══════════════════════════════════════════
+   REGISTRATION FORM
+═══════════════════════════════════════════ */
+
+.rf-wrapper {
+    min-height: 100vh;
+    padding: 6rem 1.5rem 4rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background: #06060c;
+}
+
+.rf-card {
+    width: 100%;
+    max-width: 860px;
+    background: rgba(10, 10, 20, 0.95);
+    border: 1px solid rgba(0, 243, 255, 0.18);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow:
+        0 0 0 1px rgba(0, 243, 255, 0.05),
+        0 24px 80px rgba(0, 0, 0, 0.6),
+        0 0 60px rgba(0, 243, 255, 0.04);
+}
+
+/* ── Header ── */
+.rf-header {
+    padding: 2.4rem 2.8rem 2rem;
+    border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+    background: linear-gradient(135deg, rgba(0, 243, 255, 0.04) 0%, transparent 60%);
+    text-align: center;
+}
+
+.rf-badge {
+    display: inline-block;
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 5px;
+    color: #00f3ff;
+    border: 1px solid rgba(0, 243, 255, 0.4);
+    padding: 0.25rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.rf-title {
+    font-family: 'Courier New', monospace;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.rf-subtitle {
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.875rem;
+    letter-spacing: 1px;
+}
+
+/* ── Form body ── */
+.rf-form {
+    padding: 2.4rem 2.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+
+/* ── Two-column row ── */
+.rf-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.4rem;
+}
+
+/* ── Field ── */
+.rf-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.rf-field--full {
+    grid-column: 1 / -1;
+}
+
+.rf-label {
+    font-family: 'Courier New', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.rf-req {
+    color: #00f3ff;
+    margin-left: 2px;
+}
+
+/* ── Input / Select base ── */
+.rf-input,
+.rf-select {
+    width: 100%;
+    padding: 0.72rem 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    color: #fff;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.rf-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2300f3ff' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.4rem;
+    cursor: pointer;
+}
+
+.rf-select option {
+    background: #0d0d1a;
+    color: #fff;
+}
+
+.rf-input:focus,
+.rf-select:focus {
+    border-color: rgba(0, 243, 255, 0.6);
+    box-shadow: 0 0 0 3px rgba(0, 243, 255, 0.08),
+                inset 0 0 12px rgba(0, 243, 255, 0.04);
+    background: rgba(0, 243, 255, 0.04);
+}
+
+.rf-input::placeholder { color: rgba(255, 255, 255, 0.25); }
+
+.rf-input--err {
+    border-color: rgba(255, 80, 80, 0.7) !important;
+    box-shadow: 0 0 0 3px rgba(255, 80, 80, 0.08) !important;
+}
+
+.rf-error {
+    font-size: 0.75rem;
+    color: #ff6060;
+    letter-spacing: 0.5px;
+}
+
+/* ── Radio group ── */
+.rf-radio-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.rf-radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.65rem 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.rf-radio-label input[type="radio"] { display: none; }
+
+.rf-radio-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.rf-radio-label--active {
+    border-color: rgba(0, 243, 255, 0.5);
+    color: #00f3ff;
+    background: rgba(0, 243, 255, 0.06);
+}
+
+.rf-radio-label--active .rf-radio-dot {
+    border-color: #00f3ff;
+    background: #00f3ff;
+    box-shadow: 0 0 8px rgba(0, 243, 255, 0.5);
+}
+
+/* ── Payment section ── */
+.rf-payment-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+}
+
+.rf-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: rgba(0, 243, 255, 0.5);
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.rf-divider::before,
+.rf-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(0, 243, 255, 0.15);
+}
+
+.rf-payment-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+/* ── QR code ── */
+.rf-qr-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.rf-qr-frame {
+    width: 160px;
+    height: 160px;
+    border: 2px solid rgba(0, 243, 255, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.03);
+    position: relative;
+}
+
+.rf-qr-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.rf-qr-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: rgba(0, 243, 255, 0.4);
+    font-family: 'Courier New', monospace;
+    font-size: 1.4rem;
+}
+
+.rf-qr-placeholder small { font-size: 0.65rem; opacity: 0.6; }
+
+.rf-qr-hint {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.35);
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    max-width: 160px;
+    line-height: 1.4;
+}
+
+/* ── Upload zone ── */
+.rf-upload-zone {
+    min-height: 140px;
+    border: 2px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    padding: 1.2rem;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    background: rgba(255, 255, 255, 0.02);
+    text-align: center;
+}
+
+.rf-upload-zone:hover {
+    border-color: rgba(0, 243, 255, 0.45);
+    background: rgba(0, 243, 255, 0.04);
+}
+
+.rf-upload-zone--err { border-color: rgba(255, 80, 80, 0.5); }
+
+.rf-upload-zone--filled {
+    border-style: solid;
+    border-color: rgba(0, 243, 255, 0.4);
+    padding: 0;
+    overflow: hidden;
+}
+
+.rf-upload-icon {
+    font-size: 1.8rem;
+    color: rgba(0, 243, 255, 0.5);
+}
+
+.rf-upload-text {
+    font-family: 'Courier New', monospace;
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.rf-upload-hint {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.28);
+}
+
+.rf-upload-preview {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+}
+
+.rf-remove-file {
+    margin-top: 0.4rem;
+    background: transparent;
+    border: none;
+    color: rgba(255, 80, 80, 0.7);
+    font-size: 0.78rem;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-family: 'Courier New', monospace;
+    transition: color 0.2s;
+    padding: 0;
+}
+
+.rf-remove-file:hover { color: #ff6060; }
+
+/* ── Submit button ── */
+.rf-btn {
+    padding: 0.9rem 2.4rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #000;
+    background: #00f3ff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 0 24px rgba(0, 243, 255, 0.3);
+}
+
+.rf-btn:hover {
+    background: #33f7ff;
+    box-shadow: 0 0 40px rgba(0, 243, 255, 0.55);
+    transform: translateY(-2px);
+}
+
+.rf-btn--submit {
+    width: 100%;
+    margin-top: 0.4rem;
+}
+
+/* ── Success screen ── */
+.rf-success {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.rf-success-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid #00f3ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #00f3ff;
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.4);
+}
+
+.rf-success-title {
+    font-family: 'Courier New', monospace;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.rf-success-sub {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.95rem;
+    max-width: 420px;
+    line-height: 1.7;
+}
+
+/* ── Responsive ── */
+@media (max-width: 680px) {
+    .rf-wrapper { padding: 5rem 1rem 3rem; }
+    .rf-form    { padding: 1.6rem 1.4rem; }
+    .rf-header  { padding: 1.8rem 1.4rem 1.4rem; }
+    .rf-row     { grid-template-columns: 1fr; }
+
+    .rf-payment-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rf-qr-block {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 1.2rem;
+    }
+
+    .rf-qr-frame { width: 120px; height: 120px; flex-shrink: 0; }
+}

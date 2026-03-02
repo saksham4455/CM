@@ -3,7 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import '../css/Navbar.css';
 import logo from '/Logo/Enigma_Logo.svg';
-import jimsLogo from '/Logo/Jims_Logo.png';
+
+
 
 const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -46,7 +47,7 @@ const Navbar = () => {
             <div className="nav-main-wrapper">
                 {/* Jims Logo - Left */}
                 <Link to="/" className="nav-logo nav-logo-left">
-                    <img src={jimsLogo} alt="Jims Logo" className="logo-image jims-logo" />
+                    {/* <img src={jimsLogo} alt="Jims Logo" className="logo-image jims-logo" /> */}
                 </Link>
 
                 {/* Centered Navigation Container */}
@@ -83,10 +84,15 @@ const Navbar = () => {
                 </div>
             </div>
 
-            {/* Enigma Logo - Right */}
-            <Link to="/" className="nav-logo nav-logo-right">
-                <img src={logo} alt="Cynet Logo" className="logo-image enigma-logo" />
-            </Link>
+            {/* Right logos group: Bugslayers + Enigma */}
+            <div className="nav-logo-right-group">
+                <Link to="/" className="nav-logo">
+                   
+                </Link>
+                <Link to="/" className="nav-logo">
+                    {/* <img src={logo} alt="Cynet Logo" className="logo-image enigma-logo" /> */}
+                </Link>
+            </div>
         </div>
 
             {/* Mobile Menu Overlay */}

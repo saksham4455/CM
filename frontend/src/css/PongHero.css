@@ -1,23 +1,32 @@
+/* ─────────────────────────────────────────
+   PONG HERO  –  fully responsive
+───────────────────────────────────────── */
+
 .pong-hero-container {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 100dvh;   /* mobile: no address-bar overlap */
+    height: 100vh;    /* fallback for older browsers */
     background: #06060c;
     overflow: hidden;
     user-select: none;
+    touch-action: none;
     z-index: 10;
 }
 
+/* ── Canvas ── */
 .pong-hero-canvas {
     display: block;
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
-    filter: contrast(1.1) brightness(1.1);
-    position: relative;
     z-index: 2;
     background: transparent;
+    filter: contrast(1.08) brightness(1.06);
 }
 
+/* ── Background image ── */
 .pong-bg-bio {
     position: absolute;
     inset: 0;
@@ -31,25 +40,18 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
-    filter: brightness(0.85) contrast(1.1) grayscale(0.15) blur(0.5px);
-    animation: breathing-pulse 12s ease-in-out infinite;
     display: block;
+    filter: brightness(0.55) contrast(1.15) grayscale(0.6) blur(1px);
+    animation: breathing-pulse 14s ease-in-out infinite;
+    will-change: transform, opacity;
 }
 
 @keyframes breathing-pulse {
-
-    0%,
-    100% {
-        transform: scale(1);
-        opacity: 1.0;
-    }
-
-    50% {
-        transform: scale(1.08);
-        opacity: 1;
-    }
+    0%, 100% { transform: scale(1);    opacity: 0.85; }
+    50%       { transform: scale(1.06); opacity: 1;    }
 }
 
+/* ── Overlay (kept transparent – canvas handles darkening) ── */
 .pong-hero-overlay {
     position: absolute;
     inset: 0;
@@ -59,150 +61,58 @@
     justify-content: center;
     pointer-events: none;
     background: transparent;
-    /* Removed darkening overlay */
 }
 
 .pong-hero-content {
     text-align: center;
     pointer-events: auto;
     max-width: 1200px;
-}
-
-.pong-label {
-    display: inline-block;
-    font-family: var(--font-mono, 'Courier New', monospace);
-    color: var(--neon-cyan, #00f3ff);
-    font-size: 0.9rem;
-    letter-spacing: 6px;
-    margin-bottom: 2rem;
-    text-transform: uppercase;
-    font-weight: 900;
-    text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
-}
-
-.pong-title {
-    font-family: var(--font-mono, 'Courier New', monospace);
-    font-size: clamp(3rem, 10vw, 8rem);
-    font-weight: 1000;
-    color: #fff;
-    letter-spacing: clamp(15px, 4vw, 40px);
-    margin-bottom: 2rem;
-    line-height: 0.9;
-    text-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
-    padding-left: clamp(15px, 4vw, 40px);
-}
-
-.pong-subtitle {
-    font-family: var(--font-mono, 'Courier New', monospace);
-    color: rgba(255, 255, 255, 0.7);
-    font-size: clamp(1rem, 1.8vw, 1.3rem);
-    letter-spacing: 8px;
-    margin-bottom: 4rem;
-    text-transform: uppercase;
-    font-weight: 400;
+    padding: 0 2rem;
 }
 
 .pong-actions {
     display: flex;
-    gap: 3rem;
+    gap: 2rem;
     justify-content: center;
 }
 
-.pong-btn {
-    padding: 1.2rem 3.5rem;
-    font-family: var(--font-mono, 'Courier New', monospace);
-    font-size: 1rem;
-    font-weight: 900;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    position: relative;
-    overflow: hidden;
-    background: transparent;
-    border-radius: 4px;
-}
-
-.btn-primary {
-    color: var(--neon-cyan, #00f3ff);
-    border: 1px solid var(--neon-cyan, #00f3ff);
-    box-shadow: inset 0 0 10px rgba(0, 243, 255, 0.1);
-}
-
-.btn-primary:hover {
-    background: var(--neon-cyan, #00f3ff);
-    color: #000;
-    box-shadow: 0 0 40px var(--neon-cyan);
-    transform: translateY(-5px);
-}
-
-.btn-secondary {
-    color: var(--neon-purple, #b829ff);
-    border: 1px solid var(--neon-purple, #b829ff);
-    box-shadow: inset 0 0 10px rgba(184, 41, 255, 0.1);
-}
-
-.btn-secondary:hover {
-    background: var(--neon-purple, #b829ff);
-    color: #fff;
-    box-shadow: 0 0 40px var(--neon-purple);
-    transform: translateY(-5px);
-}
-
-/* ── TECHNICAL DECORATORS ── */
+/* ── Corner decorators ── */
 .pong-corner {
     position: absolute;
-    width: 60px;
-    height: 60px;
-    border: 2px solid rgba(0, 243, 255, 0.15);
+    width: 52px;
+    height: 52px;
+    border: 2px solid rgba(0, 243, 255, 0.18);
     z-index: 15;
-    transition: all 0.5s ease;
+    pointer-events: none;
+    transition: width 0.5s ease, height 0.5s ease,
+                border-color 0.5s ease;
 }
 
-.tl {
-    top: 40px;
-    left: 40px;
-    border-right: none;
-    border-bottom: none;
-}
-
-.tr {
-    top: 40px;
-    right: 40px;
-    border-left: none;
-    border-bottom: none;
-}
-
-.bl {
-    bottom: 40px;
-    left: 40px;
-    border-right: none;
-    border-top: none;
-}
-
-.br {
-    bottom: 40px;
-    right: 40px;
-    border-left: none;
-    border-top: none;
-}
+.tl { top: 36px;    left: 36px;  border-right: none; border-bottom: none; }
+.tr { top: 36px;    right: 36px; border-left:  none; border-bottom: none; }
+.bl { bottom: 36px; left: 36px;  border-right: none; border-top:    none; }
+.br { bottom: 36px; right: 36px; border-left:  none; border-top:    none; }
 
 .pong-hero-container:hover .pong-corner {
-    border-color: var(--neon-cyan);
-    width: 80px;
-    height: 80px;
-    opacity: 1.0;
+    border-color: rgba(0, 243, 255, 0.75);
+    width: 72px;
+    height: 72px;
 }
 
+/* ── Scanline ── */
 .pong-scanline {
     position: absolute;
     inset: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
-        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+    background:
+        linear-gradient(rgba(0,0,0,0) 50%, rgba(0,0,0,0.08) 50%),
+        linear-gradient(90deg,
+            rgba(255,0,0,0.025),
+            rgba(0,255,0,0.01),
+            rgba(0,0,255,0.025));
     background-size: 100% 4px, 100% 100%;
     z-index: 20;
     pointer-events: none;
-    opacity: 0.4;
+    opacity: 0.32;
 }
 
 .pong-scanline::after {
@@ -211,173 +121,89 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100px;
-    background: linear-gradient(to bottom, transparent, rgba(0, 243, 255, 0.05), transparent);
+    height: 90px;
+    background: linear-gradient(to bottom,
+        transparent,
+        rgba(0, 243, 255, 0.04),
+        transparent);
     animation: scan-move 8s linear infinite;
+    will-change: transform;
 }
 
 @keyframes scan-move {
-    0% {
-        transform: translateY(-100vh);
-    }
-
-    100% {
-        transform: translateY(100vh);
-    }
+    from { transform: translateY(-100vh); }
+    to   { transform: translateY(100vh);  }
 }
 
 .text-glow {
     text-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
 }
 
-/* ── RESPONSIVE DESIGN ── */
+/* ─────────────────────────────────────────
+   RESPONSIVE BREAKPOINTS
+───────────────────────────────────────── */
+
+/* ── Large desktop (≥ 1440px) ── */
+@media (min-width: 1440px) {
+    .pong-corner { width: 64px; height: 64px; }
+    .pong-hero-container:hover .pong-corner { width: 88px; height: 88px; }
+}
+
+/* ── Laptop / tablet landscape (< 1024px) ── */
 @media (max-width: 1024px) {
-    .pong-hero-content {
-        max-width: 900px;
-        padding: 0 2rem;
-    }
-
-    .pong-actions {
-        gap: 2rem;
-    }
+    .pong-corner { width: 44px; height: 44px; }
+    .tl, .tr { top: 28px; }
+    .bl, .br { bottom: 28px; }
+    .tl, .bl { left: 28px; }
+    .tr, .br { right: 28px; }
+    .pong-hero-container:hover .pong-corner { width: 60px; height: 60px; }
 }
 
+/* ── Tablet portrait (< 768px) ── */
 @media (max-width: 768px) {
-    .pong-hero-content {
-        padding: 0 1.5rem;
-    }
-
-    .pong-label {
-        font-size: 0.75rem;
-        letter-spacing: 4px;
-        margin-bottom: 1.5rem;
-    }
-
-    .pong-subtitle {
-        font-size: clamp(0.85rem, 1.5vw, 1.1rem);
-        letter-spacing: 4px;
-        margin-bottom: 3rem;
-    }
-
-    .pong-actions {
-        flex-direction: column;
-        gap: 1.5rem;
-        width: 100%;
-        max-width: 300px;
-        margin: 0 auto;
-    }
-
-    .pong-btn {
-        padding: 1rem 2.5rem;
-        font-size: 0.9rem;
-        letter-spacing: 3px;
-        width: 100%;
-    }
-
-    .pong-corner {
-        width: 40px;
-        height: 40px;
-    }
-
-    .tl, .tr {
-        top: 20px;
-    }
-
-    .bl, .br {
-        bottom: 20px;
-    }
-
-    .tl, .bl {
-        left: 20px;
-    }
-
-    .tr, .br {
-        right: 20px;
-    }
+    .pong-corner { width: 34px; height: 34px; }
+    .tl, .tr { top: 20px; }
+    .bl, .br { bottom: 20px; }
+    .tl, .bl { left: 20px; }
+    .tr, .br { right: 20px; }
+    .pong-hero-container:hover .pong-corner { width: 46px; height: 46px; }
+    .pong-scanline { opacity: 0.2; }
+    .pong-bg-img   { animation-duration: 18s; }
 }
 
+/* ── Large phone (< 640px) ── */
 @media (max-width: 640px) {
-    .pong-hero-container {
-        height: calc(100vh - 60px);
-        min-height: 500px;
-    }
-
-    .pong-hero-content {
-        padding: 0 1rem;
-    }
-
-    .pong-label {
-        font-size: 0.7rem;
-        letter-spacing: 3px;
-    }
-
-    .pong-bg-img {
-        width: clamp(600px, 90vw, 1000px);
-        opacity: 0.1;
-    }
-
-    .pong-actions {
-        max-width: 280px;
-    }
-
-    .pong-btn {
-        padding: 0.9rem 2rem;
-        font-size: 0.85rem;
-        letter-spacing: 2px;
-    }
+    .pong-hero-container { min-height: 480px; }
+    .pong-corner { width: 28px; height: 28px; border-width: 1.5px; }
 }
 
+/* ── Small phone (< 480px) ── */
 @media (max-width: 480px) {
-    .pong-hero-container {
-        min-height: 450px;
-    }
-
-    .pong-label {
-        font-size: 0.6rem;
-        letter-spacing: 1.5px;
-        margin-bottom: 1rem;
-    }
-
-    .pong-subtitle {
-        font-size: clamp(0.7rem, 1vw, 0.85rem);
-        letter-spacing: 1.5px;
-        margin-bottom: 2.5rem;
-    }
-
-    .pong-actions {
-        gap: 1.25rem;
-        max-width: 100%;
-        padding: 0 1rem;
-    }
-
-    .pong-btn {
-        padding: 0.75rem 1.5rem;
-        font-size: 0.75rem;
-        letter-spacing: 1px;
-    }
-
-    .pong-corner {
-        width: 30px;
-        height: 30px;
-    }
-
-    .pong-hero-container:hover .pong-corner {
-        width: 40px;
-        height: 40px;
-    }
+    .pong-hero-container { min-height: 420px; }
+    .pong-corner { width: 22px; height: 22px; }
+    .pong-hero-container:hover .pong-corner { width: 30px; height: 30px; }
+    .pong-bg-img { filter: brightness(0.45) contrast(1.1) grayscale(0.7) blur(1px); }
 }
 
-@media (max-width: 375px) {
-    .pong-actions {
-        padding: 0 0.5rem;
-    }
+/* ── Very small phone (< 380px) ── */
+@media (max-width: 380px) {
+    .pong-hero-container { min-height: 380px; }
+    .pong-corner   { display: none; }
+    .pong-scanline { display: none; }
+}
 
-    .pong-btn {
-        padding: 0.75rem 1.5rem;
-        font-size: 0.75rem;
-    }
+/* ── Landscape mobile: short viewport ── */
+@media (max-height: 500px) and (orientation: landscape) {
+    .pong-hero-container { height: 100dvh; min-height: unset; }
+    .tl, .tr { top: 10px; }
+    .bl, .br { bottom: 10px; }
+    .tl, .bl { left: 10px; }
+    .tr, .br { right: 10px; }
+}
 
-    .pong-corner {
-        display: none;
-    }
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+    .pong-bg-img { animation: none; }
+    .pong-scanline,
+    .pong-scanline::after { animation: none; opacity: 0; }
 }

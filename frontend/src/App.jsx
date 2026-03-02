@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Lenis from 'lenis';
 import gsap from 'gsap';
@@ -11,6 +11,7 @@ import OptimizedBackground from './components/OptimizedBackground';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ErrorBoundary from './components/ErrorBoundary';
+import RegistrationForm from './components/RegistrationForm';
 
 // Lazy-loaded components
 const CustomCursor = lazy(() => import('./components/CustomCursor'));
@@ -18,11 +19,13 @@ const ScrollToTop = lazy(() => import('./components/ScrollToTop'));
 
 // Lazy-loaded pages
 const Home = lazy(() => import('./pages/Home'));
+const AdminPanel = lazy(() => import('./pages/AdminPanel'));
 const LandingPage = lazy(() => import('./pages/LandingPage'));
 const EventsPage = lazy(() => import('./pages/EventsPage'));
 const PastEventsPage = lazy(() => import('./pages/PastEventsPage'));
 const TeamPage = lazy(() => import('./pages/TeamPage'));
 const Contact = lazy(() => import('./pages/Contact'));
+//const RegistrationForm = lazy(() => import('frontend/src/components/RegisterationForm.jsx'));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -121,7 +124,7 @@ function App() {
             </ErrorBoundary>
 
             {/* Navigation */}
-            <Navbar />
+            {location.pathname !== '/admin' && <Navbar />}
 
             {/* Routes with Smooth Transitions */}
             <AnimatePresence mode="wait">
@@ -150,7 +153,8 @@ function App() {
                     </motion.div>
                   </Suspense>
                 } />
-                <Route path="/landing" element={
+                {/* ── Temporarily disconnected routes ── */}
+                {<Route path="/landing" element={
                   <Suspense fallback={<PageLoader />}>
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
@@ -161,8 +165,8 @@ function App() {
                       <LandingPage theme={theme} />
                     </motion.div>
                   </Suspense>
-                } />
-                <Route path="/events" element={
+                } /> }
+                { <Route path="/events" element={
                   <Suspense fallback={<PageLoader />}>
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
@@ -173,8 +177,8 @@ function App() {
                       <EventsPage theme={theme} />
                     </motion.div>
                   </Suspense>
-                } />
-                <Route path="/past-events" element={
+                } /> }
+                { <Route path="/past-events" element={
                   <Suspense fallback={<PageLoader />}>
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
@@ -185,8 +189,8 @@ function App() {
                       <PastEventsPage theme={theme} />
                     </motion.div>
                   </Suspense>
-                } />
-                <Route path="/team" element={
+                } /> }
+                { <Route path="/team" element={
                   <Suspense fallback={<PageLoader />}>
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
@@ -197,8 +201,8 @@ function App() {
                       <TeamPage theme={theme} />
                     </motion.div>
                   </Suspense>
-                } />
-                <Route path="/contact" element={
+                } />}
+                { <Route path="/contact" element={
                   <Suspense fallback={<PageLoader />}>
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
@@ -209,12 +213,34 @@ function App() {
                       <Contact theme={theme} />
                     </motion.div>
                   </Suspense>
+                } /> }
+                <Route path="/form" element={
+                  <Suspense fallback={<PageLoader />}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.4, ease: 'easeInOut' }}
+                    >
+                      <RegistrationForm theme={theme} />
+                    </motion.div>
+                  </Suspense>
                 } />
+
+                {/* ── Admin Panel ── */}
+                <Route path="/admin" element={
+                  <Suspense fallback={<PageLoader />}>
+                    <AdminPanel />
+                  </Suspense>
+                } />
+
+                {/* Redirect all other paths to home */}
+                <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
             </AnimatePresence>
 
             {/* Footer */}
-            <Footer />
+            {location.pathname !== '/admin' && <Footer />}
 
             {/* Custom Cursor */}
             <CustomCursor theme={theme} />

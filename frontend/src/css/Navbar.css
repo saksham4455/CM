@@ -126,6 +126,23 @@
     margin-top: 25px;
 }
 
+.nav-logo-right-group {
+    grid-column: 3;
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 25px;
+}
+
+.logo-image.bugslayers-logo {
+    height: 70px;
+    width: auto;
+    border-radius: 8px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(0, 243, 255, 0.3));
+}
+
 .logo-image {
     height: 85px;
     width: auto;
@@ -300,7 +317,8 @@
         grid-column: unset;
     }
 
-    .nav-logo-right {
+    .nav-logo-right,
+    .nav-logo-right-group {
         display: none;
     }
 
@@ -330,6 +348,10 @@
 
     .logo-image.enigma-logo {
         height: 55px;
+    }
+
+    .logo-image.bugslayers-logo {
+        height: 50px;
     }
 
     .nav-logo {

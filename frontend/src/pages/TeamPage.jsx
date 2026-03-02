@@ -68,13 +68,12 @@ const vk1Departments = [
   {
     name: "MARKETING AND PR",
     members: [
-      { id: "VK-1_MARKETING_2", name: "Aditya Kapoor", position: "Assistant Director", department: "MARKETING", img: "/Enigma_Team/Marketing/social.jpg" },
+      { id: "VK-1_MARKETING_2", name: "Aditya Kapoor", position: "Assistant Director", department: "MARKETING", img: "frontend/public/Enigma_Team/Marketing/Aditya.JPG" },
       { id: "VK-1_MARKETING_3", name: "Pushkar Sharma", position: "Assistant Director", department: "MARKETING", img: "/Enigma_Team/Marketing/content.jpg" },
       { id: "VK-1_MARKETING_4", name: "Shyna Chaurasia", position: "Manager", department: "MARKETING", img: "public/Enigma_Team/Marketing/Shyna chaurasia_.jpg" },
       { id: "VK-1_MARKETING_5", name: "Prachi Bjaj", position: "Manager", department: "MARKETING", img: "public/Enigma_Team/Marketing/Prachi.jpg" },
       { id: "VK-1_MARKETING_6", name: "Mayank Rai", position: "Member", department: "MARKETING", img: "public/Enigma_Team/Marketing/Mayank Rai.jpg" },
       { id: "VK-1_MARKETING_7", name: "Vanita Dua", position: "Member", department: "MARKETING", img: "public/Enigma_Team/Marketing/vanita dua.jpg" },
-      { id: "VK-1_MARKETING_8", name: "Jay Bhardwaj", position: "Member", department: "MARKETING", img: "/Enigma_Team/Marketing/content.jpg" },
       { id: "VK-1_MARKETING_9", name: "Bhavik Khanna", position: "Member", department: "MARKETING", img: "public/Enigma_Team/Marketing/Bhavik.webp" },
       { id: "VK-1_MARKETING_11", name: "Jeevansh Wadhwa", position: "Member", department: "MARKETING", img: "public/Enigma_Team/Marketing/Jeevansh Wadhwa.jpg" }
     ],
@@ -89,10 +88,8 @@ const vk1Departments = [
       { id: "VK-1_SOCIALMEDIA_3", name: "Jasreet Kaur", position: "Manager", department: "SOCIAL MEDIA", img: "public/Enigma_Team/Social Media/Jasreet.jpg" },
       { id: "VK-1_SOCIALMEDIA_4", name: "Jahanvi Sachdeva", position: "Manager", department: "SOCIAL MEDIA", img: "public/Enigma_Team/Social Media/Jahanvi.jpg" },
       { id: "VK-1_SOCIALMEDIA_5", name: "Gurmeet Singh", position: "Manager", department: "SOCIAL MEDIA", img: "public/Enigma_Team/Social Media/GURMEET SINGH.jpg" },
-      { id: "VK-1_SOCIALMEDIA_6", name: "Yash Kankran", position: "Member", department: "SOCIAL MEDIA", img: "/Enigma_Team/SocialMedia/designer.jpg" },
-      { id: "VK-1_SOCIALMEDIA_7", name: "Tanishka Sangwan", position: "Member", department: "SOCIAL MEDIA", img: "public/Enigma_Team/Social Media/TanishkaSangwan.jpg" },
-      { id: "VK-1_SOCIALMEDIA_8", name: "Sompal Singh Rawat", position: "Member", department: "SOCIAL MEDIA", img: "/Enigma_Team/SocialMedia/content.jpg" },
-      { id: "VK-1_SOCIALMEDIA_9", name: "Devanshi", position: "Member", department: "SOCIAL MEDIA", img: "public/Enigma_Team/Social Media/devanshi.jpg" },
+      { id: "VK-1_SOCIALMEDIA_7", name: "Tanishka Sangwan", position: "Member", department: "SOCIAL MEDIA", img: "public/Enigma_Team/Social Media/Tanishka.jpg" },
+      { id: "VK-1_SOCIALMEDIA_9", name: "Devanshi", position: "Member", department: "SOCIAL MEDIA", img: "frontend/public/Enigma_Team/Social Media/Devanshi.jpeg" },
     ],
     color: "#00ff66"
   },

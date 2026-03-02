@@ -2,7 +2,7 @@ import React, { useState, useMemo, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PongHero from '../components/PongHero';
 import Sponsors from '../components/Sponsers';
-import StickyCard002 from '../components/StickyCard002';
+import EventCarousel from '../components/EventCarousel';
 import CyberMatrixBackground from '../components/CyberMatrixBackground';
 import '../css/Home.css';
 
@@ -137,28 +137,20 @@ const Home = memo(() => {
         </div>
       </motion.section>
 
-      {/* ── EVENT STICKY CARDS ── */}
-      <section className="home-event-section py-20 bg-black">
-        <motion.div 
-          className="event-section-header text-center mb-8"
+      {/* ── EVENT CAROUSEL ── */}
+      <section className="home-event-section">
+        <motion.div
+          className="event-section-header"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-cyan-400 mb-4">Pick your challenge. Pick your path.</h2>
-          <p className="text-gray-400 text-lg">Scroll through our diverse range of competitions and challenges</p>
+          <h2 className="event-section-title">Pick your challenge. Pick your path.</h2>
+          <p className="event-section-sub">Scroll through our diverse range of competitions and challenges</p>
         </motion.div>
-        
-        <div style={{ height: `${events.length * 100}vh` }} className="w-full">
-          <StickyCard002 
-            cards={events.map((event) => ({
-              id: event.code,
-              image: event.img,
-              alt: event.name,
-            }))} 
-          />
-        </div>
+
+        <EventCarousel events={events} />
       </section>
 
       {/* ── PARTNERS ── */}
