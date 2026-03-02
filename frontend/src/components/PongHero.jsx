@@ -89,7 +89,7 @@ const PongHero = () => {
         if (!canvas) return;
         
         const ctx = canvas.getContext('2d', { 
-            alpha: false,
+            alpha: true,
             desynchronized: true 
         });
 
@@ -104,7 +104,7 @@ const PongHero = () => {
         const PADDLE_SPEED = 0.15;
 
         const COLORS = {
-            bg: '#06060c',
+            bg: 'rgba(6, 6, 12, 0.72)',
             ball: '#00f3ff',
             paddle: '#b829ff',
             text: '#ffffff',
@@ -232,7 +232,8 @@ const PongHero = () => {
         };
 
         const draw = () => {
-            // Fill background once
+            // Clear then fill with semi-transparent dark so bg image shows through
+            ctx.clearRect(0, 0, width, height);
             ctx.fillStyle = COLORS.bg;
             ctx.fillRect(0, 0, width, height);
 

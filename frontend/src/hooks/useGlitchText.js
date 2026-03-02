@@ -1,19 +1,27 @@
 import { useState, useEffect } from "react";
 
 export const useGlitchText = (text, glitchDuration = 300) => {
-  const [displayText, setDisplayText] = useState(text);
-  const [isGlitching, setIsGlitching] = useState(false);
+  const safeText = text || "";
+  const [displayText, setDisplayText] = useState(safeText);
 
   useEffect(() => {
-    const glitchInterval = setInterval(() => {
-      setIsGlitching(true);
-      let currentFrame = 0;
-      const frames = 5;
+    setDisplayText(safeText); // ensure the latest member name shows instantly on hover
+  }, [safeText]);
 
-      const glitchTimer = setInterval(() => {
+  useEffect(() => {
+    if (!safeText) {
+      return undefined;
+    }
+
+    let glitchTimerId;
+    const frames = 5;
+
+    const runGlitch = () => {
+      let currentFrame = 0;
+
+      glitchTimerId = setInterval(() => {
         if (currentFrame < frames) {
-          // Convert text to random ASCII codes
-          const glitchText = text
+          const glitchText = safeText
             .split("")
             .map((char) => {
               if (char === " ") return " ";
@@ -24,16 +32,21 @@ export const useGlitchText = (text, glitchDuration = 300) => {
           setDisplayText(glitchText);
           currentFrame++;
         } else {
-          // Return to normal text
-          setDisplayText(text);
-          setIsGlitching(false);
-          clearInterval(glitchTimer);
+          setDisplayText(safeText);
+          clearInterval(glitchTimerId);
         }
       }, glitchDuration / frames);
-    }, 3000); // Glitch every 3 seconds
+    };
 
-    return () => clearInterval(glitchInterval);
-  }, [text, glitchDuration]);
+    const glitchIntervalId = setInterval(runGlitch, 3000);
+
+    return () => {
+      clearInterval(glitchIntervalId);
+      if (glitchTimerId) {
+        clearInterval(glitchTimerId);
+      }
+    };
+  }, [safeText, glitchDuration]);
 
   return displayText;
 };

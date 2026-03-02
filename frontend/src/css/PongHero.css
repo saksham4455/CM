@@ -15,27 +15,25 @@
     filter: contrast(1.1) brightness(1.1);
     position: relative;
     z-index: 2;
+    background: transparent;
 }
 
 .pong-bg-bio {
     position: absolute;
     inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     z-index: 1;
     pointer-events: none;
     overflow: hidden;
-    opacity: 0.82;
-    /* Subtle background presence */
 }
 
 .pong-bg-img {
-    width: clamp(800px, 95vw, 1400px);
-    height: auto;
-    filter: brightness(0.8) contrast(1.2) grayscale(0.8) blur(2px);
-    /* Blurred and dimmed */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.55) contrast(1.15) grayscale(0.6) blur(1px);
     animation: breathing-pulse 12s ease-in-out infinite;
+    display: block;
 }
 
 @keyframes breathing-pulse {
