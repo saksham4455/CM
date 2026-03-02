@@ -77,7 +77,6 @@
   align-items: center;
   padding: 2rem 1rem 1rem 1rem;
   border-top: 2px solid var(--cynet-blue);
-  box-shadow: 0 -4px 20px var(--cynet-blue2);
 }
 
 
@@ -198,8 +197,6 @@
   letter-spacing: 0.05em;
   margin: 0;
   padding: 0;
-  text-shadow: 0 0 10px var(--cynet-blue), 0 0 20px var(--cynet-green);
-  animation: cyber-glow 2s infinite alternate;
 }
 
 /* ========================================
@@ -213,8 +210,6 @@
   color: var(--neon-cyan);
   letter-spacing: 5px;
   margin: 0;
-  text-shadow: 0 0 15px var(--neon-cyan), 0 0 30px var(--cynet-purple);
-  animation: cyber-glow 2s infinite alternate;
   word-break: break-word;
   position: relative;
   display: inline-block;
@@ -275,8 +270,6 @@
   letter-spacing: 2px;
   margin: 0 0 0.5rem 0;
   text-transform: uppercase;
-  text-shadow: 0 0 8px var(--cynet-green), 0 0 16px var(--cynet-blue);
-  animation: cyber-glow 2s infinite alternate;
   word-break: break-word;
   position: relative;
   display: inline-block;
@@ -326,7 +319,6 @@
 
 .footer-links a:hover {
   color: #00ffcc;
-  text-shadow: 0 0 8px rgba(0, 255, 136, 0.6);
   padding-left: 15px;
 }
 
@@ -358,7 +350,6 @@
   color: #00ff88;
   border-color: #00ff88;
   background: rgba(0, 255, 136, 0.15);
-  box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
   transform: translateY(-3px) scale(1.05);
 }
 
@@ -396,24 +387,20 @@
   min-width: 8px;
   background: #00ff88;
   border-radius: 50%;
-  box-shadow: 0 0 10px rgba(0, 255, 136, 0.8);
   animation: pulse 2s infinite;
 }
 
 .status-dot.active {
   background: #00ff88;
-  box-shadow: 0 0 10px rgba(0, 255, 136, 0.8);
 }
 
 .status-dot.warning {
   background: #ffaa00;
-  box-shadow: 0 0 10px rgba(255, 170, 0, 0.8);
   animation: pulse 1s infinite;
 }
 
 .status-dot.error {
   background: #ff0055;
-  box-shadow: 0 0 10px rgba(255, 0, 85, 0.8);
 }
 
 /* ========================================
@@ -447,7 +434,6 @@
 
 .time-value {
   color: #00ff88;
-  text-shadow: 0 0 8px rgba(0, 255, 136, 0.6);
   font-family: 'Courier New', monospace;
   letter-spacing: 2px;
 }
@@ -500,19 +486,16 @@
   height: 100%;
   background: linear-gradient(90deg, #00ff88, #00ffcc);
   transition: width 0.5s ease;
-  box-shadow: 0 0 8px rgba(0, 255, 136, 0.6);
 }
 
 .vital-fill.network {
   background: linear-gradient(90deg, #00d4ff, #00ffcc);
-  box-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
 }
 
 .vital-value {
   color: #00ff88;
   text-align: right;
   font-weight: bold;
-  text-shadow: 0 0 8px rgba(0, 255, 136, 0.6);
 }
 
 /* ========================================
@@ -634,7 +617,6 @@
 .network-status {
   font-weight: bold;
   letter-spacing: 1.5px;
-  text-shadow: 0 0 8px rgba(0, 255, 136, 0.6);
 }
 
 .footer-bottom-content {
@@ -702,7 +684,6 @@
   color: #ffaa00;
   font-size: 1.1rem;
   animation: pulse 2s infinite;
-  filter: drop-shadow(0 0 8px rgba(255, 170, 0, 0.6));
 }
 
 .footer-note.team-credits {
@@ -715,12 +696,10 @@
 .footer-note.team-credits strong {
   color: #00ff88;
   letter-spacing: 1.5px;
-  text-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
 }
 
 .team-icon {
   font-size: 1.1rem;
-  filter: drop-shadow(0 0 8px rgba(0, 255, 136, 0.5));
 }
 
 .role-label {
@@ -747,7 +726,6 @@
   animation: pulse 1.5s infinite;
   display: inline-block;
   margin: 0 0.25rem;
-  filter: drop-shadow(0 0 8px rgba(255, 0, 85, 0.6));
 }
 
 /* ========================================
@@ -772,30 +750,25 @@
 
   0%,
   100% {
-    text-shadow:
-      0 0 20px rgba(0, 255, 136, 0.5),
-      0 0 40px rgba(0, 255, 136, 0.3);
+    text-shadow: none;
   }
 
   25% {
     text-shadow:
       2px 0 3px rgba(255, 0, 255, 0.6),
-      -2px 0 3px rgba(0, 255, 255, 0.6),
-      0 0 20px rgba(0, 255, 136, 0.5);
+      -2px 0 3px rgba(0, 255, 255, 0.6);
   }
 
   50% {
     text-shadow:
       -2px 0 3px rgba(255, 0, 255, 0.6),
-      2px 0 3px rgba(0, 255, 255, 0.6),
-      0 0 20px rgba(0, 255, 136, 0.5);
+      2px 0 3px rgba(0, 255, 255, 0.6);
   }
 
   75% {
     text-shadow:
       0 2px 3px rgba(255, 0, 255, 0.6),
-      0 -2px 3px rgba(0, 255, 255, 0.6),
-      0 0 20px rgba(0, 255, 136, 0.5);
+      0 -2px 3px rgba(0, 255, 255, 0.6);
   }
 }
 
@@ -881,11 +854,11 @@
 
 @keyframes cyber-glow {
   0% {
-    text-shadow: 0 0 15px var(--cynet-blue), 0 0 30px var(--cynet-purple);
+    opacity: 1;
   }
 
   100% {
-    text-shadow: 0 0 30px var(--cynet-green), 0 0 60px var(--cynet-purple);
+    opacity: 1;
   }
 }
 

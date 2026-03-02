@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Blog from '../components/Blog';
-import RegistrationForm from '../components/RegistrationForm';
+import ContactForm from '../components/ContactForm';
 import CyberMatrixBackground from '../components/CyberMatrixBackground';
 import BoxText from '../components/BoxText';
 import Typewriter from '../components/Typewriter';
@@ -33,25 +33,24 @@ const IconPhone = () => (
    DATA
 ───────────────────────────────────────────── */
 const COORDINATORS = [
-  { name: 'Harshit Verma', role: 'Lead Coordinator', phone: '+91 98765 43210', avatar: 'HV' },
-  { name: 'Gurnoor Kaur', role: 'Technical Head', phone: '+91 91234 56789', avatar: 'GK' },
-  { name: 'Ayush Dhaiya', role: 'Event Coordinator', phone: '+91 87654 32109', avatar: 'AD' },
-  { name: 'Sana Jain', role: 'Operations Head', phone: '+91 76543 21098', avatar: 'SJ' },
+  { name: 'Harshit Verma', role: 'President', phone: '9810130848', avatar: 'HV' },
+  { name: 'Gurnoor Kaur', role: 'Vice President', phone: '9999737357', avatar: 'GK' },
+  { name: 'Ayush Dhaiya', role: 'Vice President', phone: '9810480038', avatar: 'AD' },
+  { name: 'Sana Jain', role: 'Secretary', phone: '9958688944', avatar: 'SJ' },
 ];
 
 const FACULTY = {
   name: 'Ms. Puja Mujral',
   role: 'Faculty Advisor — IT Department',
-  phone: '+91 99887 76655',
   email: 'anjali.verma@college.edu',
 };
 
 const INFO_ITEMS = [
-  { icon: <IconMail />, label: 'Email Address', value: 'cynet@college.edu', link: 'mailto:cynet@college.edu' },
-  { icon: <IconPin />, label: 'Location Hub', value: 'IT Block, Room 204', link: '#' },
-  { icon: <IconInsta />, label: 'Social Matrix', value: '@cynet_official', link: 'https://instagram.com/cynet_official' },
-  { icon: <IconLinkedin />, label: 'Professional Net', value: 'CYNET Tech Club', link: 'https://linkedin.com' },
-  { icon: <IconGlobe />, label: 'Central Node', value: 'cynet.college.edu', link: 'https://cynet.college.edu' },
+  { icon: <IconMail />, label: 'Email Address', value: 'cynet.jims@gmail.com', link: 'mailto:cynet.jims@gmail.com' },
+  { icon: <IconPin />, label: 'Location', value: 'JIMS Vasant Kunj, New Delhi', link: 'https://maps.google.com/?q=JIMS+Vasant+Kunj+New+Delhi' },
+  { icon: <IconInsta />, label: 'Instagram', value: '@jimsvasantkunj', link: 'https://www.instagram.com/jimsvasantkunj/' },
+  { icon: <IconLinkedin />, label: 'LinkedIn', value: 'JIMS Vasant Kunj', link: 'https://www.linkedin.com/company/jims-vasantkunj/' },
+  { icon: <IconGlobe />, label: 'Website', value: 'jimsd.org', link: 'https://www.jimsd.org/' },
 ];
 
 /* ─────────────────────────────────────────────
@@ -100,7 +99,7 @@ const Contact = ({ theme = 'blue' }) => (
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              <RegistrationForm />
+              <ContactForm />
             </motion.div>
 
             {/* Info Side */}
@@ -152,9 +151,6 @@ const Contact = ({ theme = 'blue' }) => (
                 <div className="cp-faculty-footer-mini">
                   <a href={`mailto:${FACULTY.email}`} className="cp-contact-link-mini">
                     <IconMail /> <span>{FACULTY.email}</span>
-                  </a>
-                  <a href={`tel:${FACULTY.phone}`} className="cp-contact-link-mini">
-                    <IconPhone /> <span>{FACULTY.phone}</span>
                   </a>
                 </div>
               </motion.div>

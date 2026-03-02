@@ -12,7 +12,7 @@ import OptimizedBackground from './components/OptimizedBackground';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ErrorBoundary from './components/ErrorBoundary';
-import RegistrationForm from './components/RegistrationForm';
+import ContactForm from './components/ContactForm';
 
 // Lazy-loaded components
 const CustomCursor = lazy(() => import('./components/CustomCursor'));
@@ -26,7 +26,7 @@ const EventsPage = lazy(() => import('./pages/EventsPage'));
 const PastEventsPage = lazy(() => import('./pages/PastEventsPage'));
 const TeamPage = lazy(() => import('./pages/TeamPage'));
 const Contact = lazy(() => import('./pages/Contact'));
-//const RegistrationForm = lazy(() => import('frontend/src/components/RegisterationForm.jsx'));
+//const ContactForm = lazy(() => import('./components/ContactForm'));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -225,7 +225,7 @@ function App() {
                       exit={{ opacity: 0, y: -20 }}
                       transition={{ duration: 0.4, ease: 'easeInOut' }}
                     >
-                      <RegistrationForm theme={theme} />
+                      <ContactForm theme={theme} />
                     </motion.div>
                   </Suspense>
                 } />
