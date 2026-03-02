@@ -148,7 +148,7 @@
 
 
 .footer-compressed-bottom {
-  margin-top: 1.5rem;
+  margin-top: 0;
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.5);
   width: 100%;
@@ -156,8 +156,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1.5rem 0;
   background: transparent;
   gap: 1rem;
 }
