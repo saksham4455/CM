@@ -47,10 +47,8 @@ const FACULTY = {
 
 const INFO_ITEMS = [
   { icon: <IconMail />, label: 'Email Address', value: 'cynet.jims@gmail.com', link: 'mailto:cynet.jims@gmail.com' },
-  { icon: <IconPin />, label: 'Location', value: 'JIMS Vasant Kunj, New Delhi', link: 'https://maps.google.com/?q=JIMS+Vasant+Kunj+New+Delhi' },
   { icon: <IconInsta />, label: 'Instagram', value: '@jimsvasantkunj', link: 'https://www.instagram.com/jimsvasantkunj/' },
   { icon: <IconLinkedin />, label: 'LinkedIn', value: 'JIMS Vasant Kunj', link: 'https://www.linkedin.com/company/jims-vasantkunj/' },
-  { icon: <IconGlobe />, label: 'Website', value: 'jimsd.org', link: 'https://www.jimsd.org/' },
 ];
 
 /* ─────────────────────────────────────────────
