@@ -179,7 +179,7 @@ function Footer() {
             <span className="footer-rights">All rights reserved.</span>
           </div>
           <div className="footer-bottom-team">
-            <span className="footer-team">Made with 🤍 by Developer Team: Kanika, Aditya, Saksham, Ananya, Daksh, Avnish, Shubhu, Jia, Harshit</span>
+            <span className="footer-team">Made with 🤍 by Developer Team: Kanika Bhandari, Aditya Kumar , Saksham Bansal , Ananya Vig , Daksh Baweja , Avnish Aryan, Shubhu Husain, Jia Sharma, Harshit Sharma </span>
           </div>
         </div>
       </div>
