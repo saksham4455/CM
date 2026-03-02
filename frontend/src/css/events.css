@@ -186,18 +186,23 @@
 /* ─── Events Grid ─────────────────────────────────────────────────────────── */
 .events-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
     max-width: 1400px;
     margin: 0 auto;
     position: relative;
     z-index: 6;
 }
 
+/* Ensure Tailwind grid cards don't clip */
+.events-page-wrapper .grid > div {
+    overflow: visible;
+}
+
 /* ─── Tech Card Styles ────────────────────────────────────────────────────── */
 .event-card-container {
     perspective: 1500px;
-    height: 480px;
+    height: auto;
     cursor: pointer;
 }
 

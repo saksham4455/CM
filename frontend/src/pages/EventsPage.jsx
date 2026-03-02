@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import EventRevealPage from '../components/EventRevealPage';
 import BoxText from '../components/BoxText';
@@ -6,6 +7,7 @@ import CyberMatrixBackground from '../components/CyberMatrixBackground';
 import '../css/events.css';
 
 const EventsPage = ({ theme = 'blue' }) => {
+  const navigate = useNavigate();
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [selectedEventIndex, setSelectedEventIndex] = useState(null);
 
@@ -48,42 +50,42 @@ const EventsPage = ({ theme = 'blue' }) => {
       id: 1,
       title: 'Treasure Hunt',
       category: 'ADVENTURE',
-      description: 'Embark on an epic digital treasure hunt through layers of encrypted clues, hidden codes, and cybernetic puzzles.',
+      description: 'Race across JIMS campus cracking encrypted clues and puzzles in a time-bound bounty hunt.',
       icon: '🗺️',
       accentColor: '#00F5FF',
       colorStart: '#0B0F1A',
       colorEnd: '#1a3a52',
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-digital-world-map-with-connection-lines-4413-large.mp4',
       character: '🗺️',
-      coordinator: { name: 'Rahul Kumar', phone: '+91 98765 43210' },
-      studentCoordinators: ['Aditya Verma', 'Preeti Nair', 'Rohan Mehta'],
-      rulesFile: '/Rules/treasure-hunt.pdf',
+      coordinator: { name: 'Puru Gupta', phone: '+91 9873661927' },
+      studentCoordinators: ['Ishaan', 'Harassis Singh', 'Priyanka Gulati', 'Tanishka Sangwan', 'Shubhu Husain'],
+      rulesFile: '/Rules/Tressure Hunt.pdf',
       details: [
-        { label: 'Duration', value: '4 Hours' },
-        { label: 'Team Size', value: '2-4 Members' },
-        { label: 'Prize Pool', value: '$5000' },
-        { label: 'Difficulty', value: 'Expert' }
+        { label: 'Team Size', value: 'Exactly 2' },
+        { label: 'Rounds', value: '3' },
+        { label: 'Registration', value: 'On the Spot' },
+        { label: 'Venue', value: 'JIMS Campus' }
       ]
     },
     {
       id: 2,
       title: 'Innovision 7.0',
       category: 'INNOVATION',
-      description: 'The flagship innovation showcase where groundbreaking ideas meet cutting-edge technology.',
+      description: 'Ideathon on cybersecurity challenges across AI/ML, Robotics, IoT, Biotech, and Clean Tech domains.',
       icon: '💡',
       accentColor: '#6C63FF',
       colorStart: '#0B0F1A',
       colorEnd: '#2d1b52',
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-brain-hologram-in-futuristic-interface-44623-large.mp4',
       character: '💡',
-      coordinator: { name: 'Priya Sharma', phone: '+91 98765 43211' },
-      studentCoordinators: ['Kavya Iyer', 'Nikhil Das', 'Sanya Kapoor'],
-      rulesFile: '/Rules/innovision.pdf',
+      coordinator: { name: 'Lavya Jain', phone: '+91 9868165618' },
+      studentCoordinators: ['Arsh', 'Avnish', 'Kavya', 'Jeevansh Wadhwa'],
+      rulesFile: '/Rules/Innovation7.0.pdf',
       details: [
-        { label: 'Duration', value: 'Full Day' },
-        { label: 'Categories', value: '8 Domains' },
-        { label: 'Prize Pool', value: '$15000' },
-        { label: 'Judges', value: '12 Experts' }
+        { label: 'Duration', value: '4+ Hours' },
+        { label: 'Team Size', value: 'Up to 3' },
+        { label: 'Presentation', value: '8-10 min + Q&A' },
+        { label: 'Domains', value: 'AI, IoT, Robotics & More' }
       ]
     },
     {
@@ -139,65 +141,65 @@ const EventsPage = ({ theme = 'blue' }) => {
     },
     {
       id: 5,
-      title: 'Mind Map',
+      title: 'Mind Matrix',
       category: 'STRATEGY',
-      description: 'A cognitive challenge combining logic puzzles, pattern recognition, and strategic thinking.',
+      description: 'Create digital mind maps using MS Word or AI tools, then present your work to the judges.',
       icon: '🧠',
       accentColor: '#00F5FF',
       colorStart: '#0B0F1A',
       colorEnd: '#1a2a3d',
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-abstract-brain-neural-network-44625-large.mp4',
       character: '🧠',
-      coordinator: { name: 'Sneha Reddy', phone: '+91 98765 43214' },
-      studentCoordinators: ['Tanvi Bose', 'Aryan Khanna', 'Pooja Joshi'],
-      rulesFile: '/Rules/mind-map.pdf',
+      coordinator: { name: 'Aditya Nath', phone: '+91 9354510794' },
+      studentCoordinators: ['Anirban'],
+      rulesFile: '/Rules/MINDMATRIX.pdf',
       details: [
-        { label: 'Duration', value: '3 Hours' },
-        { label: 'Rounds', value: '5 Stages' },
-        { label: 'Prize Pool', value: '$3000' },
-        { label: 'Team Size', value: 'Individual' }
+        { label: 'Duration', value: '1 Hour' },
+        { label: 'Team Size', value: 'Exactly 2' },
+        { label: 'Rounds', value: '1' },
+        { label: 'Format', value: 'Digital Mind Map' }
       ]
     },
     {
       id: 6,
-      title: 'IT Quiz',
+      title: 'Tech Unseen',
       category: 'KNOWLEDGE',
-      description: 'Test your technology knowledge across programming, networking, AI, cybersecurity, and emerging tech trends.',
+      description: 'Two-round IT quiz — timed Q&A in Round 1, then Debug the Innovation for top qualifiers.',
       icon: '❓',
       accentColor: '#6C63FF',
       colorStart: '#0B0F1A',
       colorEnd: '#2a1a3d',
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-quiz-questions-on-a-screen-44628-large.mp4',
       character: '❓',
-      coordinator: { name: 'Amit Gupta', phone: '+91 98765 43215' },
-      studentCoordinators: ['Shreya Mishra', 'Rahul Soni', 'Meera Choudhary'],
-      rulesFile: '/Rules/it-quiz.pdf',
+      coordinator: { name: 'Ms. Hanisha Kukreja', phone: '+91 93155977964' },
+      studentCoordinators: ['Mr. Krishank'],
+      rulesFile: '/Rules/TECH UNSEEN (IT Quiz).pdf',
       details: [
-        { label: 'Duration', value: '2 Hours' },
-        { label: 'Questions', value: '100+' },
-        { label: 'Prize Pool', value: '$2500' },
-        { label: 'Format', value: 'Buzzer Round' }
+        { label: 'Team Size', value: 'Exactly 2' },
+        { label: 'Rounds', value: '2' },
+        { label: 'R1 Format', value: 'Timed Q&A' },
+        { label: 'R2 Qualifiers', value: 'Top 15 Teams' }
       ]
     },
     {
       id: 7,
-      title: 'Coding Sprint',
+      title: 'Shadow Code',
       category: 'PROGRAMMING',
-      description: 'Intensive coding marathon featuring algorithmic challenges, data structure optimization, and real-world problem solving.',
+      description: 'Two-round coding challenge — MCQs on C & Python, then blind coding in C with the monitor off.',
       icon: '💻',
       accentColor: '#FF00E5',
       colorStart: '#0B0F1A',
       colorEnd: '#3d1a2a',
       videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-programmer-typing-code-60-large.mp4',
       character: '💻',
-      coordinator: { name: 'Karan Joshi', phone: '+91 98765 43216' },
-      studentCoordinators: ['Vikas Rao', 'Ananya Singh', 'Kunal Tiwari'],
-      rulesFile: '/Rules/coding-sprint.pdf',
+      coordinator: { name: 'Ms. Shreya Malhotra', phone: '+91 9873320986' },
+      studentCoordinators: ['Ms. Preeti'],
+      rulesFile: '/Rules/ShadowCode.pdf',
       details: [
-        { label: 'Duration', value: '5 Hours' },
-        { label: 'Problems', value: '10-15' },
-        { label: 'Prize Pool', value: '$7000' },
-        { label: 'Languages', value: 'All Major' }
+        { label: 'Team Size', value: 'Exactly 2' },
+        { label: 'Rounds', value: '2' },
+        { label: 'R1 Format', value: '30 MCQs, 15 min' },
+        { label: 'R2 Format', value: 'Blind Coding in C' }
       ]
     }
   ];
@@ -244,7 +246,7 @@ const EventsPage = ({ theme = 'blue' }) => {
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-center mb-10 relative"
+          className="text-center mb-8 relative"
         >
           {/* Floating accent elements around title */}
           <motion.div
@@ -292,7 +294,7 @@ const EventsPage = ({ theme = 'blue' }) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
         >
           {events.map((event, index) => (
             <motion.div
@@ -312,15 +314,14 @@ const EventsPage = ({ theme = 'blue' }) => {
             >
               {/* 3D Card with depth and shadow layers */}
               <motion.div
-                className="relative rounded-2xl overflow-hidden"
+                className="relative rounded-2xl overflow-visible"
                 style={{
                   transformStyle: 'preserve-3d',
                 }}
                 whileHover={{
-                  scale: 1.05,
-                  rotateY: 5,
-                  rotateX: -5,
-                  z: 50,
+                  scale: 1.03,
+                  rotateY: 2,
+                  rotateX: -2,
                   transition: { duration: 0.3, ease: "easeOut" }
                 }}
               >
@@ -336,11 +337,11 @@ const EventsPage = ({ theme = 'blue' }) => {
 
                 {/* Main card backdrop */}
                 <div
-                  className="relative backdrop-blur-xl rounded-2xl border-2 p-5 overflow-hidden"
+                  className="relative backdrop-blur-xl rounded-2xl border p-4 overflow-hidden"
                   style={{
                     background: `linear-gradient(135deg, ${event.accentColor}15, rgba(11, 15, 26, 0.9))`,
                     borderColor: `${event.accentColor}60`,
-                    boxShadow: `0 20px 60px rgba(0,0,0,0.5), 0 0 30px ${event.accentColor}20`,
+                    boxShadow: `0 10px 40px rgba(0,0,0,0.5), 0 0 20px ${event.accentColor}15`,
                     transform: 'translateZ(0)',
                   }}
                 >
@@ -378,9 +379,9 @@ const EventsPage = ({ theme = 'blue' }) => {
                   <div className="relative z-10 flex flex-col h-full">
                     {/* Event Icon with 3D lift */}
                     <motion.div
-                      className="text-6xl mb-4 flex-shrink-0"
+                      className="text-4xl mb-2 flex-shrink-0"
                       style={{
-                        filter: `drop-shadow(0 0 20px ${event.accentColor}80)`,
+                        filter: `drop-shadow(0 0 12px ${event.accentColor}80)`,
                       }}
                       whileHover={{
                         scale: 1.2,
@@ -393,7 +394,7 @@ const EventsPage = ({ theme = 'blue' }) => {
 
                     {/* Category badge */}
                     <div
-                      className="text-xs font-mono mb-3 inline-block px-3 py-1 rounded-full self-start"
+                      className="text-[10px] font-mono mb-2 inline-block px-2 py-0.5 rounded-full self-start"
                       style={{
                         color: event.accentColor,
                         background: `${event.accentColor}20`,
@@ -405,7 +406,7 @@ const EventsPage = ({ theme = 'blue' }) => {
 
                     {/* Event Title */}
                     <h3
-                      className="text-3xl font-bold text-white mb-3 group-hover:translate-x-1 transition-transform duration-300"
+                      className="text-xl font-bold text-white mb-2 group-hover:translate-x-1 transition-transform duration-300 leading-tight"
                       style={{
                         textShadow: `0 2px 10px ${event.accentColor}40`,
                       }}
@@ -414,75 +415,78 @@ const EventsPage = ({ theme = 'blue' }) => {
                     </h3>
 
                     {/* Description */}
-                    <p className="text-sm text-gray-300 mb-4 leading-relaxed flex-grow">
+                    <p className="text-xs text-gray-300 mb-3 leading-relaxed flex-grow">
                       {event.description}
                     </p>
 
                     {/* Event Details Grid */}
-                    <div className="grid grid-cols-2 gap-2 mb-4 pb-3 border-b"
+                    <div className="grid grid-cols-2 gap-1.5 mb-3 pb-2 border-b"
                       style={{ borderColor: `${event.accentColor}30` }}
                     >
                       {event.details.slice(0, 4).map((detail, idx) => (
-                        <div key={idx} className="text-xs">
+                        <div key={idx} className="text-[10px]">
                           <div className="text-gray-500 mb-0.5">{detail.label}</div>
                           <div className="text-white font-semibold">{detail.value}</div>
                         </div>
                       ))}
                     </div>
 
-                    {/* Bottom Info Row: Coordinator (compact) + Student Coordinators */}
-                    <div className="flex gap-2 mb-4">
-                      {/* Coordinator Box – made bigger */}
+                    {/* Bottom Info Row: Coordinator + Student Coordinators */}
+                    <div className="flex gap-1.5 mb-3">
+                      {/* Coordinator Box */}
                       <div
-                        className="flex-1 rounded-xl px-3 py-2.5 flex items-center gap-2.5"
+                        className="flex-1 rounded-lg px-2 py-2 flex items-center gap-2 min-w-0"
                         style={{
                           background: `${event.accentColor}15`,
                           border: `1px solid ${event.accentColor}45`,
                         }}
                       >
-                        <span className="text-xl flex-shrink-0">📞</span>
+                        <span className="text-base flex-shrink-0">📞</span>
                         <div className="min-w-0">
-                          <div className="text-[10px] font-mono text-gray-500 leading-tight mb-0.5">COORDINATOR</div>
-                          <div className="text-xs text-white font-semibold truncate leading-tight">{event.coordinator.name}</div>
-                          <div className="text-[10px] font-mono leading-tight mt-0.5" style={{ color: event.accentColor }}>{event.coordinator.phone}</div>
+                          <div className="text-[8px] font-mono text-gray-500 leading-tight">COORDINATOR</div>
+                          <div className="text-[10px] text-white font-semibold truncate leading-tight">{event.coordinator.name}</div>
+                          <div className="text-[9px] font-mono leading-tight" style={{ color: event.accentColor }}>{event.coordinator.phone}</div>
                         </div>
                       </div>
 
                       {/* Student Coordinators Names Box */}
                       {event.studentCoordinators && (
                         <div
-                          className="flex-1 rounded-xl px-3 py-2.5"
+                          className="flex-1 rounded-lg px-2 py-2 min-w-0 overflow-hidden"
                           style={{
                             background: `${event.accentColor}08`,
                             border: `1px solid ${event.accentColor}30`,
                           }}
                         >
-                          <div className="text-[10px] font-mono text-gray-500 mb-1.5 leading-tight tracking-wider">STUDENT COORDS</div>
-                          {event.studentCoordinators.map((name, si) => (
-                            <div key={si} className="flex items-center gap-1.5 mb-1">
-                              <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: event.accentColor }} />
-                              <span className="text-[10px] text-gray-300 truncate leading-tight">{name}</span>
+                          <div className="text-[8px] font-mono text-gray-500 mb-1 leading-tight tracking-wider">STUDENT COORDS</div>
+                          {event.studentCoordinators.slice(0, 3).map((name, si) => (
+                            <div key={si} className="flex items-center gap-1 mb-0.5">
+                              <div className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: event.accentColor }} />
+                              <span className="text-[9px] text-gray-300 truncate leading-tight">{name}</span>
                             </div>
                           ))}
+                          {event.studentCoordinators.length > 3 && (
+                            <span className="text-[8px] text-gray-500">+{event.studentCoordinators.length - 3} more</span>
+                          )}
                         </div>
                       )}
                     </div>
 
                     {/* Bottom Buttons – Explore + Register + Rules */}
-                    <div className="flex gap-2">
+                    <div className="flex gap-1.5">
                       {/* Explore Button */}
                       <motion.button
                         onClick={(e) => {
                           e.stopPropagation();
                           handleEventSelect(event);
                         }}
-                        className="flex-1 px-3 py-2.5 rounded-xl text-xs font-bold relative overflow-hidden group/btn"
+                        className="flex-1 px-2 py-2 rounded-lg text-[10px] font-bold relative overflow-hidden group/btn"
                         style={{
                           background: `linear-gradient(135deg, ${event.accentColor}, ${event.accentColor}cc)`,
                           color: '#000',
-                          boxShadow: `0 8px 24px ${event.accentColor}40`,
+                          boxShadow: `0 4px 16px ${event.accentColor}40`,
                         }}
-                        whileHover={{ boxShadow: `0 12px 32px ${event.accentColor}60`, y: -2 }}
+                        whileHover={{ boxShadow: `0 8px 24px ${event.accentColor}60`, y: -1 }}
                         whileTap={{ scale: 0.97 }}
                       >
                         <span className="relative z-10 flex items-center justify-center gap-1">
@@ -502,18 +506,21 @@ const EventsPage = ({ theme = 'blue' }) => {
 
                       {/* Register Button */}
                       <motion.button
-                        onClick={(e) => e.stopPropagation()}
-                        className="flex-1 px-3 py-2.5 rounded-xl text-xs font-bold"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigate(`/register?event=${encodeURIComponent(event.title.toUpperCase())}`);
+                        }}
+                        className="flex-1 px-2 py-2 rounded-lg text-[10px] font-bold"
                         style={{
                           background: 'transparent',
                           color: event.accentColor,
-                          border: `1.5px solid ${event.accentColor}`,
-                          boxShadow: `0 0 14px ${event.accentColor}20`,
+                          border: `1px solid ${event.accentColor}`,
+                          boxShadow: `0 0 10px ${event.accentColor}15`,
                         }}
                         whileHover={{
                           background: `${event.accentColor}18`,
-                          boxShadow: `0 0 22px ${event.accentColor}50`,
-                          y: -2,
+                          boxShadow: `0 0 18px ${event.accentColor}40`,
+                          y: -1,
                         }}
                         whileTap={{ scale: 0.97 }}
                       >
@@ -531,18 +538,17 @@ const EventsPage = ({ theme = 'blue' }) => {
                             window.open(event.rulesFile, '_blank');
                           }
                         }}
-                        className="px-3 py-2.5 rounded-xl text-xs font-bold"
+                        className="px-2 py-2 rounded-lg text-[10px] font-bold"
                         style={{
                           background: 'rgba(255,255,255,0.06)',
                           color: '#fff',
-                          border: `1.5px solid rgba(255,255,255,0.18)`,
-                          boxShadow: `0 0 10px rgba(255,255,255,0.05)`,
+                          border: `1px solid rgba(255,255,255,0.18)`,
                         }}
                         whileHover={{
                           background: 'rgba(255,255,255,0.12)',
-                          border: `1.5px solid ${event.accentColor}80`,
+                          border: `1px solid ${event.accentColor}80`,
                           color: event.accentColor,
-                          y: -2,
+                          y: -1,
                         }}
                         whileTap={{ scale: 0.97 }}
                         title="View Event Rules PDF"

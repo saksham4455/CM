@@ -10,9 +10,9 @@ const ALL_EVENTS = [
 
   
   'HACKING EVENT',
-  'MIND MAP',
-  'IT QUIZ',
-  'CODING SPRINT',
+  'MIND MATRIX',
+  'TECH UNSEEN',
+  'SHADOW CODE',
 ];
 
 /* ─── Mock registrations — replace with real API fetch ─── */
@@ -26,13 +26,13 @@ const MOCK_DATA = [
   {
     id: 2, name: 'Priya Sharma', college: 'IP University', classSem: 'MCA - Sem 2',
     phone: '9123456780', email: 'priya@example.com',
-    event: 'IT QUIZ', paymentStatus: 'paid',
+    event: 'TECH UNSEEN', paymentStatus: 'paid',
     screenshot: null, status: 'pending',
   },
   {
     id: 3, name: 'Rohit Verma', college: 'DTU', classSem: 'B.Tech - Sem 5',
     phone: '9988776655', email: 'rohit@example.com',
-    event: 'CODING SPRINT', paymentStatus: 'unpaid',
+    event: 'SHADOW CODE', paymentStatus: 'unpaid',
     screenshot: null, status: 'accepted',
   },
   {
@@ -56,7 +56,7 @@ const MOCK_DATA = [
   {
     id: 7, name: 'Vikas Yadav', college: 'GGS IND', classSem: 'MCA - Sem 1',
     phone: '7845123690', email: 'vikas@example.com',
-    event: 'MIND MAP', paymentStatus: 'paid',
+    event: 'MIND MATRIX', paymentStatus: 'paid',
     screenshot: null, status: 'accepted',
   },
 ];

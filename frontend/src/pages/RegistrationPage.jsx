@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import CyberMatrixBackground from '../components/CyberMatrixBackground';
 import '../css/RegistrationForm.css';
@@ -9,9 +9,9 @@ const EVENTS = [
   'INNOVISION 7.0',
   'GAMING ARENA',
   'HACKING EVENT',
-  'MIND MAP',
-  'IT QUIZ',
-  'CODING SPRINT',
+  'MIND MATRIX',
+  'TECH UNSEEN',
+  'SHADOW CODE',
 ];
 
 const PAID_EVENTS = ['TREASURE HUNT', 'GAMING ARENA'];
@@ -28,6 +28,8 @@ const CLASSES = [
 
 const RegistrationPage = ({ theme = 'blue' }) => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const preSelectedEvent = searchParams.get('event') || '';
   const fileInputRef = useRef(null);
 
   const [form, setForm] = useState({
@@ -37,7 +39,7 @@ const RegistrationPage = ({ theme = 'blue' }) => {
     phone: '',
     email: '',
     paymentStatus: '',
-    event: '',
+    event: EVENTS.includes(preSelectedEvent) ? preSelectedEvent : '',
     screenshot: null,
   });
 

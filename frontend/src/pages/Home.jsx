@@ -37,19 +37,19 @@ const Home = memo(() => {
       icon: '🔓'
     },
     { 
-      name: 'MIND MAP', 
+      name: 'MIND MATRIX', 
       img: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&q=80&w=800',
       code: '# 05',
       icon: '🧠'
     },
     { 
-      name: 'IT QUIZ', 
+      name: 'TECH UNSEEN', 
       img: 'https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?auto=format&fit=crop&q=80&w=800',
       code: '# 06',
       icon: '❓'
     },
     { 
-      name: 'CODING SPRINT', 
+      name: 'SHADOW CODE', 
       img: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=800',
       code: '# 07',
       icon: '💻'

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const EventRevealPage = ({ event, onClose, onNext, onPrevious, hasNext, hasPrevious }) => {
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const [flippedCards, setFlippedCards] = useState({});
 
@@ -9,6 +11,13 @@ const EventRevealPage = ({ event, onClose, onNext, onPrevious, hasNext, hasPrevi
     setIsVisible(true);
     setFlippedCards({});
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
+    // Hide footer, navbar, and scroll-to-top so they don't bleed through
+    const footer = document.querySelector('.footer');
+    const scrollBtn = document.querySelector('.scroll-to-top-btn');
+    if (footer) footer.style.display = 'none';
+    if (scrollBtn) scrollBtn.style.display = 'none';
 
     // Staggered auto-flip for gaming cards
     if (event?.gameCards) {
@@ -27,7 +36,10 @@ const EventRevealPage = ({ event, onClose, onNext, onPrevious, hasNext, hasPrevi
 
     window.addEventListener('keydown', handleKeyPress);
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      if (footer) footer.style.display = '';
+      if (scrollBtn) scrollBtn.style.display = '';
       window.removeEventListener('keydown', handleKeyPress);
     };
   }, [hasNext, hasPrevious, onNext, onPrevious, event]);
@@ -47,7 +59,8 @@ const EventRevealPage = ({ event, onClose, onNext, onPrevious, hasNext, hasPrevi
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-          className="fixed inset-0 z-50 overflow-hidden"
+          className="fixed inset-0 overflow-hidden"
+          style={{ zIndex: 9999, isolation: 'isolate' }}
         >
           {/* Background */}
           <div className="absolute inset-0">
@@ -60,8 +73,8 @@ const EventRevealPage = ({ event, onClose, onNext, onPrevious, hasNext, hasPrevi
           {/* ── CLOSE BUTTON – always visible ── */}
           <button
             onClick={handleClose}
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-[60] group"
-            style={{ isolation: 'isolate' }}
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 group"
+            style={{ zIndex: 10000, isolation: 'isolate' }}
           >
             <div
               className="relative w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full transition-all duration-300 group-hover:scale-110"
@@ -84,15 +97,15 @@ const EventRevealPage = ({ event, onClose, onNext, onPrevious, hasNext, hasPrevi
           </button>
 
           {/* Main Content Container */}
-          <div className="relative h-full flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-16 pt-14 sm:pt-16 pb-16 sm:pb-20">
-            <div className="w-full max-w-6xl h-full grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16 min-h-0">
+          <div className="relative h-full overflow-y-auto overflow-x-hidden px-4 sm:px-6 md:px-8 lg:px-12 pt-16 pb-20 sm:pb-24">
+            <div className="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6 lg:gap-10 lg:items-start lg:pt-4">
 
               {/* ── LEFT SECTION ── */}
               <motion.div
                 initial={{ x: -100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ type: 'spring', stiffness: 200, damping: 25, mass: 1, delay: 0.15 }}
-                className="flex flex-col justify-center space-y-1.5 sm:space-y-2 min-h-0"
+                className="flex flex-col space-y-1.5 sm:space-y-2"
               >
                 {/* Top HUD Bar */}
                 <div className="relative">
@@ -142,7 +155,7 @@ const EventRevealPage = ({ event, onClose, onNext, onPrevious, hasNext, hasPrevi
 
                   {/* Event Title */}
                   <h1
-                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 leading-tight"
+                    className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 leading-tight"
                     style={{ textShadow: `0 0 30px ${event.accentColor}80` }}
                   >
                     {event.title}
@@ -181,7 +194,7 @@ const EventRevealPage = ({ event, onClose, onNext, onPrevious, hasNext, hasPrevi
                         </div>
                         <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full opacity-50 flex-shrink-0" style={{ background: event.accentColor }} />
                       </div>
-                      <div className="text-base sm:text-xl md:text-2xl font-bold text-white leading-none" style={{ textShadow: `0 0 10px ${event.accentColor}40` }}>
+                      <div className="text-sm sm:text-lg md:text-xl font-bold text-white leading-none" style={{ textShadow: `0 0 10px ${event.accentColor}40` }}>
                         {detail.value}
                       </div>
                     </motion.div>
@@ -257,6 +270,16 @@ const EventRevealPage = ({ event, onClose, onNext, onPrevious, hasNext, hasPrevi
                   className="relative group w-full cursor-pointer"
                   whileHover={{ scale: 1.02, y: -1 }}
                   whileTap={{ scale: 0.98 }}
+                  onClick={() => {
+                    // Restore page state before navigating
+                    document.body.style.overflow = '';
+                    document.documentElement.style.overflow = '';
+                    const footer = document.querySelector('.footer');
+                    const scrollBtn = document.querySelector('.scroll-to-top-btn');
+                    if (footer) footer.style.display = '';
+                    if (scrollBtn) scrollBtn.style.display = '';
+                    navigate(`/register?event=${encodeURIComponent(event.title.toUpperCase())}`);
+                  }}
                 >
                   <div
                     className="absolute inset-0 rounded-xl opacity-40 blur-xl group-hover:opacity-80 transition-opacity duration-300"
@@ -291,11 +314,11 @@ const EventRevealPage = ({ event, onClose, onNext, onPrevious, hasNext, hasPrevi
                 initial={{ x: 100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ type: 'spring', stiffness: 200, damping: 25, mass: 1, delay: 0.3 }}
-                className="relative flex items-center justify-center min-h-0 order-first lg:order-last"
+                className="relative flex items-center justify-center min-h-0 order-first lg:order-last lg:w-[340px] xl:w-[400px] flex-shrink-0"
               >
                 {event.gameCards ? (
                   /* ── GAMING ARENA: HOLOGRAPHIC FLIP CARD REVEAL ── */
-                  <div className="relative w-full h-full flex flex-col justify-center py-2" style={{ minHeight: 'min(50vh, 380px)' }}>
+                  <div className="relative w-full h-full flex flex-col justify-center py-2" style={{ minHeight: 'min(40vh, 320px)' }}>
                     {/* Corner HUD brackets */}
                     <div className="absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2" style={{ borderColor: event.accentColor }} />
                     <div className="absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2" style={{ borderColor: event.accentColor }} />
@@ -416,11 +439,11 @@ const EventRevealPage = ({ event, onClose, onNext, onPrevious, hasNext, hasPrevi
                   </div>
                 ) : (
                   /* ── DEFAULT 3D CHARACTER ── */
-                  <div className="relative w-full h-full flex items-center justify-center" style={{ minHeight: 'min(40vh, 300px)' }}>
-                    <div className="absolute top-0 left-0 w-12 sm:w-16 md:w-20 lg:w-24 h-12 sm:h-16 md:h-20 lg:h-24 border-l-2 sm:border-l-4 border-t-2 sm:border-t-4" style={{ borderColor: event.accentColor }} />
-                    <div className="absolute top-0 right-0 w-12 sm:w-16 md:w-20 lg:w-24 h-12 sm:h-16 md:h-20 lg:h-24 border-r-2 sm:border-r-4 border-t-2 sm:border-t-4" style={{ borderColor: event.accentColor }} />
-                    <div className="absolute bottom-0 left-0 w-12 sm:w-16 md:w-20 lg:w-24 h-12 sm:h-16 md:h-20 lg:h-24 border-l-2 sm:border-l-4 border-b-2 sm:border-b-4" style={{ borderColor: event.accentColor }} />
-                    <div className="absolute bottom-0 right-0 w-12 sm:w-16 md:w-20 lg:w-24 h-12 sm:h-16 md:h-20 lg:h-24 border-r-2 sm:border-r-4 border-b-2 sm:border-b-4" style={{ borderColor: event.accentColor }} />
+                  <div className="relative w-full flex items-center justify-center" style={{ minHeight: 'min(35vh, 260px)' }}>
+                    <div className="absolute top-0 left-0 w-10 sm:w-14 md:w-16 lg:w-20 h-10 sm:h-14 md:h-16 lg:h-20 border-l-2 sm:border-l-3 border-t-2 sm:border-t-3" style={{ borderColor: event.accentColor }} />
+                    <div className="absolute top-0 right-0 w-10 sm:w-14 md:w-16 lg:w-20 h-10 sm:h-14 md:h-16 lg:h-20 border-r-2 sm:border-r-3 border-t-2 sm:border-t-3" style={{ borderColor: event.accentColor }} />
+                    <div className="absolute bottom-0 left-0 w-10 sm:w-14 md:w-16 lg:w-20 h-10 sm:h-14 md:h-16 lg:h-20 border-l-2 sm:border-l-3 border-b-2 sm:border-b-3" style={{ borderColor: event.accentColor }} />
+                    <div className="absolute bottom-0 right-0 w-10 sm:w-14 md:w-16 lg:w-20 h-10 sm:h-14 md:h-16 lg:h-20 border-r-2 sm:border-r-3 border-b-2 sm:border-b-3" style={{ borderColor: event.accentColor }} />
 
                     <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 w-96 h-4 rounded-full opacity-30 blur-2xl" style={{ background: event.accentColor }} />
                     <div className="absolute inset-0 opacity-20 blur-[100px]" style={{ background: `radial-gradient(circle, ${event.accentColor}, transparent 70%)` }} />
@@ -433,8 +456,8 @@ const EventRevealPage = ({ event, onClose, onNext, onPrevious, hasNext, hasPrevi
                       <div
                         className="leading-none"
                         style={{
-                          fontSize: 'clamp(120px, 20vh, 260px)',
-                          filter: `drop-shadow(0 0 60px ${event.accentColor}) drop-shadow(0 0 120px ${event.accentColor}cc) drop-shadow(0 30px 80px rgba(0,0,0,0.5))`,
+                          fontSize: 'clamp(80px, 15vh, 180px)',
+                          filter: `drop-shadow(0 0 40px ${event.accentColor}) drop-shadow(0 0 80px ${event.accentColor}cc) drop-shadow(0 20px 60px rgba(0,0,0,0.5))`,
                           WebkitTextStroke: `2px ${event.accentColor}40`,
                         }}
                       >
@@ -464,7 +487,7 @@ const EventRevealPage = ({ event, onClose, onNext, onPrevious, hasNext, hasPrevi
           </div>
 
           {/* Bottom HUD */}
-          <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-4 sm:left-6 md:left-8 right-4 sm:right-6 md:right-8 flex justify-between items-end pointer-events-none gap-2">
+          <div className="absolute bottom-2 sm:bottom-4 left-4 sm:left-6 md:left-8 right-4 sm:right-6 md:right-8 flex justify-between items-end pointer-events-none gap-2" style={{ zIndex: 10000 }}>
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}

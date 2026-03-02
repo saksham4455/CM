@@ -6,9 +6,9 @@ const EVENTS = [
   'INNOVISION 7.0',
   'GAMING ARENA',
   'HACKING EVENT',
-  'MIND MAP',
-  'IT QUIZ',
-  'CODING SPRINT',
+  'MIND MATRIX',
+  'TECH UNSEEN',
+  'SHADOW CODE',
 ];
 
 const CLASSES = [
