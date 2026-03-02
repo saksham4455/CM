@@ -21,6 +21,8 @@ const ScrollToTop = lazy(() => import('./components/ScrollToTop'));
 // Lazy-loaded pages
 const Home = lazy(() => import('./pages/Home'));
 const AdminPanel = lazy(() => import('./pages/AdminPanel'));
+const AdminLogin = lazy(() => import('./pages/AdminLogin'));
+const RegistrationPage = lazy(() => import('./pages/RegistrationPage'));
 const LandingPage = lazy(() => import('./pages/LandingPage'));
 const EventsPage = lazy(() => import('./pages/EventsPage'));
 const PastEventsPage = lazy(() => import('./pages/PastEventsPage'));
@@ -127,7 +129,7 @@ function App() {
             </ErrorBoundary>
 
             {/* Navigation */}
-            {location.pathname !== '/admin' && <Navbar />}
+            {location.pathname !== '/admin' && location.pathname !== '/admin-login' && <Navbar />}
 
             {/* Routes with Smooth Transitions */}
             <AnimatePresence mode="wait">
@@ -230,6 +232,34 @@ function App() {
                   </Suspense>
                 } />
 
+                {/* ── Registration ── */}
+                <Route path="/register" element={
+                  <Suspense fallback={<PageLoader />}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.4, ease: 'easeInOut' }}
+                    >
+                      <RegistrationPage theme={theme} />
+                    </motion.div>
+                  </Suspense>
+                } />
+
+                {/* ── Admin Login ── */}
+                <Route path="/admin-login" element={
+                  <Suspense fallback={<PageLoader />}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.4, ease: 'easeInOut' }}
+                    >
+                      <AdminLogin theme={theme} />
+                    </motion.div>
+                  </Suspense>
+                } />
+
                 {/* ── Admin Panel ── */}
                 <Route path="/admin" element={
                   <Suspense fallback={<PageLoader />}>
@@ -243,7 +273,7 @@ function App() {
             </AnimatePresence>
 
             {/* Footer */}
-            {location.pathname !== '/admin' && <Footer />}
+            {location.pathname !== '/admin' && location.pathname !== '/admin-login' && location.pathname !== '/register' && <Footer />}
 
             {/* Custom Cursor */}
             <CustomCursor theme={theme} />

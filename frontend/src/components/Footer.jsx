@@ -100,6 +100,8 @@ function Footer() {
             <li><Link to="/past-events">Past Events</Link></li>
             <li><Link to="/team">Team</Link></li>
             <li><Link to="/contact">Contact</Link></li>
+            <li><Link to="/register">Register</Link></li>
+            <li><Link to="/admin-login">Admin Panel</Link></li>
           </ul>
         </div>
 
