@@ -14,6 +14,8 @@ const EVENTS = [
   'CODING SPRINT',
 ];
 
+const PAID_EVENTS = ['TREASURE HUNT', 'GAMING ARENA'];
+
 const CLASSES = [
   'BCA - Sem 1', 'BCA - Sem 2', 'BCA - Sem 3',
   'BCA - Sem 4', 'BCA - Sem 5', 'BCA - Sem 6',
@@ -52,6 +54,12 @@ const RegistrationPage = ({ theme = 'blue' }) => {
       setForm((prev) => ({ ...prev, screenshot: null, paymentStatus: value }));
       setPreview(null);
     }
+
+    // Clear payment fields when switching to a non-paid event
+    if (name === 'event' && !PAID_EVENTS.includes(value)) {
+      setForm((prev) => ({ ...prev, [name]: value, paymentStatus: '', screenshot: null }));
+      setPreview(null);
+    }
   };
 
   const handleFile = (e) => {
@@ -77,10 +85,12 @@ const RegistrationPage = ({ theme = 'blue' }) => {
     if (!form.classSem) e.classSem = 'Select your class & semester.';
     if (!/^\d{10}$/.test(form.phone)) e.phone = 'Enter a valid 10-digit phone number.';
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Enter a valid email.';
-    if (!form.paymentStatus) e.paymentStatus = 'Select paid or unpaid.';
     if (!form.event) e.event = 'Select an event.';
-    if (form.paymentStatus === 'paid' && !form.screenshot)
-      e.screenshot = 'Upload your payment screenshot.';
+    if (PAID_EVENTS.includes(form.event)) {
+      if (!form.paymentStatus) e.paymentStatus = 'Select paid or unpaid.';
+      if (form.paymentStatus === 'paid' && !form.screenshot)
+        e.screenshot = 'Upload your payment screenshot.';
+    }
     return e;
   };
 
@@ -239,30 +249,32 @@ const RegistrationPage = ({ theme = 'blue' }) => {
             </div>
           </div>
 
-          {/* Payment Status */}
-          <div className="rf-field rf-field--full">
-            <label className="rf-label">
-              Payment Status <span className="rf-req">*</span>
-            </label>
-            <div className="rf-radio-group">
-              <label className={`rf-radio-label ${form.paymentStatus === 'paid' ? 'rf-radio-label--active' : ''}`}>
-                <input type="radio" name="paymentStatus" value="paid"
-                  checked={form.paymentStatus === 'paid'} onChange={handleChange} />
-                <span className="rf-radio-dot" />
-                Paid
+          {/* Payment Status (only for paid events) */}
+          {PAID_EVENTS.includes(form.event) && (
+            <div className="rf-field rf-field--full">
+              <label className="rf-label">
+                Payment Status <span className="rf-req">*</span>
               </label>
-              <label className={`rf-radio-label ${form.paymentStatus === 'unpaid' ? 'rf-radio-label--active' : ''}`}>
-                <input type="radio" name="paymentStatus" value="unpaid"
-                  checked={form.paymentStatus === 'unpaid'} onChange={handleChange} />
-                <span className="rf-radio-dot" />
-                Unpaid / Free Event
-              </label>
+              <div className="rf-radio-group">
+                <label className={`rf-radio-label ${form.paymentStatus === 'paid' ? 'rf-radio-label--active' : ''}`}>
+                  <input type="radio" name="paymentStatus" value="paid"
+                    checked={form.paymentStatus === 'paid'} onChange={handleChange} />
+                  <span className="rf-radio-dot" />
+                  Paid
+                </label>
+                <label className={`rf-radio-label ${form.paymentStatus === 'unpaid' ? 'rf-radio-label--active' : ''}`}>
+                  <input type="radio" name="paymentStatus" value="unpaid"
+                    checked={form.paymentStatus === 'unpaid'} onChange={handleChange} />
+                  <span className="rf-radio-dot" />
+                  Unpaid
+                </label>
+              </div>
+              {errors.paymentStatus && <span className="rf-error">{errors.paymentStatus}</span>}
             </div>
-            {errors.paymentStatus && <span className="rf-error">{errors.paymentStatus}</span>}
-          </div>
+          )}
 
-          {/* QR Code + Upload (only when paid) */}
-          {form.paymentStatus === 'paid' && (
+          {/* QR Code + Upload (only when paid event selected + paid) */}
+          {PAID_EVENTS.includes(form.event) && form.paymentStatus === 'paid' && (
             <div className="rf-payment-section">
               <div className="rf-divider"><span>Payment Details</span></div>
               <div className="rf-payment-grid">
