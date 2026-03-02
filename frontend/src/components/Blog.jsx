@@ -25,8 +25,7 @@ const Blog = ({ theme, compact = false }) => {
     return colors[theme] || '#00f3ff';
   };
 
-  // Duplicate posts for seamless marquee
-  const marqueePosts = [...blogData, ...blogData, ...blogData];
+  const duplicatedPosts = [...blogData, ...blogData];
 
   return (
     <section id="blog" className={`${compact ? 'py-0' : 'py-32'} relative overflow-hidden`}>
@@ -51,32 +50,15 @@ const Blog = ({ theme, compact = false }) => {
         </div>
 
         <div className="cp-blog-marquee-container">
-          <motion.div
-            className="cp-blog-marquee-inner"
-            animate={{
-              x: ["0%", "-50%"],
-            }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 40,
-                ease: "linear",
-              },
-            }}
-            whileHover={{ animationPlayState: "paused" }}
-          >
-            {/* Double the list for seamless looping */}
-            {[...blogData, ...blogData].map((post, index) => (
-              <motion.div
+          <div className="cp-blog-marquee-inner">
+            {duplicatedPosts.map((post, index) => (
+              <div
                 key={`${post.id}-${index}`}
                 className="cp-blog-card"
                 onClick={() => setSelectedPost(post)}
-                whileHover={{ scale: 1.05, y: -10 }}
-                transition={{ type: "spring", stiffness: 300 }}
               >
                 <div className="cp-blog-card-img">
-                  <img src={post.image} alt={post.title} />
+                  <img src={post.image} alt={post.title} loading="lazy" />
                   <div className="cp-blog-card-category" style={{ borderColor: getAccentColor(), color: getAccentColor() }}>
                     {post.category}
                   </div>
@@ -93,9 +75,9 @@ const Blog = ({ theme, compact = false }) => {
                     READ LOGS →
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
 
