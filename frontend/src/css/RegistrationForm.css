@@ -8,28 +8,50 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    background: #06060c;
+    background: #000;
+    position: relative;
+    z-index: 1;
 }
 
 .rf-card {
     width: 100%;
     max-width: 860px;
-    background: rgba(10, 10, 20, 0.95);
+    background: rgba(0, 0, 0, 0.85);
     border: 1px solid rgba(0, 243, 255, 0.18);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow:
-        0 0 0 1px rgba(0, 243, 255, 0.05),
-        0 24px 80px rgba(0, 0, 0, 0.6),
-        0 0 60px rgba(0, 243, 255, 0.04);
+    position: relative;
+    z-index: 2;
 }
 
 /* ── Header ── */
 .rf-header {
     padding: 2.4rem 2.8rem 2rem;
     border-bottom: 1px solid rgba(0, 243, 255, 0.1);
-    background: linear-gradient(135deg, rgba(0, 243, 255, 0.04) 0%, transparent 60%);
+    background: transparent;
     text-align: center;
+    position: relative;
+}
+
+.rf-back-btn {
+    position: absolute;
+    top: 1.6rem;
+    left: 1.8rem;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.rf-back-btn:hover {
+    border-color: #00f3ff;
+    color: #00f3ff;
 }
 
 .rf-badge {
@@ -126,7 +148,7 @@
 }
 
 .rf-select option {
-    background: #0d0d1a;
+    background: #0a0a0a;
     color: #fff;
 }
 
@@ -361,12 +383,10 @@
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.25s ease;
-    box-shadow: 0 0 24px rgba(0, 243, 255, 0.3);
 }
 
 .rf-btn:hover {
     background: #33f7ff;
-    box-shadow: 0 0 40px rgba(0, 243, 255, 0.55);
     transform: translateY(-2px);
 }
 
@@ -385,6 +405,8 @@
     gap: 1.2rem;
     text-align: center;
     padding: 4rem 2rem;
+    position: relative;
+    z-index: 2;
 }
 
 .rf-success-icon {
@@ -397,7 +419,6 @@
     justify-content: center;
     font-size: 2rem;
     color: #00f3ff;
-    box-shadow: 0 0 30px rgba(0, 243, 255, 0.4);
 }
 
 .rf-success-title {

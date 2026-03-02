@@ -89,7 +89,7 @@ const vk1Departments = [
       { id: "VK-1_SOCIALMEDIA_4", name: "Jahanvi Sachdeva", position: "Manager", department: "SOCIAL MEDIA", img: "public/Enigma_Team/Social Media/Jahanvi.jpg" },
       { id: "VK-1_SOCIALMEDIA_5", name: "Gurmeet Singh", position: "Manager", department: "SOCIAL MEDIA", img: "public/Enigma_Team/Social Media/GURMEET SINGH.jpg" },
       { id: "VK-1_SOCIALMEDIA_7", name: "Tanishka Sangwan", position: "Member", department: "SOCIAL MEDIA", img: "public/Enigma_Team/Social Media/Tanishka.jpg" },
-      { id: "VK-1_SOCIALMEDIA_9", name: "Devanshi", position: "Member", department: "SOCIAL MEDIA", img: "frontend/public/Enigma_Team/Social Media/Devanshi.jpeg" },
+      { id: "VK-1_SOCIALMEDIA_9", name: "Devanshi", position: "Member", department: "SOCIAL MEDIA", img: "public/Enigma_Team/Social Media/Devanshi.jpeg" },
     ],
     color: "#00ff66"
   },

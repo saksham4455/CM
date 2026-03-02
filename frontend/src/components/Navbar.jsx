@@ -16,6 +16,7 @@ const Navbar = () => {
         { name: 'PAST EVENTS', path: '/past-events' },
         { name: 'TEAM', path: '/team' },
         { name: 'CONTACT', path: '/contact' },
+        { name: 'REGISTER', path: '/register' },
     ];
 
     return (
