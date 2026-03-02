@@ -1,17 +1,17 @@
 /* ─── Team Page Styling (Hover Expand Accordion) ───────────────────────── */
 :root {
-  --navbar-height: 128px;
+  --navbar-height: 70px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   :root {
-    --navbar-height: 88px;
+    --navbar-height: 60px;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   :root {
-    --navbar-height: 72px;
+    --navbar-height: 55px;
   }
 }
 

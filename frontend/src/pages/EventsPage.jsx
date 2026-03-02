@@ -101,7 +101,7 @@ const EventsPage = ({ theme = 'blue' }) => {
       character: '🎮',
       coordinator: { name: 'Arjun Patel', phone: '+91 98765 43212' },
       studentCoordinators: ['Dev Anand', 'Riya Shah', 'Manav Gupta'],
-      rulesFile: '/Rules/gaming-arena.pdf',
+      rulesFile: '',
       gameCards: [
         { title: 'BGMI', icon: '🔫', prize: '₹3000', players: '4v4' },
         { title: 'Free Fire', icon: '🔥', prize: '₹2000', players: '4v4' },

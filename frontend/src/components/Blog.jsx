@@ -1,9 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import blogData from '../data/blogPosts.json';
 
 const Blog = ({ theme, compact = false }) => {
   const [selectedPost, setSelectedPost] = useState(null);
+
+  // Stop Lenis and lock body scroll when modal is open
+  useEffect(() => {
+    if (selectedPost) {
+      const lenis = window.__lenis;
+      if (lenis) lenis.stop();
+      document.body.style.overflow = 'hidden';
+    } else {
+      const lenis = window.__lenis;
+      if (lenis) lenis.start();
+      document.body.style.overflow = '';
+    }
+    return () => {
+      const lenis = window.__lenis;
+      if (lenis) lenis.start();
+      document.body.style.overflow = '';
+    };
+  }, [selectedPost]);
 
   const getThemeColor = () => {
     const colors = {
@@ -90,13 +108,17 @@ const Blog = ({ theme, compact = false }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedPost(null)}
+            data-lenis-prevent
           >
             <motion.div
               className="cp-blog-modal-content"
-              initial={{ scale: 0.9, y: 20, opacity: 0 }}
+              initial={{ scale: 0.95, y: 30, opacity: 0 }}
               animate={{ scale: 1, y: 0, opacity: 1 }}
-              exit={{ scale: 0.9, y: 20, opacity: 0 }}
+              exit={{ scale: 0.95, y: 30, opacity: 0 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
               onClick={(e) => e.stopPropagation()}
+              onWheel={(e) => e.stopPropagation()}
+              data-lenis-prevent
             >
               <button className="cp-blog-modal-close" onClick={() => setSelectedPost(null)}>×</button>
               <div className="cp-blog-modal-grid">

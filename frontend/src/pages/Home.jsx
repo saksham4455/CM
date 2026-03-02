@@ -1,6 +1,6 @@
 import React, { useState, useMemo, memo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import PongHero from '../components/PongHero';
 import Sponsors from '../components/Sponsers';
 import EventCarousel from '../components/EventCarousel';

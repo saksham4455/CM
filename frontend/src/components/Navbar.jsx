@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import '../css/Navbar.css';
-import logo from '/Logo/Enigma_Logo.svg';
 
 
 
@@ -48,7 +47,7 @@ const Navbar = () => {
             <div className="nav-main-wrapper">
                 {/* Jims Logo - Left */}
                 <Link to="/" className="nav-logo nav-logo-left">
-                    {/* <img src={jimsLogo} alt="Jims Logo" className="logo-image jims-logo" /> */}
+                    <img src="/Logo/Jims_Logo.png" alt="JIMS Logo" className="logo-image jims-logo" />
                 </Link>
 
                 {/* Centered Navigation Container */}
@@ -85,13 +84,10 @@ const Navbar = () => {
                 </div>
             </div>
 
-            {/* Right logos group: Bugslayers + Enigma */}
+            {/* Enigma Logo - Right */}
             <div className="nav-logo-right-group">
                 <Link to="/" className="nav-logo">
-                   
-                </Link>
-                <Link to="/" className="nav-logo">
-                    {/* <img src={logo} alt="Cynet Logo" className="logo-image enigma-logo" /> */}
+                    <img src="/Logo/Enigma_Logo.svg" alt="Enigma Logo" className="logo-image enigma-logo" />
                 </Link>
             </div>
         </div>
