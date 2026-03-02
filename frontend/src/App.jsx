@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Lenis from 'lenis';
+import 'lenis/dist/lenis.css';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -75,29 +76,31 @@ function App() {
     }
   }, [location.pathname, isLoading]);
 
+
   // Initialize Lenis Smooth Scroll
   useEffect(() => {
     if (!isLoading) {
       const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        autoRaf: false,
+        lerp: 0.1,
         smoothWheel: true,
-        smoothTouch: false,
+        syncTouch: false,
       });
 
       lenisRef.current = lenis;
 
-      function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-      }
-
-      requestAnimationFrame(raf);
-
-      // Connect Lenis with GSAP ScrollTrigger
+      // Sync Lenis scroll position with GSAP ScrollTrigger
       lenis.on('scroll', ScrollTrigger.update);
 
+      // Drive Lenis via GSAP ticker (time is in seconds → convert to ms)
+      const onTick = (time) => {
+        lenis.raf(time * 1000);
+      };
+      gsap.ticker.add(onTick);
+      gsap.ticker.lagSmoothing(0);
+
       return () => {
+        gsap.ticker.remove(onTick);
         lenis.destroy();
       };
     }

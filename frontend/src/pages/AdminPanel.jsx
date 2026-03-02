@@ -6,6 +6,9 @@ const ALL_EVENTS = [
   'TREASURE HUNT',
   'INNOVISION 7.0',
   'GAMING ARENA',
+
+
+  
   'HACKING EVENT',
   'MIND MAP',
   'IT QUIZ',
