@@ -484,3 +484,65 @@
     padding-right: 0;
   }
 }
+
+@media (max-width: 375px) {
+  .hero-text-block {
+    padding: 0.75rem 0.75rem 1rem;
+  }
+
+  .hero-title {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+  }
+
+  .hero-subtitle {
+    font-size: 0.68rem;
+    letter-spacing: 1.5px;
+  }
+
+  .hero-photo-section img {
+    max-height: 40vh;
+  }
+
+  .terminal-selector {
+    margin: -10px 8px 30px 8px;
+    padding: 12px 14px;
+  }
+
+  .terminal-header {
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+  }
+
+  .terminal-btn {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+  }
+
+  .hover-expand-gallery {
+    height: 480px;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+  }
+
+  .active-content .panel-name {
+    font-size: 0.95rem;
+  }
+
+  .active-content .panel-position-badge {
+    font-size: 0.6rem;
+    padding: 2px 6px;
+  }
+
+  .active-content .panel-dept {
+    font-size: 0.55rem;
+  }
+
+  .rotated-name {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+  }
+}

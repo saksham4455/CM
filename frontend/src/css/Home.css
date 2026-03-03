@@ -363,9 +363,9 @@
 
 .bio-title {
     font-family: var(--font-mono);
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(1.5rem, 5vw, 3.5rem);
     font-weight: 950;
-    letter-spacing: 12px;
+    letter-spacing: clamp(4px, 2vw, 12px);
     color: #fff;
     margin-top: 1rem;
     text-transform: uppercase;
@@ -437,8 +437,8 @@
 }
 
 .fingerprint-wrap {
-    width: 280px;
-    height: 380px;
+    width: min(280px, 80vw);
+    height: min(380px, 90vw);
     position: relative;
     background: rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(0, 243, 255, 0.2);
@@ -637,7 +637,7 @@
     }
 
     .marquee-img-wrap {
-        width: 280px;
+        width: min(280px, 85vw);
         height: 180px;
     }
 
@@ -797,4 +797,27 @@
 @media (max-width: 768px) {
     .ec-marquee-fade { width: 80px; }
     .ec-marquee-track { animation-duration: 20s; }
+}
+
+@media (max-width: 480px) {
+    .ec-marquee-fade { width: 40px; }
+    .ec-marquee-item { padding: 0 1.5rem; }
+    .ec-marquee-name { font-size: clamp(1rem, 4vw, 1.4rem); letter-spacing: clamp(2px, 1vw, 4px); }
+    .ec-marquee-code { font-size: 0.6rem; letter-spacing: 2px; }
+    .ec-marquee-icon { font-size: 1.1rem; }
+}
+
+@media (max-width: 375px) {
+    .home-shell { padding: 0 0.75rem; }
+    .mission-title { font-size: clamp(1.2rem, 4vw, 1.8rem); letter-spacing: clamp(3px, 1vw, 6px); }
+    .mission-text { font-size: 0.8rem; }
+    .stat-card { padding: 1rem; min-width: unset; }
+    .stat-num { font-size: 1.1rem; }
+    .stat-tag { font-size: 0.6rem; letter-spacing: 1.5px; }
+    .stat-card--action { padding: 1rem 1.5rem; }
+    .stat-card--action .stat-tag { font-size: 0.7rem; }
+    .fingerprint-wrap { width: 70vw; height: 80vw; }
+    .readout-line { font-size: 0.65rem; letter-spacing: 1px; }
+    .bio-status-msg { font-size: 0.8rem; letter-spacing: 1.5px; }
+    .scanner-interface { gap: 1.5rem; padding: 1rem; }
 }

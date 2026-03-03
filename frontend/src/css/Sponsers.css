@@ -142,3 +142,31 @@
         font-size: 1rem;
     }
 }
+
+@media (max-width: 375px) {
+    .sponsors-shell {
+        padding: 0 1rem;
+    }
+
+    .sponsor-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .sponsor-logo {
+        max-height: 100px;
+    }
+
+    .sponsors-title {
+        letter-spacing: 6px;
+    }
+
+    .sponsors-subtitle {
+        letter-spacing: 1.5px;
+        font-size: 0.85rem;
+    }
+
+    .sponsor-name {
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+    }
+}

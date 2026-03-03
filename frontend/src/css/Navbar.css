@@ -455,3 +455,46 @@
         gap: 2rem;
     }
 }
+
+@media (max-width: 375px) {
+    .nav-main-wrapper {
+        padding: 0 0.5rem;
+    }
+
+    .logo-image {
+        height: 38px;
+    }
+
+    .logo-image.jims-logo {
+        height: 48px;
+    }
+
+    .nav-toggle {
+        right: 0.75rem;
+    }
+
+    .bar {
+        width: 22px;
+    }
+
+    .mobile-item {
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+
+    .mobile-menu {
+        gap: 1.6rem;
+    }
+
+    .mobile-menu-logo {
+        height: 36px;
+    }
+
+    .mobile-close-btn {
+        top: 1rem;
+        right: 1rem;
+        width: 2rem;
+        height: 2rem;
+        font-size: 1.2rem;
+    }
+}

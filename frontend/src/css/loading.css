@@ -175,3 +175,82 @@
   background: radial-gradient(circle, transparent 30%, #000 100%);
   z-index: 5;
 }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .cyber-glitch-text {
+    font-size: 3rem;
+    letter-spacing: 8px;
+  }
+
+  .wrapper i {
+    width: 6px;
+    height: 6px;
+    transform: rotate(calc(var(--i) * 11.6129deg)) translate3d(70px, 0, 0);
+  }
+
+  @keyframes cyberSpin {
+    0% {
+      opacity: 0;
+      transform: rotate(calc(var(--i) * 11.6129deg)) translate3d(70px, 0, 0);
+    }
+    30% { opacity: 1; }
+    100% {
+      opacity: 0;
+      transform: rotate(calc(var(--i) * 11.6129deg)) translate3d(-5px, -5px, 400px);
+    }
+  }
+
+  .status-label {
+    font-size: 0.78rem;
+    letter-spacing: 3px;
+  }
+
+  .progress-line {
+    width: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cyber-glitch-text {
+    font-size: 2rem;
+    letter-spacing: 5px;
+  }
+
+  .wrapper i {
+    width: 5px;
+    height: 5px;
+    transform: rotate(calc(var(--i) * 11.6129deg)) translate3d(55px, 0, 0);
+  }
+
+  .status-label {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+  }
+
+  .progress-line {
+    width: 100px;
+  }
+}
+
+@media (max-width: 375px) {
+  .cyber-glitch-text {
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+  }
+
+  .wrapper i {
+    width: 4px;
+    height: 4px;
+    transform: rotate(calc(var(--i) * 11.6129deg)) translate3d(45px, 0, 0);
+  }
+
+  .status-label {
+    font-size: 0.62rem;
+    letter-spacing: 1.5px;
+  }
+
+  .progress-line {
+    width: 80px;
+  }
+}

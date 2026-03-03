@@ -98,3 +98,10 @@
         margin-bottom: -52px;
     }
 }
+
+@media (max-width: 375px) {
+    .box-text-container {
+        transform: scale(0.34);
+        margin-bottom: -58px;
+    }
+}

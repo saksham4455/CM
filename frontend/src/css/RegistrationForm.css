@@ -837,3 +837,206 @@
         font-size: 1.3rem;
     }
 }
+
+@media (max-width: 480px) {
+    .rf-wrapper {
+        padding: calc(var(--navbar-height, 72px) + 1rem) 0.6rem 2rem;
+    }
+
+    .rf-card {
+        border-radius: 8px;
+    }
+
+    .rf-header {
+        padding: 1.4rem 1rem 1.2rem;
+    }
+
+    .rf-form {
+        padding: 1.2rem 1rem;
+    }
+
+    .rf-title {
+        font-size: 1.3rem;
+        letter-spacing: 2px;
+    }
+
+    .rf-subtitle {
+        font-size: 0.78rem;
+    }
+
+    .rf-badge {
+        font-size: 0.62rem;
+        letter-spacing: 3px;
+        padding: 0.2rem 0.7rem;
+    }
+
+    .rf-back-btn {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    .rf-event-checkbox {
+        padding: 0.6rem 0.75rem;
+        font-size: 0.75rem;
+    }
+
+    .rf-event-name {
+        font-size: 0.68rem;
+    }
+
+    .rf-event-price {
+        font-size: 0.65rem;
+    }
+
+    .rf-game-tag {
+        font-size: 0.7rem;
+        padding: 0.35rem 0.7rem;
+    }
+
+    .rf-total-payment {
+        padding: 1rem;
+    }
+
+    .rf-total-amount {
+        font-size: 1.2rem;
+    }
+
+    .rf-total-label {
+        font-size: 0.68rem;
+        letter-spacing: 2px;
+    }
+
+    .rf-breakdown-item {
+        font-size: 0.65rem;
+    }
+
+    .rf-btn {
+        font-size: 0.82rem;
+        padding: 0.85rem 1.5rem;
+    }
+
+    .rf-notice {
+        font-size: 0.78rem;
+        padding: 0.65rem 0.8rem;
+    }
+
+    .rf-success-title {
+        font-size: 1.3rem;
+        letter-spacing: 2px;
+    }
+
+    .rf-success-sub {
+        font-size: 0.82rem;
+    }
+
+    .rf-gaming-popup-header h3 {
+        font-size: 0.95rem;
+        letter-spacing: 1.5px;
+    }
+
+    .rf-game-name {
+        font-size: 0.8rem;
+    }
+
+    .rf-game-price {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .rf-wrapper {
+        padding: calc(var(--navbar-height, 64px) + 0.75rem) 0.4rem 1.5rem;
+    }
+
+    .rf-header {
+        padding: 1.2rem 0.75rem 1rem;
+    }
+
+    .rf-form {
+        padding: 1rem 0.75rem;
+    }
+
+    .rf-title {
+        font-size: 1.1rem;
+        letter-spacing: 1.5px;
+    }
+
+    .rf-subtitle {
+        font-size: 0.72rem;
+    }
+
+    .rf-back-btn {
+        position: static;
+        margin-bottom: 0.8rem;
+        font-size: 0.65rem;
+    }
+
+    .rf-event-checkbox {
+        padding: 0.5rem 0.6rem;
+        font-size: 0.7rem;
+        gap: 0.4rem;
+    }
+
+    .rf-event-name {
+        font-size: 0.62rem;
+    }
+
+    .rf-total-amount {
+        font-size: 1rem;
+    }
+
+    .rf-btn {
+        font-size: 0.75rem;
+        padding: 0.75rem 1.2rem;
+        letter-spacing: 2px;
+    }
+
+    .rf-gaming-popup {
+        border-radius: 10px;
+    }
+
+    .rf-gaming-popup-header {
+        padding: 1rem;
+    }
+
+    .rf-gaming-popup-header h3 {
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+    }
+
+    .rf-gaming-list {
+        padding: 0.4rem;
+    }
+
+    .rf-game-item {
+        padding: 0.7rem 0.75rem;
+        gap: 0.6rem;
+    }
+
+    .rf-game-name {
+        font-size: 0.75rem;
+    }
+
+    .rf-game-price {
+        font-size: 0.78rem;
+    }
+
+    .rf-gaming-done-btn {
+        font-size: 0.78rem;
+    }
+
+    .rf-success {
+        padding: 3rem 1.2rem;
+    }
+
+    .rf-success-title {
+        font-size: 1.1rem;
+        letter-spacing: 1.5px;
+    }
+
+    .rf-success-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 1.6rem;
+    }
+}

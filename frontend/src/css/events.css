@@ -479,6 +479,63 @@
     }
 }
 
+@media (max-width: 375px) {
+    .events-page-wrapper .main-container {
+        padding: 16px 6px;
+    }
+
+    .events-page-wrapper .event-card-container {
+        min-height: 360px;
+    }
+
+    .events-page-wrapper .event-header {
+        padding: 8px 10px;
+        font-size: 9px;
+        letter-spacing: 0;
+    }
+
+    .events-page-wrapper .event-content {
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .events-page-wrapper .event-title {
+        font-size: 0.9rem;
+        letter-spacing: 0.5px;
+    }
+
+    .events-page-wrapper .event-description {
+        font-size: 10px;
+        height: 40px;
+    }
+
+    .events-page-wrapper .event-image-container {
+        height: 140px;
+    }
+
+    .events-page-wrapper .event-btn {
+        padding: 6px;
+        font-size: 8px;
+    }
+
+    .events-page-wrapper .event-card-back {
+        padding: 10px;
+    }
+
+    .events-page-wrapper .back-title {
+        font-size: 11px;
+    }
+
+    .back-description {
+        font-size: 9px;
+    }
+
+    .events-page-wrapper .coordinator-badge {
+        font-size: 7px;
+        padding: 3px 6px;
+    }
+}
+
 /* ─── Override Lenis scroll-lock when event overlay is open ───────────── */
 [data-lenis-prevent] {
     overscroll-behavior: contain;
