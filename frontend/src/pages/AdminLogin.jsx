@@ -4,11 +4,9 @@ import { motion } from 'framer-motion';
 import CyberMatrixBackground from '../components/CyberMatrixBackground';
 import '../css/AdminLogin.css';
 
-/* ─── Hardcoded credentials (replace with real auth later) ─── */
-const ADMIN_USER = 'admin';
-const ADMIN_PASS = 'cynet2026';
+const api = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'
 
-const AdminLogin = ({ theme = 'blue', onLogin }) => {
+const AdminLogin = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
@@ -19,7 +17,7 @@ const AdminLogin = ({ theme = 'blue', onLogin }) => {
     if (error) setError('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!form.username.trim() || !form.password.trim()) {
@@ -28,23 +26,40 @@ const AdminLogin = ({ theme = 'blue', onLogin }) => {
     }
 
     setLoading(true);
-
-    // Simulate auth delay
-    setTimeout(() => {
-      if (form.username === ADMIN_USER && form.password === ADMIN_PASS) {
+    const res = await fetch(`${api}/api/auth/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: form.username,
+        password: form.password
+      })
+    })
+    .then((response) => {
+      if (response.status === 200) {
         sessionStorage.setItem('cynet-admin-auth', 'true');
-        if (onLogin) onLogin();
         navigate('/admin');
       } else {
         setError('ACCESS DENIED — INVALID CREDENTIALS');
       }
-      setLoading(false);
-    }, 1200);
+    })
+    // Simulate auth delay
+    // setTimeout(() => {
+    //   if (form.username === ADMIN_USER && form.password === ADMIN_PASS) {
+    //     sessionStorage.setItem('cynet-admin-auth', 'true');
+    //     if (onLogin) onLogin();
+    //     navigate('/admin');
+    //   } else {
+    //     setError('ACCESS DENIED — INVALID CREDENTIALS');
+    //   }
+    //   setLoading(false);
+    // }, 1200);
   };
 
   return (
     <div className="al-page">
-      <CyberMatrixBackground theme={theme} />
+      {/* <CyberMatrixBackground theme={theme} /> */}
 
       <motion.div
         className="al-card"
