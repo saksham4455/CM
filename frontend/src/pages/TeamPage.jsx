@@ -27,7 +27,7 @@ const vk1Departments = [
     name: "CORE",
     members: [
       { id: "VK-1_CORE_1", name: "Harshit Verma", position: "President", department: "CORE", img: "/Enigma_Team/Core/Harshit.jpg" },
-      { id: "VK-1_CORE_2", name: "Gurnoor Kaur Pawan", position: "Vice President", department: "CORE", img: "/Enigma_Team/Core/Gurnoor_.jpg" },
+      { id: "VK-1_CORE_2", name: "Gurnoor Kaur Pawan", position: "Vice President", department: "CORE", img: "/Enigma_Team/Core/Gurnoor.jpeg" },
       { id: "VK-1_CORE_3", name: "Ayush Dahiya", position: "Vice President", department: "CORE", img: "/Enigma_Team/Core/Ayush Dahiya 00914202024.jpeg" },
       { id: "VK-1_CORE_4", name: "Sana Jain", position: "Secretary", department: "CORE", img: "/Enigma_Team/Core/Sana Jain .jpg" }
     ],
