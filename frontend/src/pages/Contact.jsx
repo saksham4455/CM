@@ -34,7 +34,7 @@ const COORDINATORS = [
 ];
 
 const FACULTY = {
-  name: 'Ms. Puja Mujral',
+  name: 'DR. Puja Mujral',
   role: 'Faculty Advisor — IT Department',
 };
 
