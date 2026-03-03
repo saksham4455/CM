@@ -4,7 +4,7 @@ import "../css/TeamPage.css";
 import { useGlitchText } from "../hooks/useGlitchText";
 
 const GROUP_PHOTO_VK1 = "/Enigma_Team/Enigma.jpeg";
-const GROUP_PHOTO_VK2 = "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=1200&h=600&fit=crop";
+const GROUP_PHOTO_VK2 = "/BUGSLAYERS/Core/Akshat Arora,President.jpg";
 
 // Helper to generate member objects with custom image paths
 const generateMembers = (deptName, batch, count) => {
@@ -300,15 +300,33 @@ const HoverExpandGallery = ({ members, accentColor }) => {
             style={{ borderColor: isActive ? accentColor : "rgba(255,255,255,0.1)" }}
           >
             <div className="panel-image-container">
-              <motion.img
-                src={member.img}
-                alt={member.name}
-                animate={{
-                  scale: isActive ? 1 : 1.2,
-                  filter: isActive ? "grayscale(0%)" : "grayscale(100%) brightness(0.5)"
-                }}
-                transition={{ duration: 0.5 }}
-              />
+              {member.img ? (
+                <motion.img
+                  src={member.img}
+                  alt={member.name}
+                  animate={{
+                    scale: isActive ? 1 : 1.2,
+                    filter: isActive ? "grayscale(0%)" : "grayscale(100%) brightness(0.5)"
+                  }}
+                  transition={{ duration: 0.5 }}
+                />
+              ) : (
+                <div
+                  style={{
+                    width: '100%', height: '100%',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    background: 'linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 100%)',
+                    fontSize: 'clamp(1.5rem, 4vw, 3rem)',
+                    fontWeight: 700,
+                    color: accentColor,
+                    textShadow: `0 0 20px ${accentColor}`,
+                    letterSpacing: '2px',
+                    filter: isActive ? 'none' : 'brightness(0.5)',
+                  }}
+                >
+                  {member.name.trim().split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()}
+                </div>
+              )}
               <div
                 className="panel-overlay"
                 style={{
@@ -393,13 +411,13 @@ function TeamPage() {
         <TerminalSelector activeBatch={activeBatch} setActiveBatch={setActiveBatch} />
 
         <div className="team-sections-wrapper">
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             <motion.div
               key={activeBatch}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -40 }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
               className="batch-sections"
             >
               {activeDepartments.map((dept, index) => (

@@ -39,7 +39,7 @@ const FACULTY = {
 };
 
 const INFO_ITEMS = [
-  { icon: <IconMail />, label: 'Email Address', value: 'cynet@jimsd.org', link: 'mailto:cynet@jimsd.org' },
+  { icon: <IconMail />, label: 'Email Address', value: 'cynet@jimsd.org', link: 'Itclub.vk@jimsd.org' },
   { icon: <IconInsta />, label: 'Instagram', value: '@enigma.jimsvk', link: 'https://www.instagram.com/enigma.jimsvk/' },
   { icon: <IconLinkedin />, label: 'LinkedIn', value: 'Enigma', link: 'https://www.linkedin.com/company/enigma-it-club-jims-vk/' },
 ];
