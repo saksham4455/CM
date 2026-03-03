@@ -1,4 +1,4 @@
-import React, { useState, useMemo, memo } from 'react';
+import React, { useMemo, memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import PongHero from '../components/PongHero';
@@ -9,7 +9,6 @@ import '../css/Home.css';
 
 const Home = memo(() => {
   const navigate = useNavigate();
-  const [isScanned, setIsScanned] = useState(false);
   
   const events = useMemo(() => [
     { 
@@ -64,17 +63,14 @@ const Home = memo(() => {
       </div>
 
       {/* ── INTERACTIVE HERO ── */}
-      <motion.div
-        onViewportEnter={() => setIsScanned(true)}
-      >
-        <PongHero />
-      </motion.div>
+      <PongHero />
 
       {/* ── MISSION BRIEF ── */}
       <motion.section
         className="home-mission"
         initial={{ opacity: 0, y: 50 }}
-        animate={isScanned ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
         <div className="home-shell">
@@ -97,8 +93,9 @@ const Home = memo(() => {
       <motion.section
         className="home-stats-section"
         initial={{ opacity: 0 }}
-        animate={isScanned ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 1, delay: 0.3 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 1, delay: 0.2 }}
       >
         <div className="home-shell">
           <div className="stats-container">

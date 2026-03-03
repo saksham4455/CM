@@ -136,25 +136,25 @@ const PongHero = () => {
             let basePixelSize, pixelGap, charGap, ballR, paddleW, paddleT, ballSpeed;
             if (vw < 380) {
                 basePixelSize = 5;  pixelGap = 1;  charGap = 5;
-                ballR = 4;  paddleW = 50;  paddleT = 6;  ballSpeed = 2.5;
+                ballR = 4;  paddleW = 50;  paddleT = 6;  ballSpeed = 1.5;
             } else if (vw < 480) {
                 basePixelSize = 6;  pixelGap = 1;  charGap = 6;
-                ballR = 5;  paddleW = 55;  paddleT = 7;  ballSpeed = 2.8;
+                ballR = 5;  paddleW = 55;  paddleT = 7;  ballSpeed = 1.7;
             } else if (vw < 640) {
                 basePixelSize = 7;  pixelGap = 1;  charGap = 8;
-                ballR = 5;  paddleW = 60;  paddleT = 7;  ballSpeed = 3;
+                ballR = 5;  paddleW = 60;  paddleT = 7;  ballSpeed = 1.8;
             } else if (vw < 768) {
                 basePixelSize = 8;  pixelGap = 1;  charGap = 10;
-                ballR = 6;  paddleW = 70;  paddleT = 8;  ballSpeed = 3;
+                ballR = 6;  paddleW = 70;  paddleT = 8;  ballSpeed = 1.8;
             } else if (vw < 1024) {
                 basePixelSize = 9;  pixelGap = 1;  charGap = 12;
-                ballR = 7;  paddleW = 85;  paddleT = 9;  ballSpeed = 3.5;
+                ballR = 7;  paddleW = 85;  paddleT = 9;  ballSpeed = 2.0;
             } else if (vw < 1440) {
                 basePixelSize = 11; pixelGap = 2;  charGap = 14;
-                ballR = 8;  paddleW = 100; paddleT = 10; ballSpeed = 4;
+                ballR = 8;  paddleW = 100; paddleT = 10; ballSpeed = 2.4;
             } else {
                 basePixelSize = 13; pixelGap = 2;  charGap = 16;
-                ballR = 9;  paddleW = 110; paddleT = 10; ballSpeed = 4.5;
+                ballR = 9;  paddleW = 110; paddleT = 10; ballSpeed = 2.7;
             }
 
             // â”€â”€ Clamp pixel size so text never overflows canvas (max 88% width) â”€â”€
@@ -380,11 +380,21 @@ const PongHero = () => {
         window.addEventListener('resize', handleResize);
         document.addEventListener('visibilitychange', handleVisibility);
 
+        // Forward wheel events from the canvas to Lenis so page scrolls normally
+        const onWheel = (e) => {
+            const lenis = window.__lenis;
+            if (lenis) {
+                lenis.scrollTo(lenis.targetScroll + e.deltaY, { immediate: false });
+            }
+        };
+        canvasRef.current?.addEventListener('wheel', onWheel, { passive: true });
+
         return () => {
             cancelAnimationFrame(animationIdRef.current);
             window.removeEventListener('resize', handleResize);
             document.removeEventListener('visibilitychange', handleVisibility);
             clearTimeout(resizeTimeoutRef.current);
+            canvasRef.current?.removeEventListener('wheel', onWheel);
         };
     }, []);
 
