@@ -71,9 +71,12 @@ function App() {
   // Scroll to top on route change
   useEffect(() => {
     if (!isLoading) {
-      window.scrollTo(0, 0);
+      // Always ensure Lenis is running when navigating to any page
       if (lenisRef.current) {
+        lenisRef.current.start();
         lenisRef.current.scrollTo(0, { immediate: true });
+      } else {
+        window.scrollTo(0, 0);
       }
     }
   }, [location.pathname, isLoading]);
