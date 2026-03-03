@@ -28,7 +28,6 @@ const EventsPage = lazy(() => import('./pages/EventsPage'));
 const PastEventsPage = lazy(() => import('./pages/PastEventsPage'));
 const TeamPage = lazy(() => import('./pages/TeamPage'));
 const Contact = lazy(() => import('./pages/Contact'));
-//const ContactForm = lazy(() => import('./components/ContactForm'));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -89,7 +88,7 @@ function App() {
         autoRaf: false,
         lerp: 0.1,
         smoothWheel: true,
-        syncTouch: true,   // enable smooth scroll on mobile touch
+        syncTouch: false,
       });
 
       lenisRef.current = lenis;
@@ -259,9 +258,8 @@ function App() {
                       exit={{ opacity: 0, y: -20 }}
                       transition={{ duration: 0.4, ease: 'easeInOut' }}
                     >
-                      {/* <AdminLogin theme={theme} /> */}
-                      <AdminLogin/>
-                    </motion.div>
+                    <AdminLogin/>
+                  </motion.div>
                   </Suspense>
                 } />
 

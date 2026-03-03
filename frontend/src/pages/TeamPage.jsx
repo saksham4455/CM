@@ -6,21 +6,6 @@ import { useGlitchText } from "../hooks/useGlitchText";
 const GROUP_PHOTO_VK1 = "/Enigma_Team/Enigma.jpeg";
 const GROUP_PHOTO_VK2 = "";
 
-// Helper to generate member objects with custom image paths
-const generateMembers = (deptName, batch, count) => {
-  const positions = ["Director", "Assistant Director", "Manager", "Member"];
-  return Array.from({ length: count }).map((_, i) => ({
-    id: `${batch}_${deptName}_${i + 1}`,
-    name: `${deptName.split(' ')[0]}_OP_${i + 1}`,
-    position: positions[Math.min(i, positions.length - 1)],
-    department: deptName,
-    img:
-      batch === "VK-1"
-        ? `/Enigma_Team/${deptName.replace(/ & | |_/g, '')}/member${i + 1}.jpg`
-        : `/BUGSLAYERS/${deptName.replace(/ & | |_/g, '')}/member${i + 1}.jpg`
-  }));
-};
-
 // VK-1 (Enigma_Team)
 const vk1Departments = [
   {

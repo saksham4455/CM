@@ -14,8 +14,8 @@ export const useRegistrationStore = create((set, get) => ({
 
     const url =
       event === "ALL"
-        ? "http://localhost:5000/api/registrations/admin"
-        : `http://localhost:5000/api/registrations/admin?event=${encodeURIComponent(event)}`;
+        ? `${API}/api/registrations/admin`
+        : `${API}/api/registrations/admin?event=${encodeURIComponent(event)}`;
 
     const res = await fetch(url);
     const data = await res.json();
@@ -24,7 +24,7 @@ export const useRegistrationStore = create((set, get) => ({
   },
 
   fetchEventCounts: async () => {
-    const res = await fetch("http://localhost:5000/api/registrations/counts");
+    const res = await fetch(`${API}/api/registrations/counts`);
     const data = await res.json();
 
     const countsObj = {};

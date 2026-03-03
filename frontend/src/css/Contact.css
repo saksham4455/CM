@@ -108,7 +108,6 @@ html {
 }
 
 .cp-section--dim {
-  background: rgba(255, 255, 255, 0.01);
   background: rgba(255, 255, 255, 0.012);
   backdrop-filter: blur(8px);
 }

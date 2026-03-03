@@ -286,9 +286,6 @@ export default function PastEventsPage() {
         <CSSGlobe mouseX={springMouseX} mouseY={springMouseY} />
       </main>
 
-      {/* ─── Removed: gallery-section, lightbox, selectedImage state ─────── */}
-      {/* ─── Removed: Canvas, CyberGalaxy, and all particle effects ─────── */}
-      {/* ─── Removed: All background effects and scrollers ─────── */}
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import CyberMatrixBackground from '../components/CyberMatrixBackground';
 import '../css/AdminLogin.css';
 
 const api = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'
@@ -26,7 +25,7 @@ const AdminLogin = () => {
     }
 
     setLoading(true);
-    const res = await fetch(`${api}/api/auth/login`, {
+    await fetch(`${api}/api/auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -44,23 +43,11 @@ const AdminLogin = () => {
         setError('ACCESS DENIED — INVALID CREDENTIALS');
       }
     })
-    // Simulate auth delay
-    // setTimeout(() => {
-    //   if (form.username === ADMIN_USER && form.password === ADMIN_PASS) {
-    //     sessionStorage.setItem('cynet-admin-auth', 'true');
-    //     if (onLogin) onLogin();
-    //     navigate('/admin');
-    //   } else {
-    //     setError('ACCESS DENIED — INVALID CREDENTIALS');
-    //   }
-    //   setLoading(false);
-    // }, 1200);
+    .finally(() => setLoading(false));
   };
 
   return (
     <div className="al-page">
-      {/* <CyberMatrixBackground theme={theme} /> */}
-
       <motion.div
         className="al-card"
         initial={{ opacity: 0, y: 30, scale: 0.96 }}
