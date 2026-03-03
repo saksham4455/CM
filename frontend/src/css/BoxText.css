@@ -1,9 +1,10 @@
 /* Outer wrapper — full width, overflow-hidden, flex-centers the inner container */
 .box-text-wrapper {
     width: 100%;
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     justify-content: center;
+    padding-inline: clamp(0px, 4vw, 24px);
 }
 
 .box-text-container {
