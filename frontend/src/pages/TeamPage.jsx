@@ -122,14 +122,8 @@ const vk2Departments = [
   {
     name: "ANCHORING",
     members: [
-      { id: "VK-2_ANCHORING_1", name: "Avni", position: "Head", department: "ANCHORING", img: "" },
-      { id: "VK-2_ANCHORING_2", name: "Aditya Nath", position: "Anchor", department: "ANCHORING", img: "" },
-      { id: "VK-2_ANCHORING_3", name: "Tanvi", position: "Anchor", department: "ANCHORING", img: "" },
-      { id: "VK-2_ANCHORING_4", name: "Arunima", position: "Secretary", department: "ANCHORING", img: "" },
-      { id: "VK-2_ANCHORING_5", name: "Aditya Katoch", position: "Volunteer", department: "ANCHORING", img: "" },
-      { id: "VK-2_ANCHORING_6", name: "Karishma", position: "Volunteer", department: "ANCHORING", img: "" },
-      { id: "VK-2_ANCHORING_7", name: "Rishika", position: "Volunteer", department: "ANCHORING", img: "" },
-      { id: "VK-2_ANCHORING_8", name: "Bhavya", position: "Volunteer", department: "ANCHORING", img: "" }
+      { id: "VK-2_ANCHORING_1", name: "Hanisha", position: "Anchor", department: "ANCHORING", img: "/BUGSLAYERS/Anchoring/Hanisha,Head.jpg" },
+      { id: "VK-2_ANCHORING_2", name: "Aditya Nath", position: "Anchor", department: "ANCHORING", img: "/BUGSLAYERS/Anchoring/Aditya Nath,anchor.jpg" },
     ],
     color: "#1d0dff"
   },
@@ -138,13 +132,7 @@ const vk2Departments = [
     members: [
       { id: "VK-2_CREATIVE_1", name: "Garima", position: "Head", department: "CREATIVE", img: "/BUGSLAYERS/Creative/Garima,Head,Decoration.jpg" },
       { id: "VK-2_CREATIVE_2", name: "K M Neha Rawat", position: "Designer", department: "CREATIVE", img: "/BUGSLAYERS/Creative/Neha,Member,Decoration.jpg" },
-      { id: "VK-2_CREATIVE_3", name: "Preeti", position: "Designer", department: "CREATIVE", img: "" },
-      { id: "VK-2_CREATIVE_4", name: "Kanchan", position: "Artist", department: "CREATIVE", img: "" },
-      { id: "VK-2_CREATIVE_5", name: "Khushboo", position: "Artist", department: "CREATIVE", img: "" },
-      { id: "VK-2_CREATIVE_6", name: "Shree Sai", position: "Secretary", department: "CREATIVE", img: "/BUGSLAYERS/Creative/Sri Sai Keerthana,Member,decor.jpg" },
-      { id: "VK-2_CREATIVE_7", name: "Aarohi", position: "Volunteer", department: "CREATIVE", img: "" },
-      { id: "VK-2_CREATIVE_8", name: "Anirban", position: "Volunteer", department: "CREATIVE", img: "" },
-      { id: "VK-2_CREATIVE_9", name: "Karishma", position: "Volunteer", department: "CREATIVE", img: "" }
+      { id: "VK-2_CREATIVE_3", name: "Shree Sai", position: "Secretary", department: "CREATIVE", img: "/BUGSLAYERS/Creative/Sri Sai Keerthana,Member,decor.jpg" },
     ],
     color: "#00f3ff"
   },
@@ -163,15 +151,8 @@ const vk2Departments = [
   {
     name: "INVITATION & SPONSORSHIP",
     members: [
-      { id: "VK-2_INVITATION_1", name: "Shivam", position: "Head", department: "INVITATION & SPONSOR", img: "" },
-      { id: "VK-2_INVITATION_2", name: "Yashraj", position: "Sponsor Lead", department: "INVITATION & SPONSOR", img: "" },
-      { id: "VK-2_INVITATION_3", name: "Kunal", position: "Sponsor", department: "INVITATION & SPONSOR", img: "" },
-      { id: "VK-2_INVITATION_4", name: "Yash Biduri", position: "Secretary", department: "INVITATION & SPONSOR", img: "/BUGSLAYERS/Invitation and sponser/Yash bhiduri,Invitation head.jpg" },
-      { id: "VK-2_INVITATION_5", name: "Manas", position: "Volunteer", department: "INVITATION & SPONSOR", img: "/BUGSLAYERS/Invitation and sponser/Manas,Member,Invitation.jpg" },
-      { id: "VK-2_INVITATION_6", name: "Abbu Sufiyan", position: "Volunteer", department: "INVITATION & SPONSOR", img: "" },
-      { id: "VK-2_INVITATION_7", name: "Parvar", position: "Volunteer", department: "INVITATION & SPONSOR", img: "" },
-      { id: "VK-2_INVITATION_8", name: "Amolak", position: "Volunteer", department: "INVITATION & SPONSOR", img: "" },
-      { id: "VK-2_INVITATION_9", name: "Ayush", position: "Volunteer", department: "INVITATION & SPONSOR", img: "" }
+      { id: "VK-2_INVITATION_1", name: "Yash Biduri", position: "Secretary", department: "INVITATION & SPONSOR", img: "/BUGSLAYERS/Invitation and sponser/Yash bhiduri,Invitation head.jpg" },
+      { id: "VK-2_INVITATION_2", name: "Manas", position: "Volunteer", department: "INVITATION & SPONSOR", img: "/BUGSLAYERS/Invitation and sponser/Manas,Member,Invitation.jpg" },
     ],
     color: "#ff006e"
   },
@@ -186,30 +167,10 @@ const vk2Departments = [
     color: "#00ff66"
   },
   {
-    name: "POSTER TEAM",
-    members: [
-      { id: "VK-2_POSTER_1", name: "Yashik", position: "Head", department: "POSTER", img: "" },
-      { id: "VK-2_POSTER_2", name: "Jashandeep", position: "Designer", department: "POSTER", img: "" },
-      { id: "VK-2_POSTER_3", name: "Ishqpreet", position: "Designer", department: "POSTER", img: "" },
-      { id: "VK-2_POSTER_4", name: "Aarohi", position: "Editor", department: "POSTER", img: "" },
-      { id: "VK-2_POSTER_5", name: "Sai", position: "Volunteer", department: "POSTER", img: "" }
-    ],
-    color: "#ff0044"
-  },
-  {
     name: "SOCIAL MEDIA",
     members: [
       { id: "VK-2_SOCIALMEDIA_1", name: "Dharamveer", position: "Head", department: "SOCIAL MEDIA", img: "/BUGSLAYERS/Social media/Dharamveer,Social media head.jpg" },
-      { id: "VK-2_SOCIALMEDIA_2", name: "Lakshay", position: "Content Creator", department: "SOCIAL MEDIA", img: "/BUGSLAYERS/Social media/Lakshay,Member.jpg" },
-      { id: "VK-2_SOCIALMEDIA_3", name: "Aditya Katoch", position: "Designer", department: "SOCIAL MEDIA", img: "" },
-      { id: "VK-2_SOCIALMEDIA_4", name: "Yash Biduri", position: "Analyst", department: "SOCIAL MEDIA", img: "" },
-      { id: "VK-2_SOCIALMEDIA_5", name: "Anchal", position: "Volunteer", department: "SOCIAL MEDIA", img: "" },
-      { id: "VK-2_SOCIALMEDIA_6", name: "Prisha", position: "Volunteer", department: "SOCIAL MEDIA", img: "" },
-      { id: "VK-2_SOCIALMEDIA_7", name: "Arohi", position: "Volunteer", department: "SOCIAL MEDIA", img: "" },
-      { id: "VK-2_SOCIALMEDIA_8", name: "Sai", position: "Volunteer", department: "SOCIAL MEDIA", img: "" },
-      { id: "VK-2_SOCIALMEDIA_9", name: "Siddhartha", position: "Volunteer", department: "SOCIAL MEDIA", img: "" },
-      { id: "VK-2_SOCIALMEDIA_10", name: "Sambhav", position: "Volunteer", department: "SOCIAL MEDIA", img: "" },
-      { id: "VK-2_SOCIALMEDIA_11", name: "Garvit", position: "Volunteer", department: "SOCIAL MEDIA", img: "" }
+      { id: "VK-2_SOCIALMEDIA_2", name: "Lakshay", position: "Content Creator", department: "SOCIAL MEDIA", img: "/BUGSLAYERS/Social media/Lakshay,Member.jpg" }
     ],
     color: "#ffaa00"
   }
@@ -401,10 +362,16 @@ function TeamPage() {
           transition={{ duration: 1 }}
           className="hero-photo-section"
         >
-          <div className="hero-photo-frame">
-            <img src={groupPhoto} alt={`Cynet Team ${activeBatch}`} />
-            <div className="hero-overlay" />
-          </div>
+          {groupPhoto ? (
+            <div className="hero-photo-frame">
+              <img src={groupPhoto} alt={`Cynet Team ${activeBatch}`} />
+              <div className="hero-overlay" />
+            </div>
+          ) : (
+            <div className="hero-photo-placeholder">
+              <span className="hero-placeholder-icon">{'{ }'}</span>
+            </div>
+          )}
           <div className="hero-text-block">
             <h1 className="hero-title">CYNET 2026 TEAM</h1>
             <p className="hero-subtitle">THE MINDS BEHIND THE MATRIX</p>
