@@ -101,20 +101,18 @@ const EventsPage = ({ theme = 'blue' }) => {
       character: '🎮',
       coordinator: { name: 'Arjun Patel', phone: '+91 98765 43212' },
       studentCoordinators: ['Dev Anand', 'Riya Shah', 'Manav Gupta'],
-      rulesFile: '',
+      rulesFile: '/Rules/Gaming Arena.pdf',
       gameCards: [
-        { title: 'BGMI', icon: '🔫', prize: '₹3000', players: '4v4' },
-        { title: 'Free Fire', icon: '🔥', prize: '₹2000', players: '4v4' },
-        { title: 'Valorant', icon: '🎯', prize: '₹5000', players: '5v5' },
-        { title: 'Chess', icon: '♟️', prize: '₹1000', players: '1v1' },
-        { title: 'FIFA', icon: '⚽', prize: '₹2500', players: '1v1' },
-        { title: 'COD Mobile', icon: '💣', prize: '₹3500', players: '5v5' },
-        { title: 'Clash Royale', icon: '👑', prize: '₹1500', players: '1v1' },
+        { title: 'Valorant', icon: '🎯', prize: '₹500', players: '5v5' },
+        { title: 'Tekken 7', icon: '🥊', prize: '₹200', players: '1v1' },
+        { title: 'BGMI', icon: '🔫', prize: '₹400', players: '4-Squad' },
+        { title: 'Stumble Guys', icon: '🏃', prize: '₹150', players: '1v1' },
+        { title: 'SmashKarts', icon: '🏎️', prize: '₹150', players: '1v1' },
       ],
       details: [
         { label: 'Duration', value: '2 Days' },
-        { label: 'Games', value: '7 Titles' },
-        { label: 'Prize Pool', value: '$8000' },
+        { label: 'Games', value: '5 Titles' },
+        { label: 'Format', value: 'Elimination' },
         { label: 'Participants', value: '200+' }
       ]
     },

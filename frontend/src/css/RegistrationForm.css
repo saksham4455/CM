@@ -456,6 +456,333 @@
     line-height: 1.7;
 }
 
+/* ═══════════════════════════════════════════
+   EVENT CHECKBOXES GRID
+═══════════════════════════════════════════ */
+.rf-events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.7rem;
+}
+
+.rf-event-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.7rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.2s ease;
+    user-select: none;
+    position: relative;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.rf-event-checkbox input[type="checkbox"] { display: none; }
+
+.rf-event-checkbox:hover {
+    border-color: rgba(0, 243, 255, 0.35);
+    background: rgba(0, 243, 255, 0.04);
+}
+
+.rf-event-checkbox--active {
+    border-color: rgba(0, 243, 255, 0.55);
+    background: rgba(0, 243, 255, 0.08);
+    color: #00f3ff;
+    box-shadow: 0 0 12px rgba(0, 243, 255, 0.08);
+}
+
+.rf-event-check-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.rf-event-name {
+    flex: 1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.rf-event-price {
+    font-size: 0.72rem;
+    color: #00f3ff;
+    font-weight: 700;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+}
+
+.rf-event-price--sub {
+    font-size: 0.62rem;
+    font-weight: 400;
+    opacity: 0.7;
+    color: rgba(0, 243, 255, 0.7);
+}
+
+/* ═══════════════════════════════════════════
+   GAMING ARENA POPUP
+═══════════════════════════════════════════ */
+.rf-gaming-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 1rem;
+}
+
+.rf-gaming-popup {
+    width: 100%;
+    max-width: 440px;
+    background: rgba(8, 8, 20, 0.97);
+    border: 1px solid rgba(0, 243, 255, 0.25);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7),
+                0 0 40px rgba(0, 243, 255, 0.08);
+}
+
+.rf-gaming-popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 1.4rem;
+    border-bottom: 1px solid rgba(0, 243, 255, 0.12);
+}
+
+.rf-gaming-popup-header h3 {
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #fff;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.rf-gaming-popup-close {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.6rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.rf-gaming-popup-close:hover { color: #ff6060; }
+
+.rf-gaming-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0.6rem;
+    gap: 0.4rem;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.rf-game-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.rf-game-item input[type="checkbox"] { display: none; }
+
+.rf-game-item:hover {
+    border-color: rgba(0, 243, 255, 0.3);
+    background: rgba(0, 243, 255, 0.04);
+}
+
+.rf-game-item--active {
+    border-color: rgba(0, 243, 255, 0.5);
+    background: rgba(0, 243, 255, 0.08);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.06);
+}
+
+.rf-game-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.rf-game-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.rf-game-name {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.rf-game-format {
+    font-size: 0.68rem;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.5px;
+    font-family: 'Courier New', monospace;
+}
+
+.rf-game-price {
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #00f3ff;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+}
+
+.rf-gaming-done-btn {
+    display: block;
+    width: calc(100% - 1.2rem);
+    margin: 0.6rem;
+    padding: 0.75rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #000;
+    background: #00f3ff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.rf-gaming-done-btn:hover {
+    background: #33f7ff;
+    transform: translateY(-1px);
+}
+
+/* ═══════════════════════════════════════════
+   SELECTED GAME TAGS
+═══════════════════════════════════════════ */
+.rf-selected-games {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.rf-game-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.9rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.78rem;
+    color: #00f3ff;
+    background: rgba(0, 243, 255, 0.08);
+    border: 1px solid rgba(0, 243, 255, 0.25);
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+}
+
+.rf-game-tag-remove {
+    background: none;
+    border: none;
+    color: rgba(255, 80, 80, 0.7);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.15s;
+}
+
+.rf-game-tag-remove:hover { color: #ff6060; }
+
+.rf-add-game-btn {
+    background: none;
+    border: 1px dashed rgba(0, 243, 255, 0.3);
+    color: rgba(0, 243, 255, 0.7);
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.rf-add-game-btn:hover {
+    border-color: #00f3ff;
+    color: #00f3ff;
+    background: rgba(0, 243, 255, 0.06);
+}
+
+/* ═══════════════════════════════════════════
+   TOTAL PAYMENT SECTION
+═══════════════════════════════════════════ */
+.rf-total-payment {
+    background: rgba(0, 243, 255, 0.04);
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.rf-total-payment-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rf-total-label {
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.rf-total-amount {
+    font-family: 'Courier New', monospace;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #00f3ff;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+}
+
+.rf-total-breakdown {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+}
+
+.rf-breakdown-item {
+    font-family: 'Courier New', monospace;
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.5px;
+}
+
 /* ── Responsive ── */
 @media (max-width: 680px) {
     .rf-wrapper { padding: calc(var(--navbar-height, 88px) + 1.5rem) 1rem 3rem; }
@@ -481,4 +808,17 @@
     }
 
     .rf-qr-frame { width: 120px; height: 120px; flex-shrink: 0; }
+
+    .rf-events-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rf-gaming-popup {
+        max-width: 100%;
+        margin: 0.5rem;
+    }
+
+    .rf-total-amount {
+        font-size: 1.3rem;
+    }
 }
