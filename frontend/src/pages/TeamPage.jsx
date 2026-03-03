@@ -4,7 +4,7 @@ import "../css/TeamPage.css";
 import { useGlitchText } from "../hooks/useGlitchText";
 
 const GROUP_PHOTO_VK1 = "/Enigma_Team/Enigma.jpeg";
-const GROUP_PHOTO_VK2 = "/BUGSLAYERS/Core/Akshat Arora,President.jpg";
+const GROUP_PHOTO_VK2 = "";
 
 // Helper to generate member objects with custom image paths
 const generateMembers = (deptName, batch, count) => {
@@ -401,10 +401,14 @@ function TeamPage() {
           transition={{ duration: 1 }}
           className="hero-photo-section"
         >
-          <img src={groupPhoto} alt={`Cynet Team ${activeBatch}`} />
-          <div className="hero-overlay" />
-          <h1 className="hero-title">CYNET 2026 TEAM</h1>
-          <p className="hero-subtitle">THE MINDS BEHIND THE MATRIX</p>
+          <div className="hero-photo-frame">
+            <img src={groupPhoto} alt={`Cynet Team ${activeBatch}`} />
+            <div className="hero-overlay" />
+          </div>
+          <div className="hero-text-block">
+            <h1 className="hero-title">CYNET 2026 TEAM</h1>
+            <p className="hero-subtitle">THE MINDS BEHIND THE MATRIX</p>
+          </div>
         </motion.div>
 
         {/* Cyberpunk Terminal Selector */}
