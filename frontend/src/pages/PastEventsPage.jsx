@@ -41,19 +41,27 @@ const GAP_FACTOR_H = 0.85;
 const getGlobeParams = (width) => {
   const height = window.innerHeight;
   const isSmall = width < 768;
+  const isTiny = width < 480;
 
   // Calculate maximum radius that fills the vertical space
-  const safeHeight = height - 150; // Account for header space
+  const safeHeight = height - (isSmall ? 100 : 150);
   const maxSafeRadius = safeHeight / (2 * Math.sin(DEG(THETA_TOTAL / 2)));
 
-  // Maximize width to fill entire screen - scaled radius by another 40% (1.5 * 1.4 = 2.1)
-  let targetRadius = width * 1.8;
-  let r_css = Math.min(targetRadius, maxSafeRadius) * 2.1;
-  let persp = r_css * 2.8;
+  let r_css, persp;
 
-  if (isSmall) {
-    r_css = width * 2.5; // (1.8 * 1.4)
-    persp = r_css * 2.5;
+  if (isTiny) {
+    // Very small phones — compact globe that fits on screen
+    r_css = Math.min(width * 0.95, height * 0.45);
+    persp = r_css * 3;
+  } else if (isSmall) {
+    // Tablets and larger phones
+    r_css = Math.min(width * 1.3, height * 0.55);
+    persp = r_css * 2.8;
+  } else {
+    // Desktop — fill the screen
+    let targetRadius = width * 1.8;
+    r_css = Math.min(targetRadius, maxSafeRadius) * 2.1;
+    persp = r_css * 2.8;
   }
 
   const rowElev = Array.from({ length: ROWS }, (_, r) => 90 - (THETA_START_D + THETA_PER_D * (r + 0.5)));
@@ -76,12 +84,12 @@ const IMAGES = [
 const CSSGlobe = ({ mouseX, mouseY }) => {
   const grpRef = useRef();
   const baseRotY = useRef(0);
-  const [windowSize, setWindowSize] = useState({ width: window.innerWidth });
+  const [windowSize, setWindowSize] = useState({ width: window.innerWidth, height: window.innerHeight });
   const [hoveredImage, setHoveredImage] = useState(null);
   const [isGlobeHovered, setIsGlobeHovered] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => setWindowSize({ width: window.innerWidth });
+    const handleResize = () => setWindowSize({ width: window.innerWidth, height: window.innerHeight });
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -237,8 +245,8 @@ const CSSGlobe = ({ mouseX, mouseY }) => {
                   alt="Preview"
                   style={{
                     display: "block",
-                    maxWidth: "40vw",
-                    maxHeight: "40vh",
+                    maxWidth: window.innerWidth < 768 ? "80vw" : "40vw",
+                    maxHeight: window.innerWidth < 768 ? "50vh" : "40vh",
                     width: "auto",
                     height: "auto",
                     objectFit: "contain",

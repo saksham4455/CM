@@ -7,6 +7,7 @@ const Sponsors = ({ theme = 'blue' }) => {
     {
       name: 'TSN Securitys',
       logo: '/Logo/Sponser_1.jpeg',
+      link: 'https://tsnsecuritys.in/',
     }
   ];
 
@@ -26,8 +27,11 @@ const Sponsors = ({ theme = 'blue' }) => {
 
         <div className="sponsors-grid">
           {sponsors.map((sponsor, index) => (
-            <motion.div
+            <motion.a
               key={index}
+              href={sponsor.link}
+              target="_blank"
+              rel="noopener noreferrer"
               className="sponsor-card"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -44,7 +48,7 @@ const Sponsors = ({ theme = 'blue' }) => {
                 />
               </div>
               <h4 className="sponsor-name">{sponsor.name}</h4>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>
