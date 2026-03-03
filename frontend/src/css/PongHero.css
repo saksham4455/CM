@@ -25,6 +25,14 @@
     z-index: 2;
     background: transparent;
     filter: contrast(1.08) brightness(1.06);
+    /* On mobile let finger-swipes pass through to the scroll container */
+    pointer-events: none;
+}
+
+@media (min-width: 769px) {
+    .pong-hero-canvas {
+        pointer-events: auto;
+    }
 }
 
 /* ── Background image ── */

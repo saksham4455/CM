@@ -107,6 +107,21 @@ const Navbar = () => {
                         exit={{ opacity: 0, x: '100%' }}
                         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
                     >
+                        {/* Close button inside overlay */}
+                        <button
+                            className="mobile-close-btn"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            aria-label="Close menu"
+                        >
+                            &#x2715;
+                        </button>
+
+                        {/* Logos row at top of menu */}
+                        <div className="mobile-menu-logos">
+                            <img src="/Logo/Enigma_Logo.svg" alt="Enigma" className="mobile-menu-logo" />
+                            <img src="/Logo/Buglsayers.png" alt="Bugslayers" className="mobile-menu-logo" />
+                        </div>
+
                         <div className="mobile-menu">
                             {navLinks.map((link) => {
                                 return (

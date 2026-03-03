@@ -42,14 +42,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Make all primary headings flex so trailing elements align cleanly */
-h1, h2 {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-}
-
 /* Show default cursor for inputs and text areas */
 input, textarea, select, button, a {
   cursor: auto !important;

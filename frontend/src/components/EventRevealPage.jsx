@@ -76,11 +76,11 @@ const EventRevealPage = ({ event, onClose, onNext, onPrevious, hasNext, hasPrevi
             />
           </div>
 
-          {/* ── CLOSE BUTTON – always visible ── */}
+          {/* ── CLOSE BUTTON – always visible, fixed so scroll container never covers it ── */}
           <button
             onClick={handleClose}
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 group"
-            style={{ zIndex: 10000, isolation: 'isolate' }}
+            className="fixed right-4 sm:right-6 group"
+            style={{ zIndex: 10001, top: 'calc(var(--navbar-height, 64px) + 12px)' }}
           >
             <div
               className="relative w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full transition-all duration-300 group-hover:scale-110"
@@ -105,7 +105,7 @@ const EventRevealPage = ({ event, onClose, onNext, onPrevious, hasNext, hasPrevi
           {/* Main Content Container */}
           <div
             className="relative h-full overflow-y-auto overflow-x-hidden px-4 sm:px-6 md:px-8 lg:px-12 pb-20 sm:pb-24"
-            style={{ paddingTop: 'calc(var(--navbar-height) + 40px)' }}
+            style={{ paddingTop: 'calc(var(--navbar-height) + 80px)' }}
             data-lenis-prevent
           >
             <div className="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6 lg:gap-10 lg:items-start lg:pt-4">

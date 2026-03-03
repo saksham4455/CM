@@ -1400,8 +1400,8 @@ html {
   }
 
   .cp-hero {
-    padding-top: calc(var(--navbar-height, 72px) + 1rem);
-    padding-bottom: 1rem;
+    padding-top: calc(var(--navbar-height, 72px) + 1.5rem);
+    padding-bottom: 2.5rem;
   }
 
   .cp-form-title {

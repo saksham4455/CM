@@ -192,8 +192,10 @@ const BoxText = ({ text, color = '#00f3ff', size = 8, gap = 1, charGap = 12 }) =
     };
 
     return (
-        <div className="box-text-container">
-            {renderText()}
+        <div className="box-text-wrapper">
+            <div className="box-text-container">
+                {renderText()}
+            </div>
         </div>
     );
 };
