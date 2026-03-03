@@ -2,16 +2,26 @@ import React, { useState, useMemo, useEffect } from "react";
 import "../css/AdminPanel.css";
 import { useRegistrationStore } from "../../store/registerStore";
 
-/* ─── Event list (keep in sync with RegistrationForm) ─── */
+/* ─── Event list (must match the IDs stored in DB by RegistrationForm) ─── */
 const ALL_EVENTS = [
-  "TREASURE HUNT",
-  "INNOVISION 7.0",
-  "GAMING ARENA",
-  "HACKING EVENT",
-  "MIND MATRIX",
-  "TECH UNSEEN",
-  "SHADOW CODE",
+  "TREASURE_HUNT",
+  "INNOVISION",
+  "GAMING_ARENA",
+  "HACKING_EVENT",
+  "MIND_MATRIX",
+  "TECH_UNSEEN",
+  "SHADOW_CODE",
 ];
+
+const EVENT_LABELS = {
+  TREASURE_HUNT: "TREASURE HUNT",
+  INNOVISION:    "INNOVISION 7.0",
+  GAMING_ARENA:  "GAMING ARENA",
+  CODING_EVENT: "SHADOW CODE",
+  MIND_MATRIX:   "MIND MATRIX",
+  TECH_UNSEEN:   "TECH UNSEEN",
+  HACKING_EVENT: "HACKING EVENT",
+};
 
 /* ─── Screenshot Lightbox ─── */
 const Lightbox = ({ src, name, onClose }) => (
@@ -46,15 +56,12 @@ const AdminPanel = () => {
     acceptStudent,
     rejectStudent,
     loading,
-    eventCounts,
-    fetchEventCounts
   } = useRegistrationStore();
 
   useEffect(() => {
     const auth = sessionStorage.getItem("cynet-admin-auth");
     if (!auth) window.location.href = "/admin-login";
     fetchRegistrations("ALL");
-    fetchEventCounts();
   }, []);
 
   const filtered = useMemo(() => {
@@ -143,8 +150,8 @@ const AdminPanel = () => {
                 }}
               >
                 <span className="ap-nav-icon">▸</span>
-                {ev}
-                <span className="ap-nav-count">{eventCounts[ev] || 0}</span>
+                {EVENT_LABELS[ev] || ev}
+                <span className="ap-nav-count">{count}</span>
               </button>
             );
           })}
@@ -164,7 +171,7 @@ const AdminPanel = () => {
           <div className="ap-topbar-title">
             <span className="ap-topbar-tag">&lt;ADMIN /&gt;</span>
             <span className="ap-topbar-sub">
-              {activeEvent === "ALL" ? "All Registrations" : activeEvent}
+              {activeEvent === "ALL" ? "All Registrations" : (EVENT_LABELS[activeEvent] || activeEvent)}
             </span>
           </div>
           <input
@@ -312,7 +319,7 @@ const AdminPanel = () => {
 
         <p className="ap-footer-note">
           Showing {filtered.length} of {registrations.length} registrations
-          {activeEvent !== "ALL" && ` · Event: ${activeEvent}`}
+          {activeEvent !== "ALL" && ` · Event: ${EVENT_LABELS[activeEvent] || activeEvent}`}
           {search && ` · Search: "${search}"`}
         </p>
       </main>

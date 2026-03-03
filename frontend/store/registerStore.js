@@ -17,22 +17,32 @@ export const useRegistrationStore = create((set, get) => ({
         ? `${API}/api/registrations/admin`
         : `${API}/api/registrations/admin?event=${encodeURIComponent(event)}`;
 
-    const res = await fetch(url);
-    const data = await res.json();
-
-    set({ registrations: data, loading: false });
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      set({ registrations: Array.isArray(data) ? data : [], loading: false });
+    } catch (err) {
+      console.error("Failed to fetch registrations:", err);
+      set({ registrations: [], loading: false });
+    }
   },
 
   fetchEventCounts: async () => {
-    const res = await fetch(`${API}/api/registrations/counts`);
-    const data = await res.json();
+    try {
+      const res = await fetch(`${API}/api/registrations/counts`);
+      const data = await res.json();
 
-    const countsObj = {};
-    data.forEach((item) => {
-      countsObj[item._id] = item.count;
-    });
+      if (!Array.isArray(data)) return;
 
-    set({ eventCounts: countsObj });
+      const countsObj = {};
+      data.forEach((item) => {
+        countsObj[item._id] = item.count;
+      });
+
+      set({ eventCounts: countsObj });
+    } catch (err) {
+      console.error("Failed to fetch event counts:", err);
+    }
   },
 
   // 🔹 Accept student

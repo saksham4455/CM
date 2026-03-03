@@ -25,25 +25,29 @@ const AdminLogin = () => {
     }
 
     setLoading(true);
-    await fetch(`${api}/api/auth/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: form.username,
-        password: form.password
-      })
-    })
-    .then((response) => {
+    try {
+      const response = await fetch(`${api}/api/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: form.username,
+          password: form.password
+        })
+      });
+
       if (response.status === 200) {
         sessionStorage.setItem('cynet-admin-auth', 'true');
         navigate('/admin');
       } else {
         setError('ACCESS DENIED — INVALID CREDENTIALS');
       }
-    })
-    .finally(() => setLoading(false));
+    } catch (err) {
+      setError('SERVER UNREACHABLE — CHECK BACKEND CONNECTION');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

@@ -77,7 +77,7 @@ export default function FlowCursor() {
               left: p.x - size / 2,
               top: p.y - size / 2,
               background:
-                "radial-gradient(circle at 30% 30%, rgba(0,243,255,0.9), rgba(0,243,255,0.25) 45%, transparent 70%)",
+                "radial-gradient(circle at 30% 30%, rgba(0,243,255,0.45), rgba(0,243,255,0.12) 45%, transparent 70%)",
               filter: "blur(6px)",
               opacity,
               willChange: "transform, opacity",
