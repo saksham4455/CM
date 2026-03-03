@@ -270,6 +270,7 @@ export default function PastEventsPage() {
       <header className="page-header">
         <div className="dot-matrix-heading">
           <BoxText text="CYNET GLIMPSES" size={6} gap={1.2} charGap={7} />
+          <div className="h-3 sm:h-4 lg:h-6" aria-hidden="true" />
         </div>
       </header>
 

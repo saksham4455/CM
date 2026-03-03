@@ -240,14 +240,14 @@ const EventsPage = ({ theme = 'blue' }) => {
       {/* Main Content */}
       <div
         className="relative z-10 px-4 sm:px-6 lg:px-10 pb-20 w-full max-w-[1400px] mx-auto"
-        style={{ paddingTop: 'var(--navbar-height)' }}
+        style={{ paddingTop: 'calc(var(--navbar-height) + var(--events-page-extra, 0px))' }}
       >
         {/* Interactive Animated Header */}
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-center mb-2 sm:mb-5 lg:mb-8 relative"
+          className="text-center mb-2 sm:mb-5 lg:mb-8 relative events-page-hero"
         >
           {/* Floating accent elements around title */}
           <motion.div
@@ -271,6 +271,8 @@ const EventsPage = ({ theme = 'blue' }) => {
             />
           </motion.div>
 
+          <div className="h-3 sm:h-4 lg:h-6" aria-hidden="true" />
+
           {/* Subtitle with animated typing effect */}
           <motion.p
             className="text-xs sm:text-base lg:text-xl text-gray-400 mt-2 sm:mt-5 lg:mt-10 max-w-2xl mx-auto font-light px-3"
@@ -280,6 +282,8 @@ const EventsPage = ({ theme = 'blue' }) => {
           >
             Explore our flagship events • Compete • Innovate • Win
           </motion.p>
+
+          <div className="h-4 sm:h-6 lg:h-8" aria-hidden="true" />
 
           {/* Floating accent elements below title */}
           <motion.div
