@@ -4,7 +4,7 @@
 
 .rf-wrapper {
     min-height: 100vh;
-    padding: 6rem 1.5rem 4rem;
+    padding: calc(var(--navbar-height, 128px) + 2rem) 1.5rem 4rem;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -370,6 +370,13 @@
 .rf-remove-file:hover { color: #ff6060; }
 
 /* ── Submit button ── */
+.rf-submit-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: stretch;
+}
+
 .rf-btn {
     padding: 0.9rem 2.4rem;
     font-family: 'Courier New', monospace;
@@ -393,6 +400,18 @@
 .rf-btn--submit {
     width: 100%;
     margin-top: 0.4rem;
+}
+
+.rf-notice {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    color: #00f3ff;
+    background: rgba(0, 243, 255, 0.1);
+    border: 1px solid rgba(0, 243, 255, 0.4);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    text-align: center;
 }
 
 /* ── Success screen ── */
@@ -439,10 +458,17 @@
 
 /* ── Responsive ── */
 @media (max-width: 680px) {
-    .rf-wrapper { padding: 5rem 1rem 3rem; }
+    .rf-wrapper { padding: calc(var(--navbar-height, 88px) + 1.5rem) 1rem 3rem; }
     .rf-form    { padding: 1.6rem 1.4rem; }
     .rf-header  { padding: 1.8rem 1.4rem 1.4rem; }
     .rf-row     { grid-template-columns: 1fr; }
+
+    .rf-back-btn {
+        top: 1rem;
+        left: 1rem;
+        padding: 0.35rem 0.8rem;
+        font-size: 0.75rem;
+    }
 
     .rf-payment-grid {
         grid-template-columns: 1fr;

@@ -69,7 +69,7 @@ html {
   top: 0;
   left: 0;
   right: 0;
-  height: 80px;
+  height: var(--navbar-height, 80px);
   background: var(--bg-dark);
   z-index: 998;
   pointer-events: none;
@@ -150,7 +150,7 @@ html {
 /* ── HERO ── */
 .cp-hero {
   text-align: center;
-  padding: clamp(6rem, 15vh, 8rem) 1rem clamp(2rem, 5vh, 3rem);
+  padding: calc(var(--navbar-height, 80px) + clamp(2rem, 8vh, 4rem)) 1rem clamp(2rem, 5vh, 3rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1000,7 +1000,7 @@ html {
 }
 
 .cp-blog-card {
-  flex: 0 0 380px;
+  flex: 0 0 320px;
   background: var(--bg-card);
   backdrop-filter: blur(20px);
   border-radius: 8px;
@@ -1020,7 +1020,7 @@ html {
 
 .cp-blog-card-img {
   width: 100%;
-  height: 200px;
+  height: 150px;
   position: relative;
   overflow: hidden;
 }
@@ -1057,7 +1057,7 @@ html {
 }
 
 .cp-blog-card-content {
-  padding: 2rem;
+  padding: 1.5rem;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -1084,10 +1084,10 @@ html {
 .cp-blog-card-excerpt {
   font-size: 0.95rem;
   color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   line-height: 1.6;

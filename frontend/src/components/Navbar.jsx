@@ -72,6 +72,18 @@ const Navbar = () => {
                         );
                     })}
                 </div>
+            </div>
+
+            {/* Right cluster: logos + mobile toggle */}
+            <div className="nav-right-cluster">
+                <div className="nav-logo-right-group">
+                    <Link to="/" className="nav-logo">
+                        <img src="/Logo/Enigma_Logo.svg" alt="Enigma Logo" className="logo-image enigma-logo" />
+                    </Link>
+                    <Link to="/" className="nav-logo">
+                        <img src="/Logo/Buglsayers.png" alt="Bugslayers Logo" className="logo-image bugslayers-logo" />
+                    </Link>
+                </div>
 
                 {/* Mobile Toggle */}
                 <div
@@ -82,13 +94,6 @@ const Navbar = () => {
                     <div className="bar" />
                     <div className="bar" />
                 </div>
-            </div>
-
-            {/* Enigma Logo - Right */}
-            <div className="nav-logo-right-group">
-                <Link to="/" className="nav-logo">
-                    <img src="/Logo/Enigma_Logo.svg" alt="Enigma Logo" className="logo-image enigma-logo" />
-                </Link>
             </div>
         </div>
 

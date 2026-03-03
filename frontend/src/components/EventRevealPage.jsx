@@ -103,7 +103,11 @@ const EventRevealPage = ({ event, onClose, onNext, onPrevious, hasNext, hasPrevi
           </button>
 
           {/* Main Content Container */}
-          <div className="relative h-full overflow-y-auto overflow-x-hidden px-4 sm:px-6 md:px-8 lg:px-12 pt-20 sm:pt-24 pb-20 sm:pb-24" data-lenis-prevent>
+          <div
+            className="relative h-full overflow-y-auto overflow-x-hidden px-4 sm:px-6 md:px-8 lg:px-12 pb-20 sm:pb-24"
+            style={{ paddingTop: 'calc(var(--navbar-height) + 40px)' }}
+            data-lenis-prevent
+          >
             <div className="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6 lg:gap-10 lg:items-start lg:pt-4">
 
               {/* ── LEFT SECTION ── */}
@@ -271,48 +275,74 @@ const EventRevealPage = ({ event, onClose, onNext, onPrevious, hasNext, hasPrevi
                   </div>
                 </div>
 
-                {/* Register Button */}
-                <motion.button
-                  className="relative group w-full cursor-pointer"
-                  whileHover={{ scale: 1.02, y: -1 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => {
-                    // Restore page state before navigating
-                    document.body.style.overflow = '';
-                    document.documentElement.style.overflow = '';
-                    const footer = document.querySelector('.footer');
-                    const scrollBtn = document.querySelector('.scroll-to-top-btn');
-                    if (footer) footer.style.display = '';
-                    if (scrollBtn) scrollBtn.style.display = '';
-                    navigate(`/register?event=${encodeURIComponent(event.title.toUpperCase())}`);
-                  }}
-                >
-                  <div
-                    className="absolute inset-0 rounded-xl opacity-40 blur-xl group-hover:opacity-80 transition-opacity duration-300"
-                    style={{ background: event.accentColor }}
-                  />
-                  <div
-                    className="relative px-4 py-2 rounded-xl font-bold text-white text-sm backdrop-blur-sm border-2 overflow-hidden"
-                    style={{
-                      borderColor: event.accentColor,
-                      background: `linear-gradient(135deg, ${event.accentColor}25, ${event.accentColor}10)`,
+                {/* Register + Rules Buttons */}
+                <div className="flex flex-col sm:flex-row gap-2 w-full">
+                  <motion.button
+                    className="relative group flex-1 cursor-pointer"
+                    whileHover={{ scale: 1.02, y: -1 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => {
+                      // Restore page state before navigating
+                      document.body.style.overflow = '';
+                      document.documentElement.style.overflow = '';
+                      const footer = document.querySelector('.footer');
+                      const scrollBtn = document.querySelector('.scroll-to-top-btn');
+                      if (footer) footer.style.display = '';
+                      if (scrollBtn) scrollBtn.style.display = '';
+                      navigate(`/register?event=${encodeURIComponent(event.title.toUpperCase())}`);
                     }}
                   >
-                    {/* Shine sweep */}
-                    <motion.div
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100"
-                      style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)' }}
-                      animate={{ x: ['-100%', '200%'] }}
-                      transition={{ duration: 1.5, repeat: Infinity, ease: 'linear', repeatDelay: 0.8 }}
+                    <div
+                      className="absolute inset-0 rounded-xl opacity-40 blur-xl group-hover:opacity-80 transition-opacity duration-300"
+                      style={{ background: event.accentColor }}
                     />
-                    <span className="relative z-10 flex items-center justify-center gap-2">
-                      <span>✦ REGISTER NOW</span>
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                      </svg>
-                    </span>
-                  </div>
-                </motion.button>
+                    <div
+                      className="relative px-4 py-2 rounded-xl font-bold text-white text-sm backdrop-blur-sm border-2 overflow-hidden"
+                      style={{
+                        borderColor: event.accentColor,
+                        background: `linear-gradient(135deg, ${event.accentColor}25, ${event.accentColor}10)`,
+                      }}
+                    >
+                      {/* Shine sweep */}
+                      <motion.div
+                        className="absolute inset-0 opacity-0 group-hover:opacity-100"
+                        style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)' }}
+                        animate={{ x: ['-100%', '200%'] }}
+                        transition={{ duration: 1.5, repeat: Infinity, ease: 'linear', repeatDelay: 0.8 }}
+                      />
+                      <span className="relative z-10 flex items-center justify-center gap-2">
+                        <span>✦ REGISTER NOW</span>
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                      </span>
+                    </div>
+                  </motion.button>
+
+                  {event.rulesFile && (
+                    <motion.button
+                      className="flex-1 px-4 py-2 rounded-xl font-bold text-sm border backdrop-blur-sm"
+                      style={{
+                        borderColor: `${event.accentColor}60`,
+                        color: '#fff',
+                        background: 'rgba(0,0,0,0.35)',
+                        boxShadow: `0 0 12px ${event.accentColor}30`,
+                      }}
+                      whileHover={{ y: -1, boxShadow: `0 0 18px ${event.accentColor}55`, borderColor: event.accentColor }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => {
+                        window.open(event.rulesFile, '_blank', 'noopener');
+                      }}
+                    >
+                      <span className="flex items-center justify-center gap-2">
+                        <span>📋 RULES</span>
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4h16v16H4z" />
+                        </svg>
+                      </span>
+                    </motion.button>
+                  )}
+                </div>
               </motion.div>
 
               {/* ── RIGHT SECTION – Gaming Holographic OR 3D Character ── */}

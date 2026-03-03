@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Single source of truth for layout offset under the fixed navbar */
+  --navbar-height: 128px;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --navbar-height: 88px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --navbar-height: 72px;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +27,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: var(--navbar-height, 80px);
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -497,7 +514,7 @@ input:focus, textarea:focus, select:focus {
 /* Large Tablets & Small Laptops */
 @media (max-width: 1024px) {
   html {
-    scroll-padding-top: 70px;
+    scroll-padding-top: var(--navbar-height, 70px);
   }
 
   body {
@@ -512,7 +529,7 @@ input:focus, textarea:focus, select:focus {
 /* Tablets */
 @media (max-width: 768px) {
   html {
-    scroll-padding-top: 60px;
+    scroll-padding-top: var(--navbar-height, 60px);
   }
 
   body {
@@ -648,7 +665,7 @@ input:focus, textarea:focus, select:focus {
 /* Landscape orientation optimizations */
 @media (max-height: 500px) and (orientation: landscape) {
   html {
-    scroll-padding-top: 50px;
+    scroll-padding-top: var(--navbar-height, 50px);
   }
 
   .grid-cyber {

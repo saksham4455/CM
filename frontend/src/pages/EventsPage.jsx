@@ -240,7 +240,10 @@ const EventsPage = ({ theme = 'blue' }) => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 px-4 sm:px-6 lg:px-8 pb-20 max-w-7xl mx-auto" style={{ paddingTop: 'var(--navbar-height)' }}>
+      <div
+        className="relative z-10 px-4 sm:px-6 lg:px-10 pb-20 w-full max-w-[1400px] mx-auto"
+        style={{ paddingTop: 'var(--navbar-height)' }}
+      >
         {/* Interactive Animated Header */}
         <motion.div
           initial={{ opacity: 0, y: -30 }}
@@ -260,7 +263,7 @@ const EventsPage = ({ theme = 'blue' }) => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="relative"
+            className="relative mt-7"
           >
             <BoxText
               text="CYNET EVENTS"
@@ -272,7 +275,7 @@ const EventsPage = ({ theme = 'blue' }) => {
 
           {/* Subtitle with animated typing effect */}
           <motion.p
-            className="text-lg sm:text-xl text-gray-400 mt-6 max-w-2xl mx-auto font-light"
+            className="text-lg sm:text-xl text-gray-400 mt-10 max-w-2xl mx-auto font-light"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
@@ -294,7 +297,7 @@ const EventsPage = ({ theme = 'blue' }) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {events.map((event, index) => (
             <motion.div
@@ -337,7 +340,7 @@ const EventsPage = ({ theme = 'blue' }) => {
 
                 {/* Main card backdrop */}
                 <div
-                  className="relative backdrop-blur-xl rounded-2xl border p-4 overflow-hidden"
+                  className="relative backdrop-blur-xl rounded-2xl border pt-5 pb-6 px-5 overflow-hidden"
                   style={{
                     background: `linear-gradient(135deg, ${event.accentColor}15, rgba(11, 15, 26, 0.9))`,
                     borderColor: `${event.accentColor}60`,

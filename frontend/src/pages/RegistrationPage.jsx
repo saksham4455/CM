@@ -46,6 +46,7 @@ const RegistrationPage = ({ theme = 'blue' }) => {
   const [preview, setPreview] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
+  const [notice, setNotice] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -103,8 +104,9 @@ const RegistrationPage = ({ theme = 'blue' }) => {
       setErrors(errs);
       return;
     }
-    console.log('Registration submitted:', form);
-    setSubmitted(true);
+    // Coming soon placeholder until backend submission is live
+    setNotice('Registration is coming soon. Please check back shortly.');
+    setSubmitted(false);
   };
 
   const resetForm = () => {
@@ -284,7 +286,7 @@ const RegistrationPage = ({ theme = 'blue' }) => {
                   <p className="rf-label">Scan &amp; Pay</p>
                   <div className="rf-qr-frame">
                     <img
-                      src="/Logo/Bugslayers.jpeg"
+                      src="/Logo/Buglsayers.png"
                       alt="Payment QR Code"
                       className="rf-qr-img"
                       onError={(e) => {
@@ -343,9 +345,14 @@ const RegistrationPage = ({ theme = 'blue' }) => {
           )}
 
           {/* Submit */}
-          <button type="submit" className="rf-btn rf-btn--submit">
-            Submit Registration
-          </button>
+          <div className="rf-submit-row">
+            <button type="submit" className="rf-btn rf-btn--submit">
+              Submit Registration
+            </button>
+            {notice && (
+              <p className="rf-notice" role="status">{notice}</p>
+            )}
+          </div>
         </form>
       </motion.div>
     </div>

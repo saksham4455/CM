@@ -1,19 +1,5 @@
 /* ─── Team Page Styling (Hover Expand Accordion) ───────────────────────── */
-:root {
-  --navbar-height: 70px;
-}
-
-@media (max-width: 1024px) {
-  :root {
-    --navbar-height: 60px;
-  }
-}
-
-@media (max-width: 768px) {
-  :root {
-    --navbar-height: 55px;
-  }
-}
+/* Uses global `--navbar-height` from `src/css/index.css` */
 
 .team-page-wrapper {
   position: relative;
@@ -43,8 +29,8 @@
   pointer-events: none;
 }
 
-.main-container {
-  padding-top: var(--navbar-height);
+.team-page-wrapper .main-container {
+  padding-top: calc(var(--navbar-height) + 60px);
   padding-bottom: 80px;
   max-width: 1400px;
   margin: 0 auto;
