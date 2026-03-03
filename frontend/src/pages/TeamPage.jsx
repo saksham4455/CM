@@ -122,7 +122,7 @@ const vk2Departments = [
   {
     name: "ANCHORING",
     members: [
-      { id: "VK-2_ANCHORING_1", name: "Hanisha", position: "Anchor", department: "ANCHORING", img: "/BUGSLAYERS/Anchoring/Hanisha,Head.jpg" },
+      { id: "VK-2_ANCHORING_1", name: "Hanisha", position: "Anchor", department: "ANCHORING", img: "/BUGSLAYERS/Anchoring/Hanisha,Anchor.jpg" },
       { id: "VK-2_ANCHORING_2", name: "Aditya Nath", position: "Anchor", department: "ANCHORING", img: "/BUGSLAYERS/Anchoring/Aditya Nath,anchor.jpg" },
     ],
     color: "#1d0dff"
