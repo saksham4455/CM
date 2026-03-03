@@ -86,7 +86,7 @@ function App() {
         autoRaf: false,
         lerp: 0.1,
         smoothWheel: true,
-        syncTouch: false,
+        syncTouch: true,   // enable smooth scroll on mobile touch
       });
 
       lenisRef.current = lenis;

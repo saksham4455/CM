@@ -10,7 +10,8 @@
     background: #06060c;
     overflow: hidden;
     user-select: none;
-    touch-action: none;
+    /* pan-y: allow vertical finger-scroll to pass through to the page */
+    touch-action: pan-y;
     z-index: 10;
 }
 
