@@ -1319,7 +1319,7 @@ html {
 
 @media (max-width: 650px) {
   .cp-section {
-    padding: 2rem 0;
+    padding: 1.5rem 0;
   }
 
   .cp-coord-grid {
@@ -1331,49 +1331,77 @@ html {
   }
 
   .cp-blog-card {
-    flex: 0 0 300px;
+    flex: 0 0 280px;
   }
 
   .cp-blog-card-img {
-    height: 160px;
+    height: 140px;
   }
 
   .cp-blog-modal-img {
-    height: 200px;
+    height: 180px;
   }
 
   .cp-hero-title {
-    font-size: clamp(3.5rem, 15vw, 6rem);
-    letter-spacing: 12px;
+    font-size: clamp(2.8rem, 13vw, 5rem);
+    letter-spacing: 6px;
+  }
+
+  .cp-hero-sub {
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+  }
+
+  .cp-shell {
+    padding: 0 clamp(0.75rem, 3vw, 1.25rem);
   }
 
   .cp-form-container {
-    padding: 2rem 1.5rem;
+    padding: 1.5rem 1.25rem;
   }
 
   .cp-faculty-sidebar {
-    padding: 1.8rem 1.5rem;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .cp-hero {
+    padding-top: calc(var(--navbar-height, 88px) + 1.5rem);
+    padding-bottom: 1.5rem;
+  }
+
+  .cp-block-title {
+    font-size: clamp(1rem, 4vw, 1.4rem);
+    letter-spacing: 1.5px;
+  }
+
+  .cp-main-grid {
+    gap: 2.5rem;
   }
 }
 
 @media (max-width: 480px) {
   .cp-shell {
-    padding: 0 clamp(0.75rem, 3vw, 1rem);
+    padding: 0 0.75rem;
   }
 
   .cp-block-title {
-    font-size: 1.2rem;
-    letter-spacing: 2px;
+    font-size: 1rem;
+    letter-spacing: 1.5px;
   }
 
   .cp-hero-title {
-    font-size: 1.8rem;
-    letter-spacing: 3px;
+    font-size: clamp(1.6rem, 10vw, 2.2rem);
+    letter-spacing: 2px;
   }
 
   .cp-hero-sub {
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
-    letter-spacing: 2px;
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+  }
+
+  .cp-hero {
+    padding-top: calc(var(--navbar-height, 72px) + 1rem);
+    padding-bottom: 1rem;
   }
 
   .cp-form-title {

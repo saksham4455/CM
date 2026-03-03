@@ -318,9 +318,9 @@
         grid-column: unset;
     }
 
-    .nav-logo-right,
     .nav-logo-right-group {
-        display: none;
+        margin-left: auto;
+        gap: 0.5rem;
     }
 
     .nav-main-wrapper {
@@ -331,12 +331,7 @@
     }
 
     .nav-container {
-        padding: 0.6rem 1.5rem;
-        justify-content: flex-start;
-        border-radius: 40px;
-        max-width: auto;
-        grid-column: unset;
-        width: auto;
+        display: none;
     }
 
     .logo-image {

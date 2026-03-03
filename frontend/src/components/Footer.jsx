@@ -109,7 +109,6 @@ function Footer() {
           <h4 className="footer-heading">CONNECT</h4>
           <ul className="footer-links">
             <li><a href="https://www.jimsd.org/" target="_blank" rel="noopener noreferrer">jimsd.org</a></li>
-            <li><a href="tel:011-4061-9300">011-4061-9300</a></li>
           </ul>
           <div className="social-links">
             <a href="https://www.facebook.com/jimsd.vasantkunj/?ref=bookmarks" target="_blank" rel="noopener noreferrer" className="social-icon" title="Facebook">

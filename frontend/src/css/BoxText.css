@@ -66,15 +66,20 @@
 @media (max-width: 768px) {
     .box-text-container {
         gap: 0;
-        transform: scale(0.8);
-        transform-origin: center;
+        padding: 4px 8px;
+        transform: scale(0.72);
+        transform-origin: top center;
+        /* Pull following content up to eliminate dead whitespace below scaled element */
+        margin-bottom: -22px;
     }
 }
 
 @media (max-width: 480px) {
     .box-text-container {
         gap: 0;
-        transform: scale(0.6);
-        transform-origin: center;
+        padding: 2px 4px;
+        transform: scale(0.5);
+        transform-origin: top center;
+        margin-bottom: -38px;
     }
 }

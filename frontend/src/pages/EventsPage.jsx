@@ -249,7 +249,7 @@ const EventsPage = ({ theme = 'blue' }) => {
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-center mb-8 relative"
+          className="text-center mb-2 sm:mb-5 lg:mb-8 relative"
         >
           {/* Floating accent elements around title */}
           <motion.div
@@ -263,10 +263,10 @@ const EventsPage = ({ theme = 'blue' }) => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="relative mt-7"
+            className="relative mt-1 sm:mt-4 lg:mt-7"
           >
             <BoxText
-              text="CYNET EVENTS"
+              text="CYNET  EVENTS"
               color={currentTheme.primary}
               size={8}
               gap={1.5}
@@ -275,7 +275,7 @@ const EventsPage = ({ theme = 'blue' }) => {
 
           {/* Subtitle with animated typing effect */}
           <motion.p
-            className="text-lg sm:text-xl text-gray-400 mt-10 max-w-2xl mx-auto font-light"
+            className="text-xs sm:text-base lg:text-xl text-gray-400 mt-2 sm:mt-5 lg:mt-10 max-w-2xl mx-auto font-light px-3"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}

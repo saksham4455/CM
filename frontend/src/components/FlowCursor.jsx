@@ -1,18 +1,32 @@
 import { useEffect, useRef, useState } from "react"
-import { motion } from "framer-motion"
 
 // A lightweight glow cursor with a flowing trail
-const TRAIL_LENGTH = 10
-const LERP = 0.22 // lower = smoother, slower
+const TRAIL_LENGTH = 8
+const LERP = 0.2 // tuned for smoother, slightly faster response
 
 export default function FlowCursor() {
   const [positions, setPositions] = useState(
     Array.from({ length: TRAIL_LENGTH }, () => ({ x: 0, y: 0 }))
   )
+  const [enabled, setEnabled] = useState(false)
   const target = useRef({ x: 0, y: 0 })
   const rafId = useRef(null)
 
   useEffect(() => {
+    // Disable custom cursor on touch / coarse pointer devices for performance
+    const prefersCoarse =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(pointer: coarse)").matches
+
+    if (prefersCoarse) {
+      document.body.style.cursor = "auto"
+      setEnabled(false)
+      return
+    }
+
+    setEnabled(true)
+
     const handleMove = (e) => {
       target.current = { x: e.clientX, y: e.clientY }
     }
@@ -46,13 +60,15 @@ export default function FlowCursor() {
     }
   }, [])
 
+  if (!enabled) return null
+
   return (
     <div className="pointer-events-none fixed inset-0 z-[9999] mix-blend-screen">
       {positions.map((p, idx) => {
         const opacity = 1 - idx / TRAIL_LENGTH
         const size = 18 - idx * 1.2
         return (
-          <motion.div
+          <div
             key={idx}
             className="absolute rounded-full"
             style={{
@@ -64,12 +80,7 @@ export default function FlowCursor() {
                 "radial-gradient(circle at 30% 30%, rgba(0,243,255,0.9), rgba(0,243,255,0.25) 45%, transparent 70%)",
               filter: "blur(6px)",
               opacity,
-            }}
-            transition={{
-              type: "spring",
-              damping: 40,
-              stiffness: 120,
-              mass: 0.4,
+              willChange: "transform, opacity",
             }}
           />
         )
