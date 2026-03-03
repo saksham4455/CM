@@ -26,7 +26,7 @@ const vk1Departments = [
   {
     name: "CORE",
     members: [
-      { id: "VK-1_CORE_1", name: "Harshit Verma", position: "President", department: "CORE", img: "" },
+      { id: "VK-1_CORE_1", name: "Harshit Verma", position: "President", department: "CORE", img: "/Enigma_Team/Core/Harshit.jpg" },
       { id: "VK-1_CORE_2", name: "Gurnoor Kaur Pawan", position: "Vice President", department: "CORE", img: "/Enigma_Team/Core/Gurnoor_.jpg" },
       { id: "VK-1_CORE_3", name: "Ayush Dahiya", position: "Vice President", department: "CORE", img: "/Enigma_Team/Core/Ayush Dahiya 00914202024.jpeg" },
       { id: "VK-1_CORE_4", name: "Sana Jain", position: "Secretary", department: "CORE", img: "/Enigma_Team/Core/Sana Jain .jpg" }
@@ -69,7 +69,7 @@ const vk1Departments = [
     name: "MARKETING AND PR",
     members: [
       { id: "VK-1_MARKETING_2", name: "Aditya Kapoor", position: "Assistant Director", department: "MARKETING", img: "/Enigma_Team/Marketing/Aditya.JPG" },
-      { id: "VK-1_MARKETING_3", name: "Pushkar Sharma", position: "Assistant Director", department: "MARKETING", img: "" },
+      { id: "VK-1_MARKETING_3", name: "Pushkar Sharma", position: "Assistant Director", department: "MARKETING", img: "Enigma_Team/Marketing/Pushkar.jpeg" },
       { id: "VK-1_MARKETING_4", name: "Shyna Chaurasia", position: "Manager", department: "MARKETING", img: "/Enigma_Team/Marketing/Shyna chaurasia_.jpg" },
       { id: "VK-1_MARKETING_5", name: "Prachi Bajaj", position: "Manager", department: "MARKETING", img: "/Enigma_Team/Marketing/Prachi.jpg" },
       { id: "VK-1_MARKETING_6", name: "Mayank Rai", position: "Member", department: "MARKETING", img: "/Enigma_Team/Marketing/Mayank Rai.jpg" },
@@ -96,12 +96,11 @@ const vk1Departments = [
   {
     name: "STILLS & MOTION",
     members: [
-      { id: "VK-1_STILLSMOTION_1", name: "Avijot Singh Anand", position: "Director", department: "STILLS & MOTION", img: "" },
+      { id: "VK-1_STILLSMOTION_1", name: "Avijot Singh Anand", position: "Director", department: "STILLS & MOTION", img: "/Enigma_Team/Stills and motion/avijot.png" },
       { id: "VK-1_STILLSMOTION_2", name: "Ishneet Kaur", position: "Assistant Director", department: "STILLS & MOTION", img: "/Enigma_Team/Stills and motion/Ishneet.PNG" },
       { id: "VK-1_STILLSMOTION_3", name: "Roshan Kumar", position: "Manager", department: "STILLS & MOTION", img: "/Enigma_Team/Stills and motion/Roshan - Stills Manager_.jpg" },
       { id: "VK-1_STILLSMOTION_4", name: "Sanchit Nair", position: "Manager", department: "STILLS & MOTION", img: "/Enigma_Team/Stills and motion/Sanchit.jpg" },
       { id: "VK-1_STILLSMOTION_5", name: "Bhuvesh", position: "Member", department: "STILLS & MOTION", img: "/Enigma_Team/Stills and motion/Bhuvesh.JPG" },
-      { id: "VK-1_STILLSMOTION_6", name: "Srijan Jha", position: "Member", department: "STILLS & MOTION", img: "" },
       { id: "VK-1_STILLSMOTION_7", name: "Mehar Mukker", position: "Member", department: "STILLS & MOTION", img: "" },
       { id: "VK-1_STILLSMOTION_8", name: "Suryansh Walia", position: "Member", department: "STILLS & MOTION", img: "/Enigma_Team/Stills and motion/SuryaanshWalia_StillsAndMotion.JPG" }
     ],
