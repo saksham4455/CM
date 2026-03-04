@@ -4,7 +4,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import CyberMatrixBackground from "../components/CyberMatrixBackground";
 import "../css/RegistrationForm.css";
-const API = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+const API = import.meta.env.VITE_API_BASE_URL || "https://cm-19fm.onrender.com";
 const EVENTS = [
   { id: "TREASURE_HUNT", name: "TREASURE HUNT", price: 100 },
   { id: "INNOVISION", name: "INNOVISION 7.0", price: 0 },

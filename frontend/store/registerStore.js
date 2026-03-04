@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-const API = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+const API = import.meta.env.VITE_API_BASE_URL || "https://cm-19fm.onrender.com";
 
 export const useRegistrationStore = create((set, get) => ({
   registrations: [],
