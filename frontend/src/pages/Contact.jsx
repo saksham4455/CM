@@ -22,15 +22,18 @@ const IconLinkedin = () => (
 const IconPhone = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.27-2.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
 );
+const IconLocation = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 13-8 13S4 16 4 10a8 8 0 0 1 16 0z" /><circle cx="12" cy="10" r="3" /></svg>
+);
 
 /* ─────────────────────────────────────────────
    DATA
 ───────────────────────────────────────────── */
 const COORDINATORS = [
   { name: 'Harshit Verma', role: 'President', phone: '9810130848', avatar: 'HV' },
-  { name: 'Gurnoor Kaur', role: 'Vice President', phone: '9999737357', avatar: 'GK' },
+  { name: 'Gurnoor Kaur', role: 'Vice President', avatar: 'GK' },
   { name: 'Ayush Dhaiya', role: 'Vice President', phone: '9810480038', avatar: 'AD' },
-  { name: 'Sana Jain', role: 'Secretary', phone: '9958688944', avatar: 'SJ' },
+  { name: 'Sana Jain', role: 'Secretary', avatar: 'SJ' },
 ];
 
 const FACULTY = {
@@ -42,6 +45,7 @@ const INFO_ITEMS = [
   { icon: <IconMail />, label: 'Email Address', value: 'cynet@jimsd.org', link: 'Itclub.vk@jimsd.org' },
   { icon: <IconInsta />, label: 'Instagram', value: '@enigma.jimsvk', link: 'https://www.instagram.com/enigma.jimsvk/' },
   { icon: <IconLinkedin />, label: 'LinkedIn', value: 'Enigma', link: 'https://www.linkedin.com/company/enigma-it-club-jims-vk/' },
+  { icon: <IconLocation />, label: 'Address', value: 'JAGANNATH INTERNATIONAL Management School, OCF Pocket 9, Sector B, Vasant Kunj, New Delhi-110070', link: 'https://maps.google.com/?q=JAGANNATH+INTERNATIONAL+Management+School+OCF+Pocket+9+Sector+B+Vasant+Kunj+New+Delhi+110070' },
 ];
 
 /* ─────────────────────────────────────────────
@@ -179,9 +183,11 @@ const Contact = ({ theme = 'blue' }) => (
                 </h4>
                 <p className="cp-coord-role">{c.role}</p>
                 <div className="cp-coord-footer">
-                  <a href={`tel:${c.phone}`} className="cp-coord-phone">
-                    <IconPhone /> <span>{c.phone}</span>
-                  </a>
+                  {c.phone && (
+                    <a href={`tel:${c.phone}`} className="cp-coord-phone">
+                      <IconPhone /> <span>{c.phone}</span>
+                    </a>
+                  )}
                 </div>
               </motion.div>
             ))}

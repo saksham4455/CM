@@ -1,11 +1,83 @@
-import React, { useMemo, memo } from 'react';
+import React, { useMemo, memo, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import PongHero from '../components/PongHero';
 import Sponsors from '../components/Sponsers';
-import EventCarousel from '../components/EventCarousel';
 import CyberMatrixBackground from '../components/CyberMatrixBackground';
 import '../css/Home.css';
+
+const STATUS_LABELS = ['ACTIVE', 'ACTIVE', 'ACTIVE', 'ACTIVE', 'ACTIVE', 'ACTIVE', 'ACTIVE'];
+
+const TerminalList = ({ events, onSelect }) => {
+  const [visibleCount, setVisibleCount] = useState(0);
+  const [hoveredIdx, setHoveredIdx] = useState(null);
+  const [executed, setExecuted] = useState(null);
+
+  useEffect(() => {
+    if (visibleCount >= events.length + 2) return;
+    const t = setTimeout(() => setVisibleCount(v => v + 1), visibleCount === 0 ? 400 : 180);
+    return () => clearTimeout(t);
+  }, [visibleCount, events.length]);
+
+  const handleClick = (i) => {
+    setExecuted(i);
+    setTimeout(() => { setExecuted(null); onSelect(); }, 600);
+  };
+
+  const lines = [
+    { type: 'cmd',    text: 'ls --events --status=active' },
+    { type: 'output', text: `Found ${events.length} events. Displaying...` },
+    ...events.map((ev, i) => ({ type: 'event', ev, i })),
+    { type: 'prompt', text: '' },
+  ];
+
+  return (
+    <div className="term-lines">
+      {lines.slice(0, visibleCount).map((line, idx) => {
+        if (line.type === 'cmd') return (
+          <div key={idx} className="term-line">
+            <span className="term-ps1">enigma@cynet:~$&nbsp;</span>
+            <span className="term-cmd">{line.text}</span>
+          </div>
+        );
+        if (line.type === 'output') return (
+          <div key={idx} className="term-line term-line--info">
+            <span className="term-info-arrow">&gt;&gt;&nbsp;</span>{line.text}
+          </div>
+        );
+        if (line.type === 'prompt') return (
+          <div key={idx} className="term-line">
+            <span className="term-ps1">enigma@cynet:~$&nbsp;</span>
+            <span className="term-cursor">█</span>
+          </div>
+        );
+        const { ev, i } = line;
+        const isHovered = hoveredIdx === i;
+        const isExec = executed === i;
+        return (
+          <div
+            key={idx}
+            className={`term-line term-event-row${isHovered ? ' term-event-row--hover' : ''}${isExec ? ' term-event-row--exec' : ''}`}
+            onClick={() => handleClick(i)}
+            onMouseEnter={() => setHoveredIdx(i)}
+            onMouseLeave={() => setHoveredIdx(null)}
+          >
+            <span className="term-row-bracket">[</span>
+            <span className="term-row-num">{String(i + 1).padStart(2, '0')}</span>
+            <span className="term-row-bracket">]&nbsp;</span>
+            <span className="term-row-icon">{ev.icon}&nbsp;</span>
+            <span className="term-row-name">{ev.name}</span>
+            <span className="term-row-dots">
+              {'·'.repeat(Math.max(2, 38 - ev.name.length))}
+            </span>
+            <span className="term-row-status">{isExec ? 'EXECUTING...' : STATUS_LABELS[i]}</span>
+            {isHovered && !isExec && <span className="term-row-hint">&nbsp;[ENTER]</span>}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 
 const Home = memo(() => {
   const navigate = useNavigate();
@@ -136,20 +208,34 @@ const Home = memo(() => {
         </div>
       </motion.section>
 
-      {/* ── EVENT CAROUSEL ── */}
+      {/* ── TERMINAL EVENT LIST ── */}
       <section className="home-event-section">
-        <motion.div
-          className="event-section-header"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="event-section-title">Pick your challenge. Pick your path.</h2>
-          <p className="event-section-sub">Scroll through our diverse range of competitions and challenges</p>
-        </motion.div>
-
-        <EventCarousel events={events} />
+        <div className="home-shell">
+          <motion.div
+            className="term-heading-wrap"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <p className="term-heading-tag">&gt; system --events</p>
+            <h2 className="term-heading">Pick your challenge. Pick your path.</h2>
+            <div className="term-heading-line" />
+          </motion.div>
+          <div className="term-window">
+            {/* Title bar */}
+            <div className="term-titlebar">
+              <span className="term-dot term-dot--red" />
+              <span className="term-dot term-dot--yellow" />
+              <span className="term-dot term-dot--green" />
+              <span className="term-title">cynet@enigma:~/events</span>
+            </div>
+            {/* Body */}
+            <div className="term-body">
+              <TerminalList events={events} onSelect={() => navigate('/events')} />
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* ── PARTNERS ── */}

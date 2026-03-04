@@ -181,8 +181,7 @@ const RegistrationPage = ({ theme = "blue" }) => {
       e.games = "Select at least one game from Gaming Arena.";
     }
     if (needsPayment) {
-      if (!form.paymentStatus) e.paymentStatus = "Select paid or unpaid.";
-      if (form.paymentStatus === "paid" && !form.screenshot)
+      if (!form.screenshot)
         e.screenshot = "Upload your payment screenshot.";
     }
     return e;
@@ -207,7 +206,7 @@ const RegistrationPage = ({ theme = "blue" }) => {
       formData.append("classSem", form.classSem);
       formData.append("phone", form.phone);
       formData.append("email", form.email);
-      formData.append("paymentStatus", form.paymentStatus ? form.paymentStatus : "unpaid");
+      formData.append("paymentStatus", "paid");
       formData.append("totalPayment", totalPayment);
 
       // convert Set → Array → JSON
@@ -499,46 +498,10 @@ const RegistrationPage = ({ theme = "blue" }) => {
             </div>
           )}
 
-          {/* Payment Status (only when total > 0) */}
-          {needsPayment && (
-            <div className="rf-field rf-field--full">
-              <label className="rf-label">
-                Payment Status <span className="rf-req">*</span>
-              </label>
-              <div className="rf-radio-group">
-                <label
-                  className={`rf-radio-label ${form.paymentStatus === "paid" ? "rf-radio-label--active" : ""}`}
-                >
-                  <input
-                    type="radio"
-                    name="paymentStatus"
-                    value="paid"
-                    checked={form.paymentStatus === "paid"}
-                    onChange={handleChange}
-                  />
-                  <span className="rf-radio-dot" /> Paid
-                </label>
-                <label
-                  className={`rf-radio-label ${form.paymentStatus === "unpaid" ? "rf-radio-label--active" : ""}`}
-                >
-                  <input
-                    type="radio"
-                    name="paymentStatus"
-                    value="unpaid"
-                    checked={form.paymentStatus === "unpaid"}
-                    onChange={handleChange}
-                  />
-                  <span className="rf-radio-dot" /> Unpaid
-                </label>
-              </div>
-              {errors.paymentStatus && (
-                <span className="rf-error">{errors.paymentStatus}</span>
-              )}
-            </div>
-          )}
 
-          {/* QR Code + Upload (only when paid) */}
-          {needsPayment && form.paymentStatus === "paid" && (
+
+          {/* QR Code + Upload */}
+          {needsPayment && (
             <div className="rf-payment-section">
               <div className="rf-divider">
                 <span>Payment Details — ₹{totalPayment}</span>

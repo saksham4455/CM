@@ -153,6 +153,79 @@
     text-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
 }
 
+/* ── Subtitle & Register CTA ── */
+.pong-hero-cta {
+    position: absolute;
+    bottom: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 25;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    pointer-events: auto;
+}
+
+.pong-hero-subtitle {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(1rem, 2.4vw, 1.4rem);
+    letter-spacing: 0.2em;
+    color: rgba(0, 243, 255, 0.75);
+    text-transform: uppercase;
+    text-shadow: 0 0 12px rgba(0, 243, 255, 0.45);
+    margin: 0;
+    white-space: nowrap;
+}
+
+.pong-hero-date {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    letter-spacing: 0.18em;
+    color: rgba(0, 243, 255, 0.95);
+    text-transform: uppercase;
+    text-shadow: 0 0 24px rgba(0, 243, 255, 0.7), 0 0 48px rgba(0, 243, 255, 0.35);
+    margin: 0 0 8px 0;
+    font-weight: bold;
+}
+
+.pong-register-btn {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.75rem, 1.6vw, 0.9rem);
+    letter-spacing: 0.2em;
+    color: #06060c;
+    background: rgba(0, 243, 255, 0.92);
+    border: 1.5px solid rgba(0, 243, 255, 1);
+    padding: 0.55em 2.2em;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 0 18px rgba(0, 243, 255, 0.55), inset 0 0 8px rgba(0, 243, 255, 0.15);
+    transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+
+.pong-register-btn:hover {
+    background: rgba(0, 243, 255, 1);
+    box-shadow: 0 0 32px rgba(0, 243, 255, 0.85), inset 0 0 12px rgba(0, 243, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+.pong-register-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 0 14px rgba(0, 243, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+    .pong-hero-cta { bottom: 80px; gap: 8px; }
+    .pong-hero-subtitle { letter-spacing: 0.12em; white-space: normal; text-align: center; font-size: clamp(0.85rem, 3vw, 1.1rem); }
+    .pong-hero-date { font-size: clamp(1.3rem, 6vw, 2rem); letter-spacing: 0.12em; }
+}
+
+@media (max-width: 480px) {
+    .pong-hero-cta { bottom: 60px; gap: 6px; }
+    .pong-hero-date { font-size: clamp(1.1rem, 7vw, 1.6rem); }
+}
+
 /* ─────────────────────────────────────────
    RESPONSIVE BREAKPOINTS
 ───────────────────────────────────────── */

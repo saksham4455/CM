@@ -1,4 +1,5 @@
 ﻿import React, { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../css/PongHero.css';
 
 const CHAR_MAPS = {
@@ -97,6 +98,7 @@ const calcTextWidth = (pixelSize, pixelGap, charGap) => {
 
 const PongHero = () => {
     const canvasRef = useRef(null);
+    const navigate = useNavigate();
     const animationIdRef   = useRef(null);
     const resizeTimeoutRef = useRef(null);
     const stateRef = useRef({}); // mutable game state kept off-render
@@ -420,6 +422,18 @@ const PongHero = () => {
             <div className="pong-corner br" />
 
             <div className="pong-scanline" />
+
+            {/* Subtitle + Register CTA */}
+            <div className="pong-hero-cta">
+                <p className="pong-hero-subtitle">The Ultimate Tech Fest Begins Here</p>
+                <p className="pong-hero-date">14 March 2026</p>
+                <button
+                    className="pong-register-btn"
+                    onClick={() => navigate('/register')}
+                >
+                    REGISTER NOW
+                </button>
+            </div>
         </div>
     );
 };
