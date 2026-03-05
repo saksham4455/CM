@@ -63,7 +63,7 @@ const EventsPage = ({ theme = 'blue' }) => {
       details: [
         { label: 'Team Size', value: 'Exactly 2' },
         { label: 'Rounds', value: '3' },
-        { label: 'Registration', value: 'On the Spot' },
+        { label: 'Price', value: '₹200' },
         { label: 'Venue', value: 'JIMS Campus' }
       ]
     },
@@ -103,11 +103,11 @@ const EventsPage = ({ theme = 'blue' }) => {
       studentCoordinators: ['Dev Anand', 'Riya Shah', 'Manav Gupta'],
       rulesFile: '/Rules/Gaming Arena.pdf',
       gameCards: [
-        { title: 'Valorant', icon: '🎯', prize: '₹500', players: '5v5' },
-        { title: 'Tekken 7', icon: '🥊', prize: '₹200', players: '1v1' },
-        { title: 'BGMI', icon: '🔫', prize: '₹400', players: '4-Squad' },
-        { title: 'Stumble Guys', icon: '🏃', prize: '₹150', players: '1v1' },
-        { title: 'SmashKarts', icon: '🏎️', prize: '₹150', players: '1v1' },
+        { title: 'Valorant', icon: '🎯', prize: '₹250', players: '5v5' },
+        { title: 'Tekken 7', icon: '🥊', prize: '₹30', players: '1v1' },
+        { title: 'BGMI', icon: '🔫', prize: '₹200', players: '4-Squad' },
+        { title: 'Stumble Guys', icon: '🏃', prize: '₹30', players: '1v1' },
+        { title: 'SmashKarts', icon: '🏎️', prize: '₹30', players: '1v1' },
       ],
       details: [
         { label: 'Duration', value: '2 Days' },
