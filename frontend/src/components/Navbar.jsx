@@ -11,11 +11,12 @@ const Navbar = () => {
 
     const navLinks = [
         { name: 'HOME', path: '/' },
+        { name: 'REGISTER', path: '/register' },
         { name: 'EVENTS', path: '/events' },
         { name: 'GALLERY', path: '/past-events' },
         { name: 'TEAM', path: '/team' },
         { name: 'CONTACT', path: '/contact' },
-        { name: 'REGISTER', path: '/register' },
+        
     ];
 
     return (

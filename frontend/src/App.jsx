@@ -15,7 +15,6 @@ import ErrorBoundary from './components/ErrorBoundary';
 import ContactForm from './components/ContactForm';
 
 // Lazy-loaded components
-const FlowCursor = lazy(() => import('./components/FlowCursor'));
 const ScrollToTop = lazy(() => import('./components/ScrollToTop'));
 
 // Lazy-loaded pages
@@ -278,8 +277,6 @@ function App() {
             {/* Footer */}
             {location.pathname !== '/admin' && location.pathname !== '/admin-login' && location.pathname !== '/register' && <Footer />}
 
-            {/* Custom Cursor */}
-            <FlowCursor />
           </Suspense>
         </div>
       )}

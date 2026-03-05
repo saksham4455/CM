@@ -1,4 +1,4 @@
-import React, { useMemo, memo, useState, useEffect } from 'react';
+import React, { useMemo, memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import PongHero from '../components/PongHero';
@@ -6,125 +6,18 @@ import Sponsors from '../components/Sponsers';
 import CyberMatrixBackground from '../components/CyberMatrixBackground';
 import '../css/Home.css';
 
-const STATUS_LABELS = ['ACTIVE', 'ACTIVE', 'ACTIVE', 'ACTIVE', 'ACTIVE', 'ACTIVE', 'ACTIVE'];
-
-const TerminalList = ({ events, onSelect }) => {
-  const [visibleCount, setVisibleCount] = useState(0);
-  const [hoveredIdx, setHoveredIdx] = useState(null);
-  const [executed, setExecuted] = useState(null);
-
-  useEffect(() => {
-    if (visibleCount >= events.length + 2) return;
-    const t = setTimeout(() => setVisibleCount(v => v + 1), visibleCount === 0 ? 400 : 180);
-    return () => clearTimeout(t);
-  }, [visibleCount, events.length]);
-
-  const handleClick = (i) => {
-    setExecuted(i);
-    setTimeout(() => { setExecuted(null); onSelect(); }, 600);
-  };
-
-  const lines = [
-    { type: 'cmd',    text: 'ls --events --status=active' },
-    { type: 'output', text: `Found ${events.length} events. Displaying...` },
-    ...events.map((ev, i) => ({ type: 'event', ev, i })),
-    { type: 'prompt', text: '' },
-  ];
-
-  return (
-    <div className="term-lines">
-      {lines.slice(0, visibleCount).map((line, idx) => {
-        if (line.type === 'cmd') return (
-          <div key={idx} className="term-line">
-            <span className="term-ps1">enigma@cynet:~$&nbsp;</span>
-            <span className="term-cmd">{line.text}</span>
-          </div>
-        );
-        if (line.type === 'output') return (
-          <div key={idx} className="term-line term-line--info">
-            <span className="term-info-arrow">&gt;&gt;&nbsp;</span>{line.text}
-          </div>
-        );
-        if (line.type === 'prompt') return (
-          <div key={idx} className="term-line">
-            <span className="term-ps1">enigma@cynet:~$&nbsp;</span>
-            <span className="term-cursor">█</span>
-          </div>
-        );
-        const { ev, i } = line;
-        const isHovered = hoveredIdx === i;
-        const isExec = executed === i;
-        return (
-          <div
-            key={idx}
-            className={`term-line term-event-row${isHovered ? ' term-event-row--hover' : ''}${isExec ? ' term-event-row--exec' : ''}`}
-            onClick={() => handleClick(i)}
-            onMouseEnter={() => setHoveredIdx(i)}
-            onMouseLeave={() => setHoveredIdx(null)}
-          >
-            <span className="term-row-bracket">[</span>
-            <span className="term-row-num">{String(i + 1).padStart(2, '0')}</span>
-            <span className="term-row-bracket">]&nbsp;</span>
-            <span className="term-row-icon">{ev.icon}&nbsp;</span>
-            <span className="term-row-name">{ev.name}</span>
-            <span className="term-row-dots">
-              {'·'.repeat(Math.max(2, 38 - ev.name.length))}
-            </span>
-            <span className="term-row-status">{isExec ? 'EXECUTING...' : STATUS_LABELS[i]}</span>
-            {isHovered && !isExec && <span className="term-row-hint">&nbsp;[ENTER]</span>}
-          </div>
-        );
-      })}
-    </div>
-  );
-};
 
 const Home = memo(() => {
   const navigate = useNavigate();
   
   const events = useMemo(() => [
-    { 
-      name: 'TREASURE HUNT', 
-      img: 'https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?auto=format&fit=crop&q=80&w=800',
-      code: '# 01',
-      icon: '🗺️'
-    },
-    { 
-      name: 'INNOVISION 7.0', 
-      img: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800',
-      code: '# 02',
-      icon: '💡'
-    },
-    { 
-      name: 'GAMING ARENA', 
-      img: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=800',
-      code: '# 03',
-      icon: '🎮'
-    },
-    { 
-      name: 'HACKING EVENT', 
-      img: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800',
-      code: '# 04',
-      icon: '🔓'
-    },
-    { 
-      name: 'MIND MATRIX', 
-      img: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&q=80&w=800',
-      code: '# 05',
-      icon: '🧠'
-    },
-    { 
-      name: 'TECH UNSEEN', 
-      img: 'https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?auto=format&fit=crop&q=80&w=800',
-      code: '# 06',
-      icon: '❓'
-    },
-    { 
-      name: 'SHADOW CODE', 
-      img: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=800',
-      code: '# 07',
-      icon: '💻'
-    },
+    { name: 'TREASURE HUNT',  icon: '🗺️', category: 'ADVENTURE',     accentColor: '#00F5FF', description: 'Race across JIMS campus cracking encrypted clues and puzzles in a time-bound bounty hunt.' },
+    { name: 'INNOVISION 7.0', icon: '💡', category: 'INNOVATION',     accentColor: '#6C63FF', description: 'Ideathon on cybersecurity challenges across AI/ML, Robotics, IoT, Biotech, and Clean Tech.' },
+    { name: 'GAMING ARENA',   icon: '🎮', category: 'ESPORTS',        accentColor: '#FF00E5', description: 'Ultimate esports battleground with competitive tournaments across 7 gaming titles.' },
+    { name: 'HACKING EVENT',  icon: '🔓', category: 'CYBERSECURITY',  accentColor: '#00ff41', description: 'Elite capture-the-flag competition designed for ethical hackers and security enthusiasts.' },
+    { name: 'MIND MATRIX',    icon: '🧠', category: 'STRATEGY',       accentColor: '#00F5FF', description: 'Create digital mind maps using MS Word or AI tools, then present to the judges.' },
+    { name: 'TECH UNSEEN',    icon: '❓', category: 'KNOWLEDGE',      accentColor: '#6C63FF', description: 'Two-round IT quiz — timed Q&A in Round 1, then Debug the Innovation for top qualifiers.' },
+    { name: 'SHADOW CODE',    icon: '💻', category: 'PROGRAMMING',    accentColor: '#FF00E5', description: 'Two-round coding challenge — MCQs on C & Python, then blind coding in C with monitor off.' },
   ], []);
 
   return (
@@ -192,19 +85,7 @@ const Home = memo(() => {
             ))}
           </div>
 
-          <div className="stats-action-wrap">
-            <motion.div
-              className="stat-card--action"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.02 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              onClick={() => navigate('/events')}
-            >
-              <span className="stat-tag" style={{ color: '#00f3ff', opacity: 1 }}>ENTER THE GRID</span>
-            </motion.div>
-          </div>
+
         </div>
       </motion.section>
 
@@ -230,9 +111,42 @@ const Home = memo(() => {
               <span className="term-dot term-dot--green" />
               <span className="term-title">cynet@enigma:~/events</span>
             </div>
-            {/* Body */}
-            <div className="term-body">
-              <TerminalList events={events} onSelect={() => navigate('/events')} />
+            {/* Flip Card Grid */}
+            <div className="flip-grid">
+              {events.map((ev, i) => (
+                <motion.div
+                  key={ev.name}
+                  className="flip-card"
+                  style={{ '--accent': ev.accentColor }}
+                  initial={{ opacity: 0, y: 28 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.07, duration: 0.45 }}
+                  onClick={() => navigate('/events')}
+                >
+                  <div className="flip-card-inner">
+                    {/* FRONT */}
+                    <div className="flip-card-front">
+                      <span className="flip-card-index">{String(i + 1).padStart(2, '0')}</span>
+                      <span className="flip-card-icon">{ev.icon}</span>
+                      <h3 className="flip-card-name">{ev.name}</h3>
+                      <span className="flip-card-category">{ev.category}</span>
+                      <div className="flip-card-scanline" />
+                      <div className="flip-card-corner flip-card-corner--tl" />
+                      <div className="flip-card-corner flip-card-corner--br" />
+                    </div>
+                    {/* BACK */}
+                    <div className="flip-card-back">
+                      <span className="flip-card-back-icon">{ev.icon}</span>
+                      <h3 className="flip-card-back-name">{ev.name}</h3>
+                      <p className="flip-card-desc">{ev.description}</p>
+                      <button className="flip-card-cta">VIEW EVENT →</button>
+                      <div className="flip-card-corner flip-card-corner--tl" />
+                      <div className="flip-card-corner flip-card-corner--br" />
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>

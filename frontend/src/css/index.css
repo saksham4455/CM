@@ -36,15 +36,9 @@ body {
   color: #fff;
   font-family: 'JetBrains Mono', monospace;
   overflow-x: hidden;
-  cursor: none; /* Hide default cursor */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-}
-
-/* Show default cursor for inputs and text areas */
-input, textarea, select, button, a {
-  cursor: auto !important;
 }
 
 /* Performance optimizations for animations */
@@ -468,14 +462,9 @@ img[loading="lazy"] {
   overflow: visible;
 }
 
-/* Ensure cursor is visible on all elements */
-*, *::before, *::after {
-  cursor: none !important;
-}
-
 /* Restore cursor for specific interactive elements when needed */
 input:focus, textarea:focus, select:focus {
-  cursor: text !important;
+  cursor: text;
 }
 
 /* Performance optimizations for EventsPage */

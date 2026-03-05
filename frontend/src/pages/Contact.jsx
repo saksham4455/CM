@@ -45,7 +45,7 @@ const INFO_ITEMS = [
   { icon: <IconMail />, label: 'Email Address', value: 'cynet@jimsd.org', link: 'Itclub.vk@jimsd.org' },
   { icon: <IconInsta />, label: 'Instagram', value: '@enigma.jimsvk', link: 'https://www.instagram.com/enigma.jimsvk/' },
   { icon: <IconLinkedin />, label: 'LinkedIn', value: 'Enigma', link: 'https://www.linkedin.com/company/enigma-it-club-jims-vk/' },
-  { icon: <IconLocation />, label: 'Address', value: 'JAGANNATH INTERNATIONAL Management School, OCF Pocket 9, Sector B, Vasant Kunj, New Delhi-110070', link: 'https://maps.google.com/?q=JAGANNATH+INTERNATIONAL+Management+School+OCF+Pocket+9+Sector+B+Vasant+Kunj+New+Delhi+110070' },
+  { icon: <IconLocation />, label: 'Address (Google Map)', value: 'JAGANNATH INTERNATIONAL Management School, OCF Pocket 9, Sector B, Vasant Kunj, New Delhi-110070', link: 'https://maps.google.com/?q=JAGANNATH+INTERNATIONAL+Management+School+OCF+Pocket+9+Sector+B+Vasant+Kunj+New+Delhi+110070' },
 ];
 
 /* ─────────────────────────────────────────────

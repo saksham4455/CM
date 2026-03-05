@@ -129,7 +129,7 @@ const CyberMatrixBackground = ({ theme = 'blue' }) => {
           pointer-events: auto;
           
           /* Use CSS variable for dynamic styling */
-          opacity: calc(0.15 + var(--intensity) * 0.85);
+          opacity: calc(0.45 + var(--intensity) * 0.55);
           color: hsl(${currentTheme.hsl}, calc(70% + var(--intensity) * 30%));
           text-shadow: 
             0 0 calc(var(--intensity) * 20px) ${currentTheme.main},

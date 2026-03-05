@@ -20,8 +20,8 @@
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr 1.5fr;
-  gap: clamp(1rem, 2vw, 1.5rem);
+  grid-template-columns: 1.3fr 1fr 1fr 1fr 1.2fr;
+  gap: clamp(0.8rem, 1.5vw, 1.2rem);
   padding-bottom: 1rem;
   border-bottom: 1px solid rgba(0, 243, 255, 0.1);
 }
@@ -34,7 +34,7 @@
 }
 
 .footer-section-wide {
-  grid-column: span 1;
+  grid-column: span 2;
 }
 
 .footer-dual-section {
@@ -879,24 +879,24 @@
 /* Large Tablet / Small Desktop */
 @media (max-width: 1200px) {
   .footer-container {
-    grid-template-columns: 1fr 1fr 2fr;
-    gap: clamp(1.5rem, 3vw, 2rem);
+    grid-template-columns: 1.2fr 0.9fr 0.9fr 0.85fr 1fr;
+    gap: clamp(0.6rem, 1.2vw, 1rem);
   }
 
   .footer-section-wide {
-    grid-column: span 1;
+    grid-column: span 2;
   }
 }
 
 /* Tablet Optimization */
 @media (max-width: 1024px) {
   .footer-container {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
   }
 
   .footer-section-wide {
-    grid-column: span 2;
+    grid-column: span 3;
   }
 
   .footer-dual-section {

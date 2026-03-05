@@ -6,7 +6,7 @@ import CyberMatrixBackground from "../components/CyberMatrixBackground";
 import "../css/RegistrationForm.css";
 const API = import.meta.env.VITE_API_BASE_URL || "https://cm-19fm.onrender.com";
 const EVENTS = [
-  { id: "TREASURE_HUNT", name: "TREASURE HUNT", price: 100 },
+  { id: "TREASURE_HUNT", name: "TREASURE HUNT", price: 200 },
   { id: "INNOVISION", name: "INNOVISION 7.0", price: 0 },
   { id: "GAMING_ARENA", name: "GAMING ARENA", price: 0 },
   { id: "HACKING_EVENT", name: "SHADOW CODE", price: 0 },
@@ -15,45 +15,27 @@ const EVENTS = [
 ];
 
 const GAMING_EVENTS = [
-  { id: "valorant", name: "Valorant", icon: "🎯", price: 500, format: "5v5" },
-  { id: "tekken7", name: "Tekken 7", icon: "🥊", price: 200, format: "1v1" },
-  { id: "bgmi", name: "BGMI", icon: "🔫", price: 400, format: "4-Squad" },
+  { id: "valorant", name: "Valorant", icon: "🎯", price: 250, format: "5v5" },
+  { id: "tekken7", name: "Tekken 7", icon: "🥊", price: 30, format: "1v1" },
+  { id: "bgmi", name: "BGMI", icon: "🔫", price: 200, format: "4-Squad" },
   {
     id: "stumble",
     name: "Stumble Guys",
     icon: "🏃",
-    price: 150,
+    price: 30,
     format: "FFA",
   },
   {
     id: "smashkarts",
     name: "SmashKarts",
     icon: "🏎️",
-    price: 150,
+    price: 30,
     format: "FFA",
   },
 ];
 
-const CLASSES = [
-  "BCA - Sem 1",
-  "BCA - Sem 2",
-  "BCA - Sem 3",
-  "BCA - Sem 4",
-  "BCA - Sem 5",
-  "BCA - Sem 6",
-  "MCA - Sem 1",
-  "MCA - Sem 2",
-  "MCA - Sem 3",
-  "MCA - Sem 4",
-  "B.Tech - Sem 1",
-  "B.Tech - Sem 2",
-  "B.Tech - Sem 3",
-  "B.Tech - Sem 4",
-  "B.Tech - Sem 5",
-  "B.Tech - Sem 6",
-  "B.Tech - Sem 7",
-  "B.Tech - Sem 8",
-  "Other",
+const SEMESTERS = [
+  "Sem 1", "Sem 2", "Sem 3", "Sem 4", "Sem 5", "Sem 6",
 ];
 
 const RegistrationPage = ({ theme = "blue" }) => {
@@ -65,7 +47,8 @@ const RegistrationPage = ({ theme = "blue" }) => {
   const [form, setForm] = useState({
     name: "",
     college: "",
-    classSem: "",
+    classVal: "",
+    semester: "",
     phone: "",
     email: "",
     paymentStatus: "",
@@ -171,7 +154,8 @@ const RegistrationPage = ({ theme = "blue" }) => {
     const e = {};
     if (!form.name.trim()) e.name = "Name is required.";
     if (!form.college.trim()) e.college = "College is required.";
-    if (!form.classSem) e.classSem = "Select your class & semester.";
+    if (!form.classVal.trim()) e.classVal = "Enter your class (e.g. BCA, BBA).";
+    if (!form.semester) e.semester = "Select your semester.";
     if (!/^\d{10}$/.test(form.phone))
       e.phone = "Enter a valid 10-digit phone number.";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
@@ -203,7 +187,7 @@ const RegistrationPage = ({ theme = "blue" }) => {
 
       formData.append("name", form.name);
       formData.append("college", form.college);
-      formData.append("classSem", form.classSem);
+      formData.append("classSem", `${form.classVal.trim()} - ${form.semester}`);
       formData.append("phone", form.phone);
       formData.append("email", form.email);
       formData.append("paymentStatus", "paid");
@@ -243,7 +227,8 @@ const RegistrationPage = ({ theme = "blue" }) => {
     setForm({
       name: "",
       college: "",
-      classSem: "",
+      classVal: "",
+      semester: "",
       phone: "",
       email: "",
       paymentStatus: "",
@@ -347,32 +332,51 @@ const RegistrationPage = ({ theme = "blue" }) => {
             </div>
           </div>
 
-          {/* Row: Class + Phone */}
+          {/* Row: Class + Semester */}
           <div className="rf-row">
             <div className="rf-field">
-              <label className="rf-label" htmlFor="reg-classSem">
-                Class & Semester <span className="rf-req">*</span>
+              <label className="rf-label" htmlFor="reg-classVal">
+                Class <span className="rf-req">*</span>
+              </label>
+              <input
+                id="reg-classVal"
+                name="classVal"
+                type="text"
+                className={`rf-input ${errors.classVal ? "rf-input--err" : ""}`}
+                placeholder="e.g. BCA, BBA, BJMC"
+                value={form.classVal}
+                onChange={handleChange}
+              />
+              {errors.classVal && (
+                <span className="rf-error">{errors.classVal}</span>
+              )}
+            </div>
+            <div className="rf-field">
+              <label className="rf-label" htmlFor="reg-semester">
+                Semester <span className="rf-req">*</span>
               </label>
               <select
-                id="reg-classSem"
-                name="classSem"
-                className={`rf-select ${errors.classSem ? "rf-input--err" : ""}`}
-                value={form.classSem}
+                id="reg-semester"
+                name="semester"
+                className={`rf-select ${errors.semester ? "rf-input--err" : ""}`}
+                value={form.semester}
                 onChange={handleChange}
               >
                 <option value="" disabled>
-                  Select class & semester
+                  Select semester
                 </option>
-                {CLASSES.map((c) => (
-                  <option key={c} value={c}>
-                    {c}
-                  </option>
+                {SEMESTERS.map((s) => (
+                  <option key={s} value={s}>{s}</option>
                 ))}
               </select>
-              {errors.classSem && (
-                <span className="rf-error">{errors.classSem}</span>
+              {errors.semester && (
+                <span className="rf-error">{errors.semester}</span>
               )}
             </div>
+          </div>
+
+          {/* Row: Phone + Email */}
+          <div className="rf-row">
             <div className="rf-field">
               <label className="rf-label" htmlFor="reg-phone">
                 Phone Number <span className="rf-req">*</span>
@@ -389,23 +393,21 @@ const RegistrationPage = ({ theme = "blue" }) => {
               />
               {errors.phone && <span className="rf-error">{errors.phone}</span>}
             </div>
-          </div>
-
-          {/* Email */}
-          <div className="rf-field rf-field--full">
-            <label className="rf-label" htmlFor="reg-email">
-              Email ID <span className="rf-req">*</span>
-            </label>
-            <input
-              id="reg-email"
-              name="email"
-              type="email"
-              className={`rf-input ${errors.email ? "rf-input--err" : ""}`}
-              placeholder="yourname@example.com"
-              value={form.email}
-              onChange={handleChange}
-            />
-            {errors.email && <span className="rf-error">{errors.email}</span>}
+            <div className="rf-field">
+              <label className="rf-label" htmlFor="reg-email">
+                Email ID <span className="rf-req">*</span>
+              </label>
+              <input
+                id="reg-email"
+                name="email"
+                type="email"
+                className={`rf-input ${errors.email ? "rf-input--err" : ""}`}
+                placeholder="yourname@example.com"
+                value={form.email}
+                onChange={handleChange}
+              />
+              {errors.email && <span className="rf-error">{errors.email}</span>}
+            </div>
           </div>
 
           {/* ── EVENT CHECKBOXES ── */}
@@ -511,8 +513,8 @@ const RegistrationPage = ({ theme = "blue" }) => {
                   <p className="rf-label">Scan &amp; Pay</p>
                   <div className="rf-qr-frame">
                     <img
-                      src="/Logo/Buglsayers.png"
-                      alt="Payment QR Code"
+                      src="/public/QR/Payment_QR.jpeg"
+                      alt="Payment "
                       className="rf-qr-img"
                       onError={(e) => {
                         e.target.style.display = "none";

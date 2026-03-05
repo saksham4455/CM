@@ -427,12 +427,20 @@ const PongHero = () => {
             <div className="pong-hero-cta">
                 <p className="pong-hero-subtitle">The Ultimate Tech Fest Begins Here</p>
                 <p className="pong-hero-date">14 March 2026</p>
-                <button
-                    className="pong-register-btn"
-                    onClick={() => navigate('/register')}
-                >
-                    REGISTER NOW
-                </button>
+                <div className="pong-hero-btn-row">
+                    <button
+                        className="pong-events-btn"
+                        onClick={() => navigate('/events')}
+                    >
+                        EVENTS
+                    </button>
+                    <button
+                        className="pong-register-btn"
+                        onClick={() => navigate('/register')}
+                    >
+                        REGISTER NOW
+                    </button>
+                </div>
             </div>
         </div>
     );

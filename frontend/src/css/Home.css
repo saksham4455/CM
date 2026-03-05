@@ -18,7 +18,7 @@
     height: 100%;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.4;
+    opacity: 0.85;
 }
 
 .home-shell {
@@ -888,7 +888,7 @@
     overflow: hidden;
     box-shadow: 0 0 40px rgba(0, 243, 255, 0.08), 0 0 80px rgba(0, 0, 0, 0.6);
     margin: 3rem auto;
-    max-width: 820px;
+    max-width: 1100px;
 }
 
 .term-titlebar {
@@ -1208,4 +1208,314 @@
     .readout-line { font-size: 0.65rem; letter-spacing: 1px; }
     .bio-status-msg { font-size: 0.8rem; letter-spacing: 1.5px; }
     .scanner-interface { gap: 1.5rem; padding: 1rem; }
+}
+
+/* ═══════════════════════════════════════════
+   FLIP CARD GRID  (Option 9)
+═══════════════════════════════════════════ */
+
+/* Glitch keyframes */
+@keyframes glitch-text {
+    0%, 90%, 100% { text-shadow: none; transform: none; }
+    92% { text-shadow: 2px 0 #ff0055, -2px 0 rgba(0,243,255,0.8); transform: skewX(-3deg) translateX(2px); }
+    94% { text-shadow: -2px 0 #ff0055, 2px 0 rgba(0,243,255,0.8); transform: skewX(3deg) translateX(-2px); }
+    96% { text-shadow: 1px 0 #b829ff, -1px 0 rgba(0,243,255,0.6); transform: translateX(1px); }
+    98% { text-shadow: -1px 0 #ff0055, 1px 0 #b829ff; transform: skewX(-1deg); }
+}
+
+@keyframes scanline-move {
+    from { transform: translateY(-100%); }
+    to   { transform: translateY(400%); }
+}
+
+@keyframes mystery-pulse {
+    0%, 100% { box-shadow: 0 0 12px rgba(184,41,255,0.35), inset 0 0 12px rgba(184,41,255,0.06); border-color: rgba(184,41,255,0.45); }
+    50%       { box-shadow: 0 0 30px rgba(184,41,255,0.7),  inset 0 0 20px rgba(184,41,255,0.12); border-color: rgba(184,41,255,0.9); }
+}
+
+@keyframes denied-flicker {
+    0%, 100% { opacity: 0.35; }
+    50%       { opacity: 0.6; }
+}
+
+.flip-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    padding: 24px;
+}
+
+/* ── Base flip card ── */
+.flip-card {
+    perspective: 900px;
+    height: 240px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.62s cubic-bezier(0.4, 0.2, 0.2, 1);
+    border-radius: 6px;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* shared front/back base */
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 18px 14px;
+    border: 1px solid rgba(var(--accent-rgb, 0,243,255), 0.28);
+    border-color: rgba(0,0,0,0); /* fallback — overridden below */
+    overflow: hidden;
+}
+
+/* ── FRONT ── */
+.flip-card-front {
+    background: linear-gradient(145deg, rgba(6,8,18,0.97) 0%, rgba(10,14,28,0.95) 100%);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    box-shadow: 0 0 16px color-mix(in srgb, var(--accent) 18%, transparent),
+                inset 0 0 20px rgba(0,0,0,0.5);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.flip-card:hover .flip-card-front {
+    box-shadow: 0 0 32px color-mix(in srgb, var(--accent) 45%, transparent),
+                inset 0 0 24px rgba(0,0,0,0.4);
+    border-color: color-mix(in srgb, var(--accent) 65%, transparent);
+}
+
+.flip-card-index {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.82rem;
+    letter-spacing: 2px;
+    color: var(--accent);
+    font-weight: 900;
+    text-shadow: 0 0 8px color-mix(in srgb, var(--accent) 70%, transparent);
+}
+
+.flip-card-icon {
+    font-size: 3rem;
+    line-height: 1;
+    filter: drop-shadow(0 0 8px color-mix(in srgb, var(--accent) 60%, transparent));
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.flip-card:hover .flip-card-icon {
+    transform: scale(1.12);
+    filter: drop-shadow(0 0 18px color-mix(in srgb, var(--accent) 90%, transparent));
+}
+
+.flip-card-name {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.92rem, 1.5vw, 1.12rem);
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(255,255,255,0.5), 0 0 20px rgba(255,255,255,0.2);
+    animation: glitch-text 6s infinite;
+}
+
+.flip-card-category {
+    font-family: 'Courier New', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 1;
+    background: color-mix(in srgb, var(--accent) 15%, transparent);
+    padding: 3px 10px;
+    border-radius: 2px;
+    border: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+    text-shadow: 0 0 8px color-mix(in srgb, var(--accent) 80%, transparent);
+}
+
+/* Scanline sweep */
+.flip-card-scanline {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.flip-card-scanline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(to bottom,
+        transparent,
+        color-mix(in srgb, var(--accent) 6%, transparent),
+        transparent);
+    animation: scanline-move 3.5s linear infinite;
+}
+
+/* Corner decorators */
+.flip-card-corner {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-color: var(--accent);
+    border-style: solid;
+    opacity: 0.5;
+    transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+.flip-card:hover .flip-card-corner { opacity: 1; width: 14px; height: 14px; }
+
+.flip-card-corner--tl { top: 6px; left: 6px; border-width: 1.5px 0 0 1.5px; }
+.flip-card-corner--br { bottom: 6px; right: 6px; border-width: 0 1.5px 1.5px 0; }
+
+/* ── BACK ── */
+.flip-card-back {
+    background: linear-gradient(145deg,
+        color-mix(in srgb, var(--accent) 12%, #06080e) 0%,
+        rgba(6,8,18,0.98) 100%);
+    border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+    box-shadow: 0 0 30px color-mix(in srgb, var(--accent) 35%, transparent),
+                inset 0 0 30px rgba(0,0,0,0.4);
+    transform: rotateY(180deg);
+    text-align: center;
+    gap: 8px;
+}
+
+.flip-card-back-icon {
+    font-size: 2rem;
+    line-height: 1;
+    filter: drop-shadow(0 0 10px color-mix(in srgb, var(--accent) 80%, transparent));
+}
+
+.flip-card-back-name {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin: 0;
+    text-shadow: 0 0 16px color-mix(in srgb, var(--accent) 90%, transparent),
+                 0 0 32px color-mix(in srgb, var(--accent) 50%, transparent);
+}
+
+.flip-card-desc {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.72rem, 1vw, 0.84rem);
+    font-weight: 600;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.92);
+    text-align: center;
+    margin: 0;
+    max-width: 95%;
+    text-shadow: 0 0 6px rgba(255,255,255,0.2);
+}
+
+.flip-card-cta {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: #06060c;
+    background: var(--accent);
+    border: none;
+    padding: 5px 14px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 700;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 0 12px color-mix(in srgb, var(--accent) 60%, transparent);
+    margin-top: 4px;
+}
+
+.flip-card-cta:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}
+
+/* ── Mystery card ── */
+.flip-card--mystery .flip-card-front,
+.flip-card--mystery .flip-card-back {
+    animation: mystery-pulse 2.2s ease-in-out infinite;
+}
+
+/* ── ACCESS DENIED slot ── */
+.flip-card--denied {
+    cursor: default;
+    border-radius: 6px;
+    border: 1px dashed rgba(255, 0, 85, 0.25);
+    background: repeating-linear-gradient(
+        -45deg,
+        rgba(255, 0, 85, 0.03) 0px,
+        rgba(255, 0, 85, 0.03) 4px,
+        transparent 4px,
+        transparent 12px
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: denied-flicker 3s ease-in-out infinite;
+}
+
+.flip-card--denied .flip-card-denied-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.flip-card-denied-icon {
+    font-size: 1.8rem;
+    opacity: 0.4;
+}
+
+.flip-card-denied-text {
+    font-family: 'Courier New', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.3em;
+    color: rgba(255, 0, 85, 0.5);
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 1.6;
+}
+
+/* ── Responsive flip grid ── */
+@media (max-width: 900px) {
+    .flip-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 16px; }
+    .flip-card { height: 220px; }
+    .flip-card-icon { font-size: 2.4rem; }
+}
+
+@media (max-width: 640px) {
+    .flip-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 12px; }
+    .flip-card { height: 200px; }
+    .flip-card-name { font-size: 0.85rem; }
+    .flip-card-desc  { font-size: 0.68rem; }
+}
+
+@media (max-width: 400px) {
+    .flip-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; padding: 10px; }
+    .flip-card { height: 180px; }
+    .flip-card-icon { font-size: 2rem; }
 }
