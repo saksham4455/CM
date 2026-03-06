@@ -513,7 +513,7 @@ const RegistrationPage = ({ theme = "blue" }) => {
                   <p className="rf-label">Scan &amp; Pay</p>
                   <div className="rf-qr-frame">
                     <img
-                      src="/public/QR/Payment_QR.jpeg"
+                      src="/QR/Payment_QR.jpeg"
                       alt="Payment "
                       className="rf-qr-img"
                       onError={(e) => {
