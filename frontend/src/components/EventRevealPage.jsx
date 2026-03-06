@@ -113,6 +113,7 @@ const EventRevealPage = ({ event, onClose, onNext, onPrevious, hasNext, hasPrevi
               {/* ── LEFT SECTION ── */}
               <motion.div
                 initial={{ x: -100, opacity: 0 }}
+                
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ type: 'spring', stiffness: 200, damping: 25, mass: 1, delay: 0.15 }}
                 className="flex flex-col space-y-1.5 sm:space-y-2"
@@ -485,20 +486,37 @@ const EventRevealPage = ({ event, onClose, onNext, onPrevious, hasNext, hasPrevi
                     <div className="absolute inset-0 opacity-20 blur-[100px]" style={{ background: `radial-gradient(circle, ${event.accentColor}, transparent 70%)` }} />
 
                     <motion.div
-                      className="relative z-10"
-                      animate={{ y: [0, -15, 0] }}
+                      className="relative z-10 w-[72%] max-w-[260px]"
+                      animate={{ y: [0, -10, 0] }}
                       transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                     >
-                      <div
-                        className="leading-none"
-                        style={{
-                          fontSize: 'clamp(80px, 15vh, 180px)',
-                          filter: `drop-shadow(0 0 40px ${event.accentColor}) drop-shadow(0 0 80px ${event.accentColor}cc) drop-shadow(0 20px 60px rgba(0,0,0,0.5))`,
-                          WebkitTextStroke: `2px ${event.accentColor}40`,
-                        }}
-                      >
-                        {event.character || event.icon}
-                      </div>
+                      {event.posterUrl ? (
+                        <div
+                          className="rounded-xl overflow-hidden border-2 aspect-[2/3]"
+                          style={{
+                            borderColor: `${event.accentColor}70`,
+                            boxShadow: `0 0 30px ${event.accentColor}55, 0 12px 40px rgba(0,0,0,0.5)`,
+                          }}
+                        >
+                          <img
+                            src={event.posterUrl}
+                            alt={`${event.title} Poster`}
+                            className="w-full h-full object-cover"
+                            style={{ filter: 'contrast(1.05) saturate(1.05)' }}
+                          />
+                        </div>
+                      ) : (
+                        <div
+                          className="leading-none"
+                          style={{
+                            fontSize: 'clamp(80px, 15vh, 180px)',
+                            filter: `drop-shadow(0 0 40px ${event.accentColor}) drop-shadow(0 0 80px ${event.accentColor}cc) drop-shadow(0 20px 60px rgba(0,0,0,0.5))`,
+                            WebkitTextStroke: `2px ${event.accentColor}40`,
+                          }}
+                        >
+                          {event.character || event.icon}
+                        </div>
+                      )}
                     </motion.div>
 
                     {[...Array(4)].map((_, i) => (

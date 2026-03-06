@@ -31,18 +31,13 @@ const IconLocation = () => (
 ───────────────────────────────────────────── */
 const COORDINATORS = [
   { name: 'Harshit Verma', role: 'President', phone: '9810130848', avatar: 'HV' },
-  { name: 'Gurnoor Kaur', role: 'Vice President', avatar: 'GK' },
+  { name: 'Gurnoor Kaur', role: 'Vice President', phone: '9999737357', avatar: 'GK' },
   { name: 'Ayush Dhaiya', role: 'Vice President', phone: '9810480038', avatar: 'AD' },
-  { name: 'Sana Jain', role: 'Secretary', avatar: 'SJ' },
+  { name: 'Sana Jain', role: 'Secretary', phone: '9958688944', avatar: 'SJ' },
 ];
 
-const FACULTY = {
-  name: 'DR. Puja Mujral',
-  role: 'Faculty Advisor — IT Department',
-};
-
 const INFO_ITEMS = [
-  { icon: <IconMail />, label: 'Email Address', value: 'cynet@jimsd.org', link: 'Itclub.vk@jimsd.org' },
+  { icon: <IconMail />, label: 'Email Address', value: 'cynet@jimsd.org', link: 'mailto:cynet@jimsd.org' },
   { icon: <IconInsta />, label: 'Instagram', value: '@enigma.jimsvk', link: 'https://www.instagram.com/enigma.jimsvk/' },
   { icon: <IconLinkedin />, label: 'LinkedIn', value: 'Enigma', link: 'https://www.linkedin.com/company/enigma-it-club-jims-vk/' },
   { icon: <IconLocation />, label: 'Address (Google Map)', value: 'JAGANNATH INTERNATIONAL Management School, OCF Pocket 9, Sector B, Vasant Kunj, New Delhi-110070', link: 'https://maps.google.com/?q=JAGANNATH+INTERNATIONAL+Management+School+OCF+Pocket+9+Sector+B+Vasant+Kunj+New+Delhi+110070' },
@@ -124,26 +119,6 @@ const Contact = ({ theme = 'blue' }) => (
                 ))}
               </ul>
 
-              {/* ── MENTORSHIP (Sidebar) ── */}
-              <div className="cp-aside-header cp-aside-header--mt">
-                <span className="cp-label-tag">&gt; personnel --mentorship</span>
-              </div>
-              <motion.div
-                className="cp-faculty-sidebar"
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-              >
-                <div className="cp-faculty-mini">
-                  <div className="cp-faculty-info-mini">
-                    <h4 className="cp-faculty-name-mini">
-                      <Typewriter text={FACULTY.name} speed={80} delay={500} />
-                    </h4>
-                    <p className="cp-faculty-role-mini">{FACULTY.role}</p>
-                  </div>
-                </div>
-              </motion.div>
             </aside>
           </div>
         </div>

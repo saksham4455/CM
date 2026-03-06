@@ -187,6 +187,7 @@
     text-shadow: 0 0 24px rgba(0, 243, 255, 0.7), 0 0 48px rgba(0, 243, 255, 0.35);
     margin: 0 0 8px 0;
     font-weight: bold;
+    white-space: nowrap;
 }
 
 .pong-hero-btn-row {
@@ -307,7 +308,7 @@
         gap: 8px;
     }
     .pong-hero-subtitle { letter-spacing: 0.12em; white-space: normal; text-align: center; font-size: clamp(0.85rem, 3vw, 1.1rem); }
-    .pong-hero-date { font-size: clamp(1.3rem, 6vw, 2rem); letter-spacing: 0.12em; }
+    .pong-hero-date { font-size: clamp(1.3rem, 6vw, 2rem); letter-spacing: 0.12em; white-space: nowrap; }
 }
 
 @media (max-width: 480px) {
@@ -315,7 +316,7 @@
         top: 63%;
         gap: 6px;
     }
-    .pong-hero-date { font-size: clamp(1.1rem, 7vw, 1.6rem); }
+    .pong-hero-date { font-size: clamp(1.1rem, 7vw, 1.6rem); white-space: nowrap; }
     .pong-hero-btn-row { gap: 10px; }
     .pong-events-btn,
     .pong-register-btn { padding: 0.6em 1.6em; font-size: 0.78rem; letter-spacing: 0.18em; }
