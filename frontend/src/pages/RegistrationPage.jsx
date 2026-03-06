@@ -543,7 +543,7 @@ const RegistrationPage = ({ theme = "blue" }) => {
                   >
                     {preview ? (
                       <img
-                        src={preview}
+                        src="/public/QR/Payment_QR.jpeg"
                         alt="Payment screenshot"
                         className="rf-upload-preview"
                       />
